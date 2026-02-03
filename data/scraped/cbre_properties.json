@@ -1,0 +1,47 @@
+[
+  {
+    "address": "2519 W Fulton St, Chicago, IL",
+    "name": "",
+    "street": "2519 W Fulton St",
+    "city": "Chicago",
+    "state": "IL",
+    "zip_code": "",
+    "sqft": 15625,
+    "property_type": "Warehouse",
+    "lead_broker": "Larry Goldwasser",
+    "broker_email": "",
+    "broker_phone": "635236-9084",
+    "source": "CBRE",
+    "source_url": "https://www.cbre.com/properties/properties-for-lease/industrial/details/US-SMPL-149331/1911-w-lake-street-chicago-il-60612"
+  },
+  {
+    "address": "33 Arch Street, Boston, MA",
+    "name": "",
+    "street": "33 Arch Street",
+    "city": "Boston",
+    "state": "MA",
+    "zip_code": "",
+    "sqft": 89587,
+    "property_type": "Industrial",
+    "lead_broker": "Lauren Lipscomb",
+    "broker_email": "sara.shawles@cbre.com",
+    "broker_phone": "",
+    "source": "CBRE",
+    "source_url": "https://www.cbre.com/properties/properties-for-lease/office/details/US-SMPL-29572/33-arch-street-boston-ma-usa-boston-ma-02110"
+  },
+  {
+    "address": "209 & Rausch Creek Rd, Tremont Township, PA 17981",
+    "name": "Tremont Logistics Center",
+    "street": "209 & Rausch Creek Rd",
+    "city": "Tremont Township",
+    "state": "PA",
+    "zip_code": "17981",
+    "sqft": 426910,
+    "property_type": "Logistics",
+    "lead_broker": "Michael Hess",
+    "broker_email": "",
+    "broker_phone": "4208121549",
+    "source": "CBRE",
+    "source_url": "https://www.cbre.com/properties/properties-for-lease/industrial/details/US-SMPL-74429/tremont-logistics-center-us-209-rausch-creek-rd-tremont-township-pa-17981-usa-tremont-pa-17981"
+  }
+]

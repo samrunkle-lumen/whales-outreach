@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+/* ABC Arizona Serif - Display Font */
+@font-face {
+  font-family: 'ABC Arizona Serif';
+  src: url('/fonts/ABCArizonaSerif-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ABC Arizona Serif';
+  src: url('/fonts/ABCArizonaSerif-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ABC Pelikan - Body Font */
+@font-face {
+  font-family: 'ABC Pelikan';
+  src: url('/fonts/ABCPelikan-Book.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ABC Pelikan';
+  src: url('/fonts/ABCPelikan-BookItalic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ABC Pelikan';
+  src: url('/fonts/ABCPelikan-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ABC Pelikan';
+  src: url('/fonts/ABCPelikan-MediumItalic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #1A1A1A;
+
+  /* Brand Colors - Lumen */
+  --lumen-white: #FFFFFF;
+  --lumen-black: #1A1A1A;
+  --lumen-sky-blue: #B1E5FF;
+  --lumen-sky-blue-light: #CAEDFF;
+  --lumen-sky-blue-dark: #68A2CD;
+  --lumen-electric-yellow: #DFFF5E;
+  --lumen-electric-yellow-dark: #B8D150;
+  --lumen-concrete: #9FA38F;
+  --lumen-concrete-light: #E7E8E3;
+
+  /* Brand Colors - Graphite Black Scale */
+  --graphite-black: #1A1A1A;
+  --graphite-600: #262626;
+  --graphite-500: #333333;
+  --graphite-400: #404040;
+  --graphite-300: #4D4D4D;
+  --graphite-200: #595959;
+  --graphite-100: #656565;
+  --arctic-white: #FFFFFF;
+
+  /* Brand Colors - Sky Blue (PRIMARY ACCENT) */
+  --sky-blue: #B1E5FF;
+  --sky-blue-100: #CAEDFF;
+  --sky-blue-200: #94CAEB;
+  --sky-blue-300: #85BDE1;
+  --sky-blue-400: #77AFD7;
+  --sky-blue-500: #68A2CD;
+
+  /* Brand Colors - Electric Yellow (KEY HIGHLIGHTS/CTAs ONLY) */
+  --electric-yellow: #DFFF5E;
+  --electric-yellow-tint: #ECFFB2;
+  --electric-yellow-100: #B8D150;
+  --electric-yellow-200: #90A343;
+  --electric-yellow-300: #697635;
+
+  /* Brand Colors - Concrete (NEUTRAL) */
+  --concrete: #9FA38F;
+  --concrete-100: #E7E8E3;
+  --concrete-200: #CFD1C7;
+  --concrete-300: #B7BAAB;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-graphite: var(--graphite-black);
+  --color-electric-yellow: var(--electric-yellow);
+  --color-electric-yellow-tint: var(--electric-yellow-tint);
+  --color-sky-blue: var(--sky-blue);
+  --color-sky-blue-light: var(--sky-blue-100);
+  --color-sky-blue-500: var(--sky-blue-500);
+  --color-concrete: var(--concrete);
+  --color-concrete-100: var(--concrete-100);
+  --font-sans: 'ABC Pelikan', 'Inter', system-ui, sans-serif;
+  --font-serif: 'ABC Arizona Serif', 'Times New Roman', Times, serif;
+  --font-mono: 'Roboto Mono', monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'ABC Pelikan', 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Display text class for headlines */
+.display {
+  font-family: 'ABC Arizona Serif', Times, serif;
+  font-weight: 300;
+}
+
+/* Eyebrow text utility class */
+.eyebrow {
+  font-family: 'Roboto Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 13px;
+}
+
+/* Accent line - gradient flair */
+.accent-line {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg,
+    var(--lumen-sky-blue) 0%,
+    var(--lumen-electric-yellow) 50%,
+    var(--lumen-sky-blue) 100%
+  );
+  z-index: 1000;
+}

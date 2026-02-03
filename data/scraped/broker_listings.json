@@ -1,0 +1,40 @@
+{
+  "david-dannenfelser": [
+    {
+      "address": "9161 Commerce Center Dr, Columbia, MD 21046",
+      "city": "Columbia",
+      "state": "MD",
+      "sqft": 189267,
+      "propertyType": "Warehouse",
+      "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/md/columbia/9161-commerce-center-dr/s121844981s121907439-l"
+    },
+    {
+      "address": "99 Ray Rd, Halethorpe, MD 21227",
+      "city": "Halethorpe",
+      "state": "MD",
+      "sqft": 102759,
+      "propertyType": "Warehouse",
+      "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/md/halethorpe/99-ray-rd/s114651509s121851576-l"
+    }
+  ],
+  "john-gartland": [
+    {
+      "address": "2300 South Pennsylvania Avenue, Morrisville, PA 19067",
+      "city": "Morrisville",
+      "state": "PA",
+      "sqft": 973200,
+      "propertyType": "Warehouse",
+      "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/pa/morrisville/2300-south-pennsylvania-avenue/s120273813s120273815-l"
+    }
+  ],
+  "john-bilyak": [
+    {
+      "address": "116 N River Ave, Parker, PA 16049",
+      "city": "Parker",
+      "state": "PA",
+      "sqft": 115000,
+      "propertyType": "Warehouse",
+      "listingUrl": "https://www.colliers.com/en/properties/investment-or-leasing-opportunity-%C2%B1115000-sf-of-industrial-space-on-1204-acres-in-parker-pa/usa-116-n-river-ave-parker-pa-16049-usa/usa1159565"
+    }
+  ]
+}
