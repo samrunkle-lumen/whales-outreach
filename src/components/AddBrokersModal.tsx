@@ -79,7 +79,7 @@ export function AddBrokersModal({ onClose, onSuccess }: AddBrokersModalProps) {
             <h3 className="text-lg font-semibold text-[#1A1A1A]">
               Add New Brokers
             </h3>
-            <p className="text-sm text-[#9FA38F]">
+            <p className="text-sm text-[#5A5F52]">
               Scrape properties and enrich contacts automatically
             </p>
           </div>
@@ -135,7 +135,7 @@ export function AddBrokersModal({ onClose, onSuccess }: AddBrokersModalProps) {
               required
               disabled={isLoading}
             />
-            <p className="text-xs text-[#9FA38F] mt-1">
+            <p className="text-xs text-[#5A5F52] mt-1">
               State abbreviations, comma-separated
             </p>
           </div>
@@ -154,7 +154,7 @@ export function AddBrokersModal({ onClose, onSuccess }: AddBrokersModalProps) {
               required
               disabled={isLoading}
             />
-            <p className="text-xs text-[#9FA38F] mt-1">
+            <p className="text-xs text-[#5A5F52] mt-1">
               Link to their property listings or industrial/warehouse search page
             </p>
           </div>
@@ -172,7 +172,7 @@ export function AddBrokersModal({ onClose, onSuccess }: AddBrokersModalProps) {
               className="w-full px-4 py-2.5 bg-white border border-[#E7E8E3] rounded-lg text-sm focus:outline-none focus:border-[#B1E5FF] focus:ring-1 focus:ring-[#B1E5FF] resize-none"
               disabled={isLoading}
             />
-            <p className="text-xs text-[#9FA38F] mt-1">
+            <p className="text-xs text-[#5A5F52] mt-1">
               If you know specific broker names, enter them here. Otherwise,
               we&apos;ll try to find them from listings.
             </p>
@@ -205,7 +205,7 @@ export function AddBrokersModal({ onClose, onSuccess }: AddBrokersModalProps) {
                   <p className="text-sm font-medium text-[#1A1A1A]">
                     Processing...
                   </p>
-                  <p className="text-xs text-[#9FA38F]">{progress}</p>
+                  <p className="text-xs text-[#5A5F52]">{progress}</p>
                 </div>
               </div>
             </div>
@@ -228,8 +228,8 @@ export function AddBrokersModal({ onClose, onSuccess }: AddBrokersModalProps) {
               </p>
               {result.brokersAdded !== undefined && (
                 <p className="text-xs text-green-700 mt-1">
-                  Added {result.brokersAdded} broker(s) with{" "}
-                  {result.propertiesAdded} properties
+                  Added {result.brokersAdded} {result.brokersAdded === 1 ? 'broker' : 'brokers'} with{" "}
+                  {result.propertiesAdded} {result.propertiesAdded === 1 ? 'property' : 'properties'}
                 </p>
               )}
               {result.errors && result.errors.length > 0 && (

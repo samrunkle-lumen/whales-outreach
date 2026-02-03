@@ -83,7 +83,7 @@ Lumen Energy`;
         className="p-1.5 rounded hover:bg-[#E7E8E3] transition-colors"
         title={`Email ${broker.fullName}`}
       >
-        <svg className="w-4 h-4 text-[#9FA38F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4 text-[#5A5F52]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       </button>
@@ -95,7 +95,7 @@ Lumen Energy`;
             <div className="flex items-center justify-between p-4 border-b border-[#E7E8E3]">
               <div>
                 <h3 className="text-lg font-semibold text-[#1A1A1A]">Outreach to {broker.fullName}</h3>
-                <p className="text-sm text-[#9FA38F]">{broker.email || "No email on file"}</p>
+                <p className="text-sm text-[#5A5F52]">{broker.email || "No email on file"}</p>
               </div>
               <button
                 onClick={() => setShowModal(false)}
@@ -149,7 +149,7 @@ Lumen Energy`;
               </div>
               <button
                 onClick={handleCopy}
-                className="w-full inline-flex items-center justify-center px-4 py-2 text-sm text-[#9FA38F] hover:text-[#1A1A1A] transition-colors"
+                className="w-full inline-flex items-center justify-center px-4 py-2 text-sm text-[#5A5F52] hover:text-[#1A1A1A] transition-colors"
               >
                 {copied ? (
                   <>

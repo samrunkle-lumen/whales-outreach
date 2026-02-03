@@ -30,15 +30,15 @@ export function CollapsibleSection({
         </div>
         <div className="flex items-center gap-3">
           {badge && (
-            <span className="text-sm text-[#9FA38F] bg-white px-3 py-1 rounded-full border border-[#E7E8E3]">
+            <span className="text-sm text-[#5A5F52] bg-white px-3 py-1 rounded-full border border-[#E7E8E3]">
               {badge}
             </span>
           )}
           {subtitle && (
-            <span className="hidden md:block text-sm text-[#9FA38F]">{subtitle}</span>
+            <span className="hidden md:block text-sm text-[#5A5F52]">{subtitle}</span>
           )}
           <svg
-            className={`w-5 h-5 text-[#9FA38F] transition-transform ${isOpen ? "rotate-180" : ""}`}
+            className={`w-5 h-5 text-[#5A5F52] transition-transform ${isOpen ? "rotate-180" : ""}`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -99,16 +99,16 @@ export function CollapsibleBroker({
           </div>
           <div>
             <p className="font-medium text-[#1A1A1A]">{brokerName}</p>
-            <p className="text-xs text-[#9FA38F]">{brokerTitle || "Broker"}</p>
+            <p className="text-xs text-[#5A5F52]">{brokerTitle || "Broker"}</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
           <div className="hidden md:block text-right">
             <p className="text-sm font-medium text-[#1A1A1A]">{portfolioValue}</p>
-            <p className="text-xs text-[#9FA38F]">{propertyCount} properties</p>
+            <p className="text-xs text-[#5A5F52]">{propertyCount} {propertyCount === 1 ? 'property' : 'properties'}</p>
           </div>
           <svg
-            className={`w-5 h-5 text-[#9FA38F] transition-transform ${isOpen ? "rotate-180" : ""}`}
+            className={`w-5 h-5 text-[#5A5F52] transition-transform ${isOpen ? "rotate-180" : ""}`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -148,7 +148,7 @@ export function CollapsibleBroker({
                 href={brokerProfileUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white border border-[#E7E8E3] text-xs text-[#9FA38F] hover:border-[#B1E5FF] hover:text-[#1A1A1A] transition-colors"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white border border-[#E7E8E3] text-xs text-[#5A5F52] hover:border-[#B1E5FF] hover:text-[#1A1A1A] transition-colors"
               >
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

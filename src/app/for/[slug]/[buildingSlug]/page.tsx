@@ -81,7 +81,7 @@ export async function generateMetadata({ params }: PageProps) {
 
   return {
     title: `${building.address} | Solar Analysis | Lumen Energy`,
-    description: `This ${formatNumber(building.sqft)} sq ft property could generate ${formatCurrency(calc.annualIncomeLow)}-${formatCurrency(calc.annualIncomeHigh)}/year in solar lease revenue.`,
+    description: `This ${formatNumber(building.sqft)} ft² property could generate ${formatCurrency(calc.annualIncomeLow)}-${formatCurrency(calc.annualIncomeHigh)}/year in solar lease revenue.`,
   };
 }
 
@@ -115,7 +115,7 @@ export default async function BuildingPage({ params }: PageProps) {
           <div className="max-w-[1200px] mx-auto">
             <Link
               href={`/for/${broker.slug}`}
-              className="inline-flex items-center text-sm text-[#9FA38F] hover:text-[#1A1A1A] transition-colors"
+              className="inline-flex items-center text-sm text-[#5A5F52] hover:text-[#1A1A1A] transition-colors"
             >
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -131,11 +131,11 @@ export default async function BuildingPage({ params }: PageProps) {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
               {/* Left Column: Title, Info, and Pricing Cards */}
               <div className="flex flex-col">
-                <p className="eyebrow text-[#9FA38F] mb-3">Solar Lease Opportunity</p>
+                <p className="eyebrow text-[#5A5F52] mb-3">Solar Lease Opportunity</p>
                 <h1 className="display text-[clamp(32px,4vw,48px)] leading-[1.05] tracking-[-0.03em] text-[#1A1A1A] mb-2">
                   {building.name || building.address.split(',')[0]}
                 </h1>
-                <p className="text-base text-[#9FA38F] mb-2">
+                <p className="text-base text-[#5A5F52] mb-2">
                   <a
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(building.address)}`}
                     target="_blank"
@@ -147,7 +147,7 @@ export default async function BuildingPage({ params }: PageProps) {
                 </p>
 
                 {/* Property Meta */}
-                <div className="flex flex-wrap gap-4 mt-3 mb-6 text-sm text-[#9FA38F]">
+                <div className="flex flex-wrap gap-4 mt-3 mb-6 text-sm text-[#5A5F52]">
                   <span><span className="text-[#1A1A1A] font-medium">{formatNumber(building.sqft)} SF</span> building</span>
                   <span><span className="text-[#1A1A1A] font-medium">{formatNumber(calc.usableRoofSqft)} SF</span> usable roof</span>
                   <span><span className="text-[#1A1A1A] font-medium">{building.propertyType || 'Industrial'}</span></span>
@@ -158,23 +158,23 @@ export default async function BuildingPage({ params }: PageProps) {
                 <div className="space-y-4 flex-1">
                   {/* Annual Lease Revenue Card */}
                   <div className="bg-white border border-[#E7E8E3] rounded-xl p-5">
-                    <p className="eyebrow text-[#9FA38F] text-xs mb-1">Annual Lease Revenue</p>
+                    <p className="eyebrow text-[#5A5F52] text-xs mb-1">Annual Lease Revenue</p>
                     <p className="display text-[32px] font-light text-[#1A1A1A] tracking-[-0.02em] leading-tight">
                       {formatCurrency(calc.annualIncomeLow)} – {formatCurrency(calc.annualIncomeHigh)}
-                      <span className="text-[#9FA38F] text-lg ml-1">/yr</span>
+                      <span className="text-[#5A5F52] text-lg ml-1">/yr</span>
                     </p>
 
                     <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-[#E7E8E3]">
                       <div>
-                        <p className="text-xs text-[#9FA38F]">Lease Rate</p>
-                        <p className="font-medium text-[#1A1A1A]">${calc.lowRate.toFixed(2)}–${calc.highRate.toFixed(2)}/SF</p>
+                        <p className="text-xs text-[#5A5F52]">Lease Rate</p>
+                        <p className="font-medium text-[#1A1A1A]">${calc.lowRate.toFixed(2)}–${calc.highRate.toFixed(2)}/ft²</p>
                       </div>
                       <div>
-                        <p className="text-xs text-[#9FA38F]">Usable Roof</p>
+                        <p className="text-xs text-[#5A5F52]">Usable Roof</p>
                         <p className="font-medium text-[#1A1A1A]">{formatNumber(calc.usableRoofSqft)} SF</p>
                       </div>
                       <div>
-                        <p className="text-xs text-[#9FA38F]">System Size</p>
+                        <p className="text-xs text-[#5A5F52]">System Size</p>
                         <p className="font-medium text-[#1A1A1A]">{formatMW(calc.systemSizeLow)}–{formatMW(calc.systemSizeHigh)}</p>
                       </div>
                     </div>
@@ -182,20 +182,20 @@ export default async function BuildingPage({ params }: PageProps) {
 
                   {/* Value Uplift Card */}
                   <div className="bg-gradient-to-b from-[#FAFFFE] to-[#F5FFFC] border border-[#E7E8E3] rounded-xl p-5">
-                    <p className="eyebrow text-[#9FA38F] text-xs mb-1">Value Uplift at Sale</p>
+                    <p className="eyebrow text-[#5A5F52] text-xs mb-1">Value Uplift at Sale</p>
                     <div className="flex items-baseline gap-3">
                       <p className="display text-[32px] font-light text-[#1A1A1A] tracking-[-0.02em] leading-tight">
                         {formatMillions(calc.valueUpliftLow)} – {formatMillions(calc.valueUpliftHigh)}
                       </p>
-                      <span className="text-sm text-[#9FA38F]">at 6% cap rate</span>
+                      <span className="text-sm text-[#5A5F52]">at 6% cap rate</span>
                     </div>
-                    <p className="text-xs text-[#9FA38F] mt-3">
+                    <p className="text-xs text-[#5A5F52] mt-3">
                       New NOI from solar lease income capitalized at market rate increases property value at sale.
                     </p>
                   </div>
                 </div>
 
-                <p className="text-xs text-[#9FA38F] mt-4 mb-4">
+                <p className="text-xs text-[#5A5F52] mt-4 mb-4">
                   Estimates based on {getUtilityFullName(calc.utility)} utility market rates.
                 </p>
 
@@ -245,19 +245,19 @@ export default async function BuildingPage({ params }: PageProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="pl-5 border-l-2 border-[#E7E8E3]">
                 <h3 className="font-medium mb-1.5">Passive Income</h3>
-                <p className="text-sm text-[#9FA38F] leading-relaxed">Generate steady annual revenue with zero operational involvement.</p>
+                <p className="text-sm text-[#5A5F52] leading-relaxed">Generate steady annual revenue with zero operational involvement.</p>
               </div>
               <div className="pl-5 border-l-2 border-[#E7E8E3]">
                 <h3 className="font-medium mb-1.5">Zero Capital Required</h3>
-                <p className="text-sm text-[#9FA38F] leading-relaxed">Lumen handles all installation and maintenance at no cost.</p>
+                <p className="text-sm text-[#5A5F52] leading-relaxed">Lumen handles all installation and maintenance at no cost.</p>
               </div>
               <div className="pl-5 border-l-2 border-[#E7E8E3]">
                 <h3 className="font-medium mb-1.5">Increased Property Value</h3>
-                <p className="text-sm text-[#9FA38F] leading-relaxed">New NOI from solar lease directly increases property value at sale.</p>
+                <p className="text-sm text-[#5A5F52] leading-relaxed">New NOI from solar lease directly increases property value at sale.</p>
               </div>
               <div className="pl-5 border-l-2 border-[#E7E8E3]">
                 <h3 className="font-medium mb-1.5">Long-Term Stability</h3>
-                <p className="text-sm text-[#9FA38F] leading-relaxed">20-25 year agreements with inflation-adjusted payments.</p>
+                <p className="text-sm text-[#5A5F52] leading-relaxed">20-25 year agreements with inflation-adjusted payments.</p>
               </div>
             </div>
           </div>
@@ -270,7 +270,7 @@ export default async function BuildingPage({ params }: PageProps) {
               {/* How to Get Competitive Offers */}
               <div>
                 <h2 className="display text-[28px] font-light tracking-[-0.02em] mb-4">How to Get Competitive Offers</h2>
-                <p className="text-base text-[#9FA38F] leading-relaxed">
+                <p className="text-base text-[#5A5F52] leading-relaxed">
                   Lumen Energy is the modern solar broker, partnering with leading real estate owners to turn their rooftops into new revenue. We deliver rigorous portfolio analysis, create transparent competition among top developers, and provide white-glove service throughout.
                 </p>
               </div>

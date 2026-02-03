@@ -22,11 +22,11 @@ export function EmailShareButton({ building, broker, calculation }: EmailShareBu
 
 I wanted to share an exciting opportunity regarding ${building.address}.
 
-Based on a preliminary analysis by Lumen Energy, this ${formatNumber(building.sqft)} sq ft property could generate ${formatCurrency(calculation.annualIncomeLow)} to ${formatCurrency(calculation.annualIncomeHigh)} per year in solar lease revenue—with no upfront investment required.
+Based on a preliminary analysis by Lumen Energy, this ${formatNumber(building.sqft)} ft² property could generate ${formatCurrency(calculation.annualIncomeLow)} to ${formatCurrency(calculation.annualIncomeHigh)} per year in solar lease revenue—with no upfront investment required.
 
 Key Details:
 • Building: ${building.address}
-• Size: ${formatNumber(building.sqft)} sq ft
+• Size: ${formatNumber(building.sqft)} ft²
 • Utility: ${getUtilityFullName(calculation.utility)}
 • Estimated Annual Revenue: ${formatCurrency(calculation.annualIncomeLow)}–${formatCurrency(calculation.annualIncomeHigh)}
 • System Size: ${formatNumber(calculation.systemSizeLow)}–${formatNumber(calculation.systemSizeHigh)} kW
@@ -88,7 +88,7 @@ ${broker.company}`;
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-[#9FA38F]/20">
+            <div className="flex items-center justify-between p-4 border-b border-[#5A5F52]/20">
               <h3 className="text-lg font-semibold text-[#1A1A1A]">Share with Your Client</h3>
               <button
                 onClick={() => setShowModal(false)}
@@ -117,7 +117,7 @@ ${broker.company}`;
             </div>
 
             {/* Footer */}
-            <div className="flex flex-col gap-3 p-4 border-t border-[#9FA38F]/20 bg-[#F8F8F6]">
+            <div className="flex flex-col gap-3 p-4 border-t border-[#5A5F52]/20 bg-[#F8F8F6]">
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={handleOpenGmail}
@@ -130,7 +130,7 @@ ${broker.company}`;
                 </button>
                 <button
                   onClick={handleOpenEmail}
-                  className="flex-1 inline-flex items-center justify-center px-4 py-3 border border-[#9FA38F]/30 text-[#1A1A1A] rounded-lg hover:bg-white transition-colors font-medium"
+                  className="flex-1 inline-flex items-center justify-center px-4 py-3 border border-[#5A5F52]/30 text-[#1A1A1A] rounded-lg hover:bg-white transition-colors font-medium"
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -140,7 +140,7 @@ ${broker.company}`;
               </div>
               <button
                 onClick={handleCopy}
-                className="w-full inline-flex items-center justify-center px-4 py-2 text-sm text-[#9FA38F] hover:text-[#1A1A1A] transition-colors"
+                className="w-full inline-flex items-center justify-center px-4 py-2 text-sm text-[#5A5F52] hover:text-[#1A1A1A] transition-colors"
               >
                 {copied ? (
                   <>

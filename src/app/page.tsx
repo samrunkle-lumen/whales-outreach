@@ -25,11 +25,11 @@ export default function Home() {
         {/* Hero Section - Internal Dashboard Style */}
         <section className="px-6 md:px-12 py-12 md:py-16 border-b border-[#E7E8E3]">
           <div className="max-w-[1200px] mx-auto">
-            <p className="eyebrow text-[#9FA38F] mb-4">Outreach Dashboard</p>
+            <p className="eyebrow text-[#5A5F52] mb-4">Outreach Dashboard</p>
             <h1 className="display text-[clamp(36px,5vw,56px)] leading-[1.0] tracking-[-0.03em] text-[#1A1A1A] mb-6">
               Broker Outreach Pipeline
             </h1>
-            <p className="text-lg text-[#9FA38F] max-w-2xl mb-8">
+            <p className="text-lg text-[#5A5F52] max-w-2xl mb-8">
               Track solar lease opportunities across {data.firms.length} firms and {data.brokers.length} brokers.
               Click any listing to view detailed analysis or share with prospects.
             </p>
@@ -37,25 +37,25 @@ export default function Home() {
             {/* Stats Grid */}
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               <div className="bg-[#F8F8F6] border border-[#E7E8E3] rounded-xl p-4">
-                <p className="eyebrow text-[#9FA38F] text-xs mb-1">Firms</p>
+                <p className="eyebrow text-[#5A5F52] text-xs mb-1">Firms</p>
                 <p className="display text-[28px] text-[#1A1A1A]">{data.firms.length}</p>
               </div>
               <div className="bg-[#F8F8F6] border border-[#E7E8E3] rounded-xl p-4">
-                <p className="eyebrow text-[#9FA38F] text-xs mb-1">Brokers</p>
+                <p className="eyebrow text-[#5A5F52] text-xs mb-1">Brokers</p>
                 <p className="display text-[28px] text-[#1A1A1A]">{data.brokers.length}</p>
               </div>
               <div className="bg-[#F8F8F6] border border-[#E7E8E3] rounded-xl p-4">
-                <p className="eyebrow text-[#9FA38F] text-xs mb-1">Properties</p>
+                <p className="eyebrow text-[#5A5F52] text-xs mb-1">Properties</p>
                 <p className="display text-[28px] text-[#1A1A1A]">{allBuildings.length}</p>
               </div>
               <div className="bg-[#F8F8F6] border border-[#E7E8E3] rounded-xl p-4">
-                <p className="eyebrow text-[#9FA38F] text-xs mb-1">Total SF</p>
+                <p className="eyebrow text-[#5A5F52] text-xs mb-1">Total ft²</p>
                 <p className="display text-[28px] text-[#1A1A1A]">{formatNumber(totalSqft)}</p>
               </div>
               <div className="bg-gradient-to-b from-[#FAFFFE] to-[#F5FFFC] border border-[#E7E8E3] rounded-xl p-4">
-                <p className="eyebrow text-[#9FA38F] text-xs mb-1">Pipeline Value</p>
+                <p className="eyebrow text-[#5A5F52] text-xs mb-1">Pipeline Value</p>
                 <p className="display text-[28px] text-[#1A1A1A]">
-                  {formatCurrency(portfolioSummary.totalLow)}<span className="text-[#9FA38F] text-lg">/yr</span>
+                  {formatCurrency(portfolioSummary.totalLow)}<span className="text-[#5A5F52] text-lg">/yr</span>
                 </p>
               </div>
             </div>
@@ -77,7 +77,7 @@ export default function Home() {
                 <h2 className="display text-[28px] font-light tracking-[-0.02em] text-[#1A1A1A] mb-2">
                   Need to add more brokers?
                 </h2>
-                <p className="text-[#9FA38F]">
+                <p className="text-[#5A5F52]">
                   Add new firms and brokers with automatic property scraping and contact enrichment.
                 </p>
               </div>

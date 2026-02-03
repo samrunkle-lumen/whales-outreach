@@ -24,11 +24,11 @@ interface FilterableBrokerListProps {
 
 const SQFT_RANGES = [
   { label: "All Sizes", min: 0, max: Infinity },
-  { label: "Under 50K SF", min: 0, max: 50000 },
-  { label: "50K - 100K SF", min: 50000, max: 100000 },
-  { label: "100K - 250K SF", min: 100000, max: 250000 },
-  { label: "250K - 500K SF", min: 250000, max: 500000 },
-  { label: "500K+ SF", min: 500000, max: Infinity },
+  { label: "Under 50K ft²", min: 0, max: 50000 },
+  { label: "50K - 100K ft²", min: 50000, max: 100000 },
+  { label: "100K - 250K ft²", min: 100000, max: 250000 },
+  { label: "250K - 500K ft²", min: 250000, max: 500000 },
+  { label: "500K+ ft²", min: 500000, max: Infinity },
 ];
 
 export function FilterableBrokerList({ firms, brokers }: FilterableBrokerListProps) {
@@ -110,7 +110,7 @@ export function FilterableBrokerList({ firms, brokers }: FilterableBrokerListPro
         <div className="flex flex-col md:flex-row gap-4">
           {/* Search Input */}
           <div className="flex-1">
-            <label className="block text-xs text-[#9FA38F] mb-1.5">Search Brokers</label>
+            <label className="block text-xs text-[#5A5F52] mb-1.5">Search Brokers</label>
             <div className="relative">
               <input
                 type="text"
@@ -119,7 +119,7 @@ export function FilterableBrokerList({ firms, brokers }: FilterableBrokerListPro
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full px-4 py-2.5 pl-10 bg-white border border-[#E7E8E3] rounded-lg text-sm focus:outline-none focus:border-[#B1E5FF] focus:ring-1 focus:ring-[#B1E5FF]"
               />
-              <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9FA38F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5A5F52]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
@@ -127,7 +127,7 @@ export function FilterableBrokerList({ firms, brokers }: FilterableBrokerListPro
 
           {/* State Filter */}
           <div className="w-full md:w-40">
-            <label className="block text-xs text-[#9FA38F] mb-1.5">State</label>
+            <label className="block text-xs text-[#5A5F52] mb-1.5">State</label>
             <select
               value={selectedState}
               onChange={(e) => setSelectedState(e.target.value)}
@@ -142,7 +142,7 @@ export function FilterableBrokerList({ firms, brokers }: FilterableBrokerListPro
 
           {/* Square Footage Filter */}
           <div className="w-full md:w-48">
-            <label className="block text-xs text-[#9FA38F] mb-1.5">Square Footage</label>
+            <label className="block text-xs text-[#5A5F52] mb-1.5">Square Footage</label>
             <select
               value={selectedSqftRange}
               onChange={(e) => setSelectedSqftRange(Number(e.target.value))}
@@ -156,9 +156,9 @@ export function FilterableBrokerList({ firms, brokers }: FilterableBrokerListPro
         </div>
 
         {/* Results Count */}
-        <div className="mt-3 pt-3 border-t border-[#E7E8E3] flex items-center justify-between text-sm text-[#9FA38F]">
+        <div className="mt-3 pt-3 border-t border-[#E7E8E3] flex items-center justify-between text-sm text-[#5A5F52]">
           <span>
-            Showing <span className="text-[#1A1A1A] font-medium">{filteredData.length}</span> brokers with <span className="text-[#1A1A1A] font-medium">{totalProperties}</span> properties
+            Showing <span className="text-[#1A1A1A] font-medium">{filteredData.length}</span> {filteredData.length === 1 ? 'broker' : 'brokers'} with <span className="text-[#1A1A1A] font-medium">{totalProperties}</span> {totalProperties === 1 ? 'property' : 'properties'}
           </span>
           {(searchQuery || selectedState || selectedSqftRange > 0) && (
             <button
@@ -178,7 +178,7 @@ export function FilterableBrokerList({ firms, brokers }: FilterableBrokerListPro
       {/* Broker List */}
       <div className="space-y-4">
         {firmGroups.length === 0 ? (
-          <div className="text-center py-12 text-[#9FA38F]">
+          <div className="text-center py-12 text-[#5A5F52]">
             <svg className="w-12 h-12 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -202,7 +202,7 @@ export function FilterableBrokerList({ firms, brokers }: FilterableBrokerListPro
                     </div>
                     <div>
                       <p className="font-semibold text-[#1A1A1A]">{firm.name}</p>
-                      <p className="text-xs text-[#9FA38F]">{firmBuildings.length} properties · {firm.market}</p>
+                      <p className="text-xs text-[#5A5F52]">{firmBuildings.length} {firmBuildings.length === 1 ? 'property' : 'properties'} · {firm.market}</p>
                     </div>
                   </div>
                 }
@@ -250,15 +250,15 @@ export function FilterableBrokerList({ firms, brokers }: FilterableBrokerListPro
                                     <p className="font-medium text-sm text-[#1A1A1A] truncate group-hover:text-[#68A2CD] transition-colors">
                                       {building.address.split(',')[0]}
                                     </p>
-                                    <div className="flex flex-wrap items-center gap-2 text-xs text-[#9FA38F] mt-0.5">
+                                    <div className="flex flex-wrap items-center gap-2 text-xs text-[#5A5F52] mt-0.5">
                                       <span>{formatNumber(building.sqft)} SF</span>
                                       {building.propertyType && (
                                         <>
-                                          <span className="w-1 h-1 rounded-full bg-[#9FA38F]"></span>
+                                          <span className="w-1 h-1 rounded-full bg-[#5A5F52]"></span>
                                           <span>{building.propertyType}</span>
                                         </>
                                       )}
-                                      <span className="w-1 h-1 rounded-full bg-[#9FA38F]"></span>
+                                      <span className="w-1 h-1 rounded-full bg-[#5A5F52]"></span>
                                       <span className="text-[#68A2CD]">{calc.utility}</span>
                                     </div>
                                   </div>
@@ -266,14 +266,14 @@ export function FilterableBrokerList({ firms, brokers }: FilterableBrokerListPro
                                     <div className="text-right">
                                       <p className="text-sm font-medium text-[#1A1A1A]">
                                         {formatCurrency(calc.annualIncomeLow)}–{formatCurrency(calc.annualIncomeHigh)}
-                                        <span className="text-[#9FA38F] text-xs font-normal">/yr</span>
+                                        <span className="text-[#5A5F52] text-xs font-normal">/yr</span>
                                       </p>
-                                      <p className="text-xs text-[#9FA38F]">
+                                      <p className="text-xs text-[#5A5F52]">
                                         +{formatMillions(calc.valueUpliftLow)} uplift
                                       </p>
                                     </div>
                                     <div className="w-6 h-6 rounded-full bg-[#F0F0EE] flex items-center justify-center group-hover:bg-[#B1E5FF] transition-colors">
-                                      <svg className="w-3 h-3 text-[#9FA38F] group-hover:text-[#1A1A1A] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <svg className="w-3 h-3 text-[#5A5F52] group-hover:text-[#1A1A1A] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                       </svg>
                                     </div>

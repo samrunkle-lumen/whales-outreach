@@ -70,43 +70,43 @@ export default async function BrokerPage({ params }: PageProps) {
         {/* Hero Section */}
         <section className="px-6 md:px-12 py-12 md:py-16">
           <div className="max-w-[1000px] mx-auto">
-            <p className="eyebrow text-[#9FA38F] mb-4">{broker.company} · {broker.market}</p>
+            <p className="eyebrow text-[#5A5F52] mb-4">{broker.company} · {broker.market}</p>
             <h1 className="display text-[clamp(36px,5vw,64px)] leading-[1.0] tracking-[-0.03em] text-[#1A1A1A] mb-4">
               {broker.name}, turn your clients&apos; rooftops into revenue
             </h1>
-            <p className="text-lg text-[#9FA38F] max-w-2xl mb-8">
-              We analyzed <span className="text-[#1A1A1A] font-medium">{broker.buildings.length} properties</span> in your portfolio.
+            <p className="text-lg text-[#5A5F52] max-w-2xl mb-8">
+              We analyzed <span className="text-[#1A1A1A] font-medium">{broker.buildings.length} {broker.buildings.length === 1 ? 'property' : 'properties'}</span> in your portfolio.
               Here&apos;s how solar can create new income for your clients.
             </p>
 
             {/* Portfolio Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               <div className="bg-gradient-to-b from-[#FAFFFE] to-[#F5FFFC] border border-[#E7E8E3] rounded-xl p-5">
-                <p className="eyebrow text-[#9FA38F] text-xs mb-1">Annual Revenue Potential</p>
+                <p className="eyebrow text-[#5A5F52] text-xs mb-1">Annual Revenue Potential</p>
                 <p className="display text-[24px] text-[#1A1A1A]">
                   {formatCurrency(portfolio.totalLow)}
                 </p>
-                <p className="text-sm text-[#9FA38F]">to {formatCurrency(portfolio.totalHigh)}/yr</p>
+                <p className="text-sm text-[#5A5F52]">to {formatCurrency(portfolio.totalHigh)}/yr</p>
               </div>
               <div className="bg-[#F8F8F6] border border-[#E7E8E3] rounded-xl p-5">
-                <p className="eyebrow text-[#9FA38F] text-xs mb-1">Value Uplift</p>
+                <p className="eyebrow text-[#5A5F52] text-xs mb-1">Value Uplift</p>
                 <p className="display text-[24px] text-[#1A1A1A]">
                   {formatMillions(totalValueUplift)}
                 </p>
-                <p className="text-sm text-[#9FA38F]">at 6% cap rate</p>
+                <p className="text-sm text-[#5A5F52]">at 6% cap rate</p>
               </div>
               <div className="bg-[#F8F8F6] border border-[#E7E8E3] rounded-xl p-5">
-                <p className="eyebrow text-[#9FA38F] text-xs mb-1">Properties</p>
+                <p className="eyebrow text-[#5A5F52] text-xs mb-1">Properties</p>
                 <p className="display text-[24px] text-[#1A1A1A]">{broker.buildings.length}</p>
-                <p className="text-sm text-[#9FA38F]">{formatNumber(totalSqft)} SF total</p>
+                <p className="text-sm text-[#5A5F52]">{formatNumber(totalSqft)} SF total</p>
               </div>
               <a
                 href="#partner-benefits"
                 className="bg-gradient-to-b from-[#DFFF5E]/30 to-[#DFFF5E]/10 border-2 border-[#DFFF5E] rounded-xl p-5 block hover:border-[#c4e654] transition-colors group"
               >
-                <p className="eyebrow text-[#9FA38F] text-xs mb-1">Your Referral Fee</p>
+                <p className="eyebrow text-[#5A5F52] text-xs mb-1">Your Referral Fee</p>
                 <p className="display text-[24px] text-[#2E7D32]">{formatCurrency(referralFee.low)}+</p>
-                <p className="text-sm text-[#9FA38F] group-hover:text-[#1A1A1A] transition-colors">at project close →</p>
+                <p className="text-sm text-[#5A5F52] group-hover:text-[#1A1A1A] transition-colors">at project close →</p>
               </a>
             </div>
 
@@ -123,8 +123,8 @@ export default async function BrokerPage({ params }: PageProps) {
           <div className="max-w-[1000px] mx-auto">
             <div className="flex items-center justify-between mb-6">
               <h2 className="display text-[28px] font-light tracking-[-0.02em]">Property Analysis</h2>
-              <span className="text-sm text-[#9FA38F]">
-                {broker.buildings.length} properties
+              <span className="text-sm text-[#5A5F52]">
+                {broker.buildings.length} {broker.buildings.length === 1 ? 'property' : 'properties'}
               </span>
             </div>
 
@@ -143,11 +143,11 @@ export default async function BrokerPage({ params }: PageProps) {
                         <h3 className="font-medium text-[#1A1A1A] group-hover:text-[#68A2CD] transition-colors mb-1">
                           {building.address.split(',')[0]}
                         </h3>
-                        <div className="flex flex-wrap items-center gap-2 text-sm text-[#9FA38F]">
+                        <div className="flex flex-wrap items-center gap-2 text-sm text-[#5A5F52]">
                           <span>{formatNumber(building.sqft)} SF</span>
-                          <span className="w-1 h-1 rounded-full bg-[#9FA38F]"></span>
+                          <span className="w-1 h-1 rounded-full bg-[#5A5F52]"></span>
                           <span>{formatNumber(calc.usableRoofSqft)} SF usable roof</span>
-                          <span className="w-1 h-1 rounded-full bg-[#9FA38F]"></span>
+                          <span className="w-1 h-1 rounded-full bg-[#5A5F52]"></span>
                           <span className="text-[#68A2CD]">{getUtilityFullName(calc.utility)}</span>
                         </div>
                       </div>
@@ -155,14 +155,14 @@ export default async function BrokerPage({ params }: PageProps) {
                         <div className="text-right">
                           <p className="text-lg font-medium text-[#1A1A1A]">
                             {formatCurrency(calc.annualIncomeLow)}–{formatCurrency(calc.annualIncomeHigh)}
-                            <span className="text-[#9FA38F] text-sm font-normal">/yr</span>
+                            <span className="text-[#5A5F52] text-sm font-normal">/yr</span>
                           </p>
-                          <p className="text-xs text-[#9FA38F]">
+                          <p className="text-xs text-[#5A5F52]">
                             +{formatMillions(calc.valueUpliftLow)} value uplift
                           </p>
                         </div>
                         <div className="w-10 h-10 rounded-full bg-[#F8F8F6] flex items-center justify-center group-hover:bg-[#B1E5FF] transition-colors">
-                          <svg className="w-5 h-5 text-[#9FA38F] group-hover:text-[#1A1A1A] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5 text-[#5A5F52] group-hover:text-[#1A1A1A] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </div>
@@ -180,20 +180,20 @@ export default async function BrokerPage({ params }: PageProps) {
           <div className="max-w-[1000px] mx-auto">
             <div className="grid md:grid-cols-2 gap-8 items-stretch">
               <div className="flex flex-col">
-                <p className="eyebrow text-[#9FA38F] mb-3">Partner Benefits</p>
+                <p className="eyebrow text-[#5A5F52] mb-3">Partner Benefits</p>
                 <h2 className="display text-[28px] font-light tracking-[-0.02em] mb-4">
                   Earn While Helping Your Clients
                 </h2>
-                <p className="text-[#9FA38F] mb-6 leading-relaxed">
+                <p className="text-[#5A5F52] mb-6 leading-relaxed">
                   When you refer your clients to Lumen, you&apos;ll receive a meaningful referral fee for every project that closes.
                   It&apos;s a win-win: your clients get new revenue from their rooftops, and you get compensated for the introduction.
                 </p>
                 <div className="bg-gradient-to-b from-[#FAFFFE] to-[#F5FFFC] border border-[#E7E8E3] rounded-xl p-6 mt-auto">
-                  <p className="eyebrow text-[#9FA38F] text-xs mb-2">Your Potential Referral Fee</p>
+                  <p className="eyebrow text-[#5A5F52] text-xs mb-2">Your Potential Referral Fee</p>
                   <p className="display text-[36px] text-[#1A1A1A]">
                     {formatCurrency(referralFee.low)}+
                   </p>
-                  <p className="text-sm text-[#9FA38F] mt-2">
+                  <p className="text-sm text-[#5A5F52] mt-2">
                     Based on the portfolio above. Paid upon project completion.
                   </p>
                 </div>
@@ -205,21 +205,21 @@ export default async function BrokerPage({ params }: PageProps) {
                     <div className="w-8 h-8 rounded-full bg-[#B1E5FF] flex items-center justify-center flex-shrink-0 text-sm font-bold text-[#1A1A1A]">1</div>
                     <div className="pt-1">
                       <p className="font-medium text-[#1A1A1A]">Introduce Your Client</p>
-                      <p className="text-sm text-[#9FA38F]">Connect us with the building owner or decision maker</p>
+                      <p className="text-sm text-[#5A5F52]">Connect us with the building owner or decision maker</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-8 h-8 rounded-full bg-[#B1E5FF] flex items-center justify-center flex-shrink-0 text-sm font-bold text-[#1A1A1A]">2</div>
                     <div className="pt-1">
                       <p className="font-medium text-[#1A1A1A]">We Handle Everything</p>
-                      <p className="text-sm text-[#9FA38F]">Analysis, competitive bidding, and project execution</p>
+                      <p className="text-sm text-[#5A5F52]">Analysis, competitive bidding, and project execution</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-8 h-8 rounded-full bg-[#B1E5FF] flex items-center justify-center flex-shrink-0 text-sm font-bold text-[#1A1A1A]">3</div>
                     <div className="pt-1">
                       <p className="font-medium text-[#1A1A1A]">Get Paid</p>
-                      <p className="text-sm text-[#9FA38F]">Receive your referral fee when the project closes</p>
+                      <p className="text-sm text-[#5A5F52]">Receive your referral fee when the project closes</p>
                     </div>
                   </div>
                 </div>
@@ -235,19 +235,19 @@ export default async function BrokerPage({ params }: PageProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="pl-5 border-l-2 border-[#E7E8E3]">
                 <h3 className="font-medium mb-1.5">New Revenue Stream</h3>
-                <p className="text-sm text-[#9FA38F] leading-relaxed">Transform unused rooftop space into predictable annual income without upfront costs.</p>
+                <p className="text-sm text-[#5A5F52] leading-relaxed">Transform unused rooftop space into predictable annual income without upfront costs.</p>
               </div>
               <div className="pl-5 border-l-2 border-[#E7E8E3]">
                 <h3 className="font-medium mb-1.5">Increase Property Value</h3>
-                <p className="text-sm text-[#9FA38F] leading-relaxed">Boost NOI and appeal to ESG-focused investors and tenants seeking sustainable buildings.</p>
+                <p className="text-sm text-[#5A5F52] leading-relaxed">Boost NOI and appeal to ESG-focused investors and tenants seeking sustainable buildings.</p>
               </div>
               <div className="pl-5 border-l-2 border-[#E7E8E3]">
                 <h3 className="font-medium mb-1.5">White-Glove Service</h3>
-                <p className="text-sm text-[#9FA38F] leading-relaxed">Lumen handles everything—analysis, competitive bidding, and project execution.</p>
+                <p className="text-sm text-[#5A5F52] leading-relaxed">Lumen handles everything—analysis, competitive bidding, and project execution.</p>
               </div>
               <div className="pl-5 border-l-2 border-[#E7E8E3]">
                 <h3 className="font-medium mb-1.5">Long-Term Stability</h3>
-                <p className="text-sm text-[#9FA38F] leading-relaxed">20-25 year agreements with predictable, inflation-adjusted payments.</p>
+                <p className="text-sm text-[#5A5F52] leading-relaxed">20-25 year agreements with predictable, inflation-adjusted payments.</p>
               </div>
             </div>
           </div>
@@ -260,7 +260,7 @@ export default async function BrokerPage({ params }: PageProps) {
               <h2 className="display text-[32px] font-light tracking-[-0.02em] mb-3">
                 Ready to unlock this value for your clients?
               </h2>
-              <p className="text-[#9FA38F] mb-6">
+              <p className="text-[#5A5F52] mb-6">
                 Schedule a 15-minute call to discuss how we can help you differentiate your listings with solar revenue potential.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -268,7 +268,7 @@ export default async function BrokerPage({ params }: PageProps) {
                   Book a Call
                 </CTAButton>
               </div>
-              <p className="mt-4 text-sm text-[#9FA38F]">
+              <p className="mt-4 text-sm text-[#5A5F52]">
                 No commitment · Investment-grade analysis · White-glove service
               </p>
             </div>

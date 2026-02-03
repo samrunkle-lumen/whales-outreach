@@ -58,7 +58,7 @@
   --lumen-sky-blue-dark: #68A2CD;
   --lumen-electric-yellow: #DFFF5E;
   --lumen-electric-yellow-dark: #B8D150;
-  --lumen-concrete: #9FA38F;
+  --lumen-concrete: #5A5F52;
   --lumen-concrete-light: #E7E8E3;
 
   /* Brand Colors - Graphite Black Scale */
@@ -86,11 +86,11 @@
   --electric-yellow-200: #90A343;
   --electric-yellow-300: #697635;
 
-  /* Brand Colors - Concrete (NEUTRAL) */
-  --concrete: #9FA38F;
+  /* Brand Colors - Concrete (NEUTRAL) - darkened for WCAG AA compliance */
+  --concrete: #5A5F52;
   --concrete-100: #E7E8E3;
   --concrete-200: #CFD1C7;
-  --concrete-300: #B7BAAB;
+  --concrete-300: #7A7F70;
 }
 
 @theme inline {

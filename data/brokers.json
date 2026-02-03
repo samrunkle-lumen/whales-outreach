@@ -38,57 +38,6 @@
   ],
   "brokers": [
     {
-      "slug": "alex-stanisic",
-      "name": "Alex",
-      "fullName": "Alex Stanisic",
-      "company": "CBRE",
-      "market": "Illinois",
-      "email": "alex.stanisic@cbre.com",
-      "phone": "",
-      "buildings": [
-        {
-          "address": "6721 W. 73rd St, Bedford Park, IL",
-          "sqft": 18747,
-          "propertyType": "Flex",
-          "city": "Bedford Park",
-          "state": "IL",
-          "listingUrl": "https://www.cbre.com/people/john-barry/properties/results"
-        }
-      ],
-      "title": "Vice President",
-      "profileUrl": "http://www.linkedin.com/in/alex-stanisic-5789a0178"
-    },
-    {
-      "slug": "bo-cashman",
-      "name": "Bo",
-      "fullName": "Bo Cashman",
-      "company": "CBRE",
-      "market": "Maryland",
-      "email": "bo.cashman@cbre.com",
-      "phone": "410-244-3188",
-      "buildings": []
-    },
-    {
-      "slug": "brad-ruppel",
-      "name": "Brad",
-      "fullName": "Brad Ruppel",
-      "company": "CBRE",
-      "market": "Pennsylvania",
-      "email": "brad.ruppel@cbre.com",
-      "phone": "610-251-5139",
-      "buildings": []
-    },
-    {
-      "slug": "brian-fiumara",
-      "name": "Brian",
-      "fullName": "Brian Fiumara",
-      "company": "CBRE",
-      "market": "Pennsylvania",
-      "email": "brian.fiumara@cbre.com",
-      "phone": "610-580-8672",
-      "buildings": []
-    },
-    {
       "slug": "cbre-listings",
       "name": "CBRE",
       "fullName": "CBRE Listings",
@@ -98,14 +47,6 @@
       "phone": "635236-9084",
       "buildings": [
         {
-          "address": "1301 W Lake St, Chicago, IL",
-          "sqft": 12000,
-          "propertyType": "Warehouse",
-          "city": "Chicago",
-          "state": "IL",
-          "listingUrl": "https://www.cbre.com/properties/properties-for-lease/industrial/details/US-SMPL-167074/1859-west-walnut-street-chicago-il-60612"
-        },
-        {
           "address": "10 Hudson Drive, Southwick, MA",
           "sqft": 42434,
           "propertyType": "Industrial",
@@ -114,146 +55,6 @@
           "listingUrl": "https://www.cbre.com/properties/properties-for-lease/industrial/details/US-SMPL-185326/10-hudson-drive-southwick-ma-01077"
         }
       ]
-    },
-    {
-      "slug": "chris-skeffington",
-      "name": "Chris",
-      "fullName": "Chris Skeffington",
-      "company": "CBRE",
-      "market": "Massachusetts",
-      "email": "chris.skeffington@cbre.com",
-      "phone": "781-771-2188",
-      "buildings": []
-    },
-    {
-      "slug": "jason-lev",
-      "name": "Jason",
-      "fullName": "Jason Lev",
-      "company": "CBRE",
-      "market": "Illinois",
-      "email": "jason.lev@cbre.com",
-      "phone": "635236-9084",
-      "buildings": [
-        {
-          "address": "1301 W Lake St, Chicago, IL",
-          "sqft": 12000,
-          "propertyType": "Warehouse",
-          "city": "Chicago",
-          "state": "IL",
-          "listingUrl": "https://www.cbre.com/properties/properties-for-lease/industrial/details/US-SMPL-167074/1859-west-walnut-street-chicago-il-60612"
-        }
-      ],
-      "title": "Executive Vice President",
-      "profileUrl": "http://www.linkedin.com/in/jason-lev-91432131"
-    },
-    {
-      "slug": "joe-hill",
-      "name": "Joe",
-      "fullName": "Joe Hill",
-      "company": "CBRE",
-      "market": "Pennsylvania",
-      "email": "joseph.hill1@cbre.com",
-      "phone": "610-386-6022",
-      "buildings": []
-    },
-    {
-      "slug": "jonathan-beard",
-      "name": "Jonathan",
-      "fullName": "Jonathan Beard",
-      "company": "CBRE",
-      "market": "Maryland",
-      "email": "jonathan.beard@cbre.com",
-      "phone": "410-244-3183",
-      "buildings": []
-    },
-    {
-      "slug": "larry-goldwasser",
-      "name": "Larry",
-      "fullName": "Larry Goldwasser",
-      "company": "CBRE",
-      "market": "Illinois",
-      "email": "larry.goldwasser@cbre.com",
-      "phone": "-1754351430",
-      "buildings": [
-        {
-          "address": "1224 N Hooker Street, Chicago, IL",
-          "sqft": 31042,
-          "propertyType": "Warehouse",
-          "city": "Chicago",
-          "state": "IL",
-          "listingUrl": "https://www.cbre.com/properties/properties-for-lease/industrial/details/US-SMPL-157949/1400-west-wabansia-avenue-chicago-il-60642"
-        },
-        {
-          "address": "412 N Wolcott, Chicago, IL",
-          "sqft": 23900,
-          "propertyType": "Warehouse",
-          "city": "Chicago",
-          "state": "IL",
-          "listingUrl": "https://www.cbre.com/properties/properties-for-lease/industrial/details/US-SMPL-122455/2135-west-carroll-avenue-chicago-il-60612"
-        }
-      ],
-      "title": "Executive Vice President",
-      "profileUrl": "http://www.linkedin.com/in/larry-goldwasser-cbre"
-    },
-    {
-      "slug": "michael-hines",
-      "name": "Michael",
-      "fullName": "Michael Hines",
-      "company": "CBRE",
-      "market": "Pennsylvania",
-      "email": "michael.hines@cbre.com",
-      "phone": "610-251-5185",
-      "buildings": []
-    },
-    {
-      "slug": "pj-oreilly",
-      "name": "PJ",
-      "fullName": "PJ Oreilly",
-      "company": "CBRE",
-      "market": "Massachusetts",
-      "email": "pj.oreilly@cbre.com",
-      "phone": "203-521-7786",
-      "buildings": []
-    },
-    {
-      "slug": "roy-sandeman",
-      "name": "Roy",
-      "fullName": "Roy Sandeman",
-      "company": "CBRE",
-      "market": "Massachusetts",
-      "email": "roy.sandeman@cbre.com",
-      "phone": "401-536-1859",
-      "buildings": []
-    },
-    {
-      "slug": "scott-dragos",
-      "name": "Scott",
-      "fullName": "Scott Dragos",
-      "company": "CBRE",
-      "market": "Massachusetts",
-      "email": "scott.dragos@cbre.com",
-      "phone": "508-317-4253",
-      "buildings": []
-    },
-    {
-      "slug": "alex-cantu",
-      "name": "Alex",
-      "fullName": "Alex Cantu",
-      "company": "Colliers",
-      "market": "Illinois",
-      "email": "alex.cantu@colliers.com",
-      "phone": "317-503-5642",
-      "buildings": []
-    },
-    {
-      "slug": "alex-davenport",
-      "name": "Alex",
-      "fullName": "Alex Davenport",
-      "company": "Colliers",
-      "market": "Illinois",
-      "email": "alex.davenport@colliers.com",
-      "phone": "317-556-3676",
-      "buildings": []
     },
     {
       "slug": "colliers-listings",
@@ -281,52 +82,12 @@
           "listingUrl": "https://www.colliers.com/en/properties/%C2%B140000-square-foot-light-industrial-opportunity-with-extraordinary-exposure-to-the-parkway-west/usa-750-trumbull-dr-pittsburgh-pa-15205-usa/usa1152853"
         },
         {
-          "address": "3100 Kaverton Rd, District Heights, MD 20747",
-          "sqft": 20200,
-          "propertyType": "Warehouse",
-          "city": "District Heights",
-          "state": "MD",
-          "listingUrl": "https://www.colliers.com/en/properties/3100-kaverton-rd-20200-sf-industrial-space-available-in-forestville-md/usa-3100-kaverton-rd-district-heights-md-20747-usa/usa1154061"
-        },
-        {
           "address": "8203 Fischer Rd, Dundalk, MD 21222",
           "sqft": 126332,
           "propertyType": "Warehouse",
           "city": "Dundalk",
           "state": "MD",
           "listingUrl": "https://www.colliers.com/en/properties/47732-126332-sf-industrial-warehouse-with-outside-storage/usa-8203-fischer-rd-dundalk-md-21222-usa/usa1149911"
-        },
-        {
-          "address": "1224 Haddonfield-Berlin Rd, Voorhees Township, NJ 08043",
-          "sqft": 21000,
-          "propertyType": "Distribution",
-          "city": "Voorhees Township",
-          "state": "NJ",
-          "listingUrl": "https://www.colliers.com/en/properties/industrial-space-for-lease-in-voorhees-nj-with-office-loading/usa-1224-haddonfield-berlin-rd-voorhees-township-nj-08043-usa/usa1161109"
-        },
-        {
-          "address": "6328 Butler St, Pittsburgh, PA 15201",
-          "sqft": 22000,
-          "propertyType": "Warehouse",
-          "city": "Pittsburgh",
-          "state": "PA",
-          "listingUrl": "https://www.colliers.com/en/properties/22000-sf-land-parcel-in-pghs-lawrenceville-neighborhood/usa-6328-butler-st-pittsburgh-pa-15201-usa/usa1127139"
-        },
-        {
-          "address": "1200 Rosedale Ave, Rosedale, MD 21237",
-          "sqft": 23952,
-          "propertyType": "Warehouse",
-          "city": "Rosedale",
-          "state": "MD",
-          "listingUrl": "https://www.colliers.com/en/properties/23952-sf-industrial-flex-space-available-in-rosedale-maryland/usa-1200-rosedale-ave-rosedale-md-21237-usa/usa1155277"
-        },
-        {
-          "address": "94 County Line Rd, Colmar, PA 18915",
-          "sqft": 21822,
-          "propertyType": "Warehouse",
-          "city": "Colmar",
-          "state": "PA",
-          "listingUrl": "https://www.colliers.com/en/properties/versatile-move-in-ready-warehouse-newly-renovated/usa-94-county-line-rd-colmar-pa-18915-usa/usa1143272"
         },
         {
           "address": "395 Elizabeth Ave, Somerset, NJ 08873",
@@ -337,28 +98,12 @@
           "listingUrl": "https://www.colliers.com/en/properties/industrial-space-for-lease/usa-395-elizabeth-ave-somerset-nj-08873-usa/usa1136993"
         },
         {
-          "address": "519 Napor Blvd, Pittsburgh, PA 15205",
-          "sqft": 12009,
-          "propertyType": "Warehouse",
-          "city": "Pittsburgh",
-          "state": "PA",
-          "listingUrl": "https://www.colliers.com/en/properties/12009-sf-class-a-flex-space-now-available-in-west-pittsburgh-business-park/usa-519-napor-blvd-pittsburgh-pa-15205-usa/usa1155675"
-        },
-        {
           "address": "55 Dever Dr, Taunton, MA 02780",
           "sqft": 180000,
           "propertyType": "Flex",
           "city": "Taunton",
           "state": "MA",
           "listingUrl": "https://www.colliers.com/en/properties/brand-new-construction-180000-sf-cgmplife-science-flex-manufacturing-facility-in-taunton-ma/usa-55-dever-dr-taunton-ma-02780-usa/usa1115160"
-        },
-        {
-          "address": "1025 West Nursery Road, Linthicum, MD",
-          "sqft": 10650,
-          "propertyType": "Flex",
-          "city": "Linthicum",
-          "state": "MD",
-          "listingUrl": "https://www.colliers.com/en/properties/1025-west-nursery-road-linthicum-md/usa-1025-west-nursery-road-linthicum-md-21290/usa1099547"
         },
         {
           "address": "8911 Bethlehem Blvd, Sparrows Point, MD 21219",
@@ -369,14 +114,6 @@
           "listingUrl": "https://www.colliers.com/en/properties/for-sale-or-lease-136524-sf-industrial-warehouse-available-in-sparrows-point-md/usa-8911-bethlehem-blvd-sparrows-point-md-21219-usa/usa1150423"
         },
         {
-          "address": "4230 Forbes Boulevard, Lanham, MD",
-          "sqft": 15273,
-          "propertyType": "Warehouse",
-          "city": "Lanham",
-          "state": "MD",
-          "listingUrl": "https://www.colliers.com/en/properties/4230-forbes-boulevard-lanham-md-up-to-15273-sf-available/usa-4230-forbes-blvd-lanham-md-20706-usa/usa1110665"
-        },
-        {
           "address": "100 Riverview Dr, Monessen, PA 15062",
           "sqft": 86364,
           "propertyType": "Warehouse",
@@ -385,36 +122,12 @@
           "listingUrl": "https://www.colliers.com/en/properties/up-to-86364-sf-with-laydown-yard-industrial-warehouse-space-located-along-the-i-70-corridor/usa-100-riverview-dr-monessen-pa-15062-usa/usa1150489"
         },
         {
-          "address": "1701 Leland Ave, Middle River, MD 21220",
-          "sqft": 21790,
-          "propertyType": "Warehouse",
-          "city": "Middle River",
-          "state": "MD",
-          "listingUrl": "https://www.colliers.com/en/properties/1701-leland-avenue/usa-1701-leland-ave-middle-river-md-21220-usa/usa1131757"
-        },
-        {
-          "address": "6900 Lindbergh Boulevard, Philadelphia, PA 19142",
-          "sqft": 38605,
-          "propertyType": "Warehouse",
-          "city": "Philadelphia",
-          "state": "PA",
-          "listingUrl": "https://www.colliers.com/en/properties/below-market-warehouse-space-offering-immediate-occupancy/usa-6900-lindbergh-boulevard-philadelphia-pa-19142-usa/usa1153998"
-        },
-        {
           "address": "1865 62nd St, Baltimore, MD 21237",
           "sqft": 42405,
           "propertyType": "Warehouse",
           "city": "Baltimore",
           "state": "MD",
           "listingUrl": "https://www.colliers.com/en/properties/42405-sf-industrial-sublease-available-immediately/usa-1865-62nd-st-baltimore-md-21237-usa/usa1144319"
-        },
-        {
-          "address": "1771 Tomlinson Rd, Philadelphia, PA 19116",
-          "sqft": 12368,
-          "propertyType": "Warehouse",
-          "city": "Philadelphia",
-          "state": "PA",
-          "listingUrl": "https://www.colliers.com/en/properties/efficient-warehouse-space-with-excellent-highway-access/usa-1771-tomlinson-rd-philadelphia-pa-19116-usa/usa1146320"
         },
         {
           "address": "6700 Virginia Manor Rd, Beltsville, MD 20705",
@@ -441,14 +154,6 @@
           "listingUrl": "https://www.colliers.com/en/properties/45000-sf-of-flex-space-with-unrestrictive-zoning/usa-505-knorr-st-philadelphia-pa-19111-usa/usa1153284"
         },
         {
-          "address": "2135 Fifth Ave, Pittsburgh, PA 15219",
-          "sqft": 21000,
-          "propertyType": "Warehouse",
-          "city": "Pittsburgh",
-          "state": "PA",
-          "listingUrl": "https://www.colliers.com/en/properties/%C2%B121000-square-foot-single-tenant-warehouse-for-lease-minutes-from-pittsburghs-cbd/usa-2135-fifth-ave-pittsburgh-pa-15219-usa/usa1151537"
-        },
-        {
           "address": "7653 Solley Rd, Glen Burnie, MD 21060",
           "sqft": 80547,
           "propertyType": "Warehouse",
@@ -473,23 +178,6 @@
           "listingUrl": "https://www.colliers.com/en/properties/3101-washington-blvd/usa-3101-washington-blvd-baltimore-md-21230-usa/usa1130958"
         },
         {
-          "address": "1003 N Kresson St, Baltimore, MD 21205",
-          "sqft": 14314,
-          "propertyType": "Warehouse",
-          "city": "Baltimore",
-          "state": "MD",
-          "listingUrl": "https://www.colliers.com/en/properties/14314-sf-warehouseindustrial-building-with-outdoor-storage/usa-1003-n-kresson-st-baltimore-md-21205-usa/usa1158880"
-        },
-        {
-          "address": "256 S Campus Dr, Imperial, PA 15126",
-          "sqft": 11600,
-          "propertyType": "Warehouse",
-          "city": "Imperial",
-          "state": "PA",
-          "listingUrl": "https://www.colliers.com/en/properties/s-campus-drive-imperial-pa-building-200-at-westport/usa-256-s-campus-dr-imperial-pa-15126-usa/usa1125124",
-          "name": "S Campus Drive Imperial Pa Building"
-        },
-        {
           "address": "1018 South Paca St, Baltimore, MD 21230",
           "sqft": 75517,
           "propertyType": "Warehouse",
@@ -506,28 +194,12 @@
           "listingUrl": "https://www.colliers.com/en/properties/located-in-the-hart-of-new-jerseys-industrial-turnpike-corridor/usa-15-harts-ln-east-brunswick-nj-08816-usa/usa1132639"
         },
         {
-          "address": "1342 Charwood Rd, Hanover, MD 21076",
-          "sqft": 32301,
-          "propertyType": "Warehouse",
-          "city": "Hanover",
-          "state": "MD",
-          "listingUrl": "https://www.colliers.com/en/properties/13861-32301-sf-industrialflex-available-at-airport-commerce-center/usa-1342-charwood-rd-hanover-md-21076-usa/usa1159787"
-        },
-        {
           "address": "8257 Patuxent Range Rd, Jessup, MD 20794",
           "sqft": 63035,
           "propertyType": "Flex",
           "city": "Jessup",
           "state": "MD",
           "listingUrl": "https://www.colliers.com/en/properties/8257-patuxent-range-road/usa-8257-patuxent-range-rd-jessup-md-20794-usa/usa1120770"
-        },
-        {
-          "address": "4601 Lydell Rd, Hyattsville, MD 20781",
-          "sqft": 12293,
-          "propertyType": "Warehouse",
-          "city": "Hyattsville",
-          "state": "MD",
-          "listingUrl": "https://www.colliers.com/en/properties/12293-sf-industrial-bldg-with-3700-sf-office-1-acre-ios/usa-4601-lydell-rd-hyattsville-md-20781-usa/usa1144571"
         },
         {
           "address": "416 Pittsburgh Cir, Ellwood City, PA 16117",
@@ -573,36 +245,6 @@
       ]
     },
     {
-      "slug": "daniel-hincks",
-      "name": "Daniel",
-      "fullName": "Daniel Hincks",
-      "company": "Colliers",
-      "market": "Massachusetts",
-      "email": "daniel.hincks@colliers.com",
-      "phone": "857-234-4868",
-      "buildings": []
-    },
-    {
-      "slug": "frank-petz",
-      "name": "Frank",
-      "fullName": "Frank Petz",
-      "company": "Colliers",
-      "market": "Massachusetts",
-      "email": "frank.petz@colliers.com",
-      "phone": "617-750-4500",
-      "buildings": []
-    },
-    {
-      "slug": "jeff-devine",
-      "name": "Jeff",
-      "fullName": "Jeff Devine",
-      "company": "Colliers",
-      "market": "Illinois",
-      "email": "jeff.devine@colliers.com",
-      "phone": "847-732-6070",
-      "buildings": []
-    },
-    {
       "slug": "john-bilyak",
       "name": "John",
       "fullName": "John Bilyak",
@@ -612,14 +254,6 @@
       "phone": "372212-2621",
       "buildings": [
         {
-          "address": "3101 Beale Ave, Altoona, PA 16601",
-          "sqft": 39364,
-          "propertyType": "Warehouse",
-          "city": "Altoona",
-          "state": "PA",
-          "listingUrl": "https://www.colliers.com/en/properties/highly-functional-39364-sf-flex-industrial-site-on-555-acres-%E2%80%93-sale-or-lease/usa-3101-beale-ave-altoona-pa-16601-usa/usa1160030"
-        },
-        {
           "address": "116 N River Ave, Parker, PA 16049",
           "city": "Parker",
           "state": "PA",
@@ -628,46 +262,6 @@
           "listingUrl": "https://www.colliers.com/en/properties/investment-or-leasing-opportunity-%C2%B1115000-sf-of-industrial-space-on-1204-acres-in-parker-pa/usa-116-n-river-ave-parker-pa-16049-usa/usa1159565"
         }
       ]
-    },
-    {
-      "slug": "matt-sherry",
-      "name": "Matt",
-      "fullName": "Matt Sherry",
-      "company": "Colliers",
-      "market": "Massachusetts",
-      "email": "matthew.sherry@colliers.com",
-      "phone": "401-378-2844",
-      "buildings": []
-    },
-    {
-      "slug": "steve-disse",
-      "name": "Steve",
-      "fullName": "Steve Disse",
-      "company": "Colliers",
-      "market": "Illinois",
-      "email": "steve.disse@colliers.com",
-      "phone": "312-485-6470",
-      "buildings": []
-    },
-    {
-      "slug": "tyler-ziebel",
-      "name": "Tyler",
-      "fullName": "Tyler Ziebel",
-      "company": "Colliers",
-      "market": "Illinois",
-      "email": "tyler.ziebel@colliers.com",
-      "phone": "217-552-0618",
-      "buildings": []
-    },
-    {
-      "slug": "adam-tyler",
-      "name": "Adam",
-      "fullName": "Adam Tyler",
-      "company": "Cushman & Wakefield",
-      "market": "Illinois",
-      "email": "adam.tyler@cushwake.com",
-      "phone": "312-470-1840",
-      "buildings": []
     },
     {
       "slug": "blake-baldwin",
@@ -687,27 +281,6 @@
           "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/ma/haverhill/20-computer-drive/s84010s122053665-l"
         }
       ]
-    },
-    {
-      "slug": "charles-parmelli",
-      "name": "Charles",
-      "fullName": "Charles Parmelli",
-      "company": "Cushman & Wakefield",
-      "market": "New Jersey",
-      "email": "charles.parmelli@cushwake.com",
-      "phone": "+1 (973) 908-6105",
-      "buildings": [
-        {
-          "address": "9 Deerpark Drive, Monmouth Junction, NJ 08852",
-          "sqft": 13072,
-          "propertyType": "Flex",
-          "city": "Monmouth Junction",
-          "state": "NJ",
-          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/life-sciences/nj/monmouth-junction/9-deerpark-drive/s23168-240149-l"
-        }
-      ],
-      "title": "Helping Life-science and Technology Companies Solve Their Complex Real Estate Issues, Improving the Performance",
-      "profileUrl": "http://www.linkedin.com/in/charlesparmelli"
     },
     {
       "slug": "chris-copenhaver",
@@ -797,14 +370,6 @@
           "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/pa/york/85-church-road/s121596530s121596571-l"
         },
         {
-          "address": "105 Industrial Boulevard, Brockton, MA 02301",
-          "sqft": 37500,
-          "propertyType": "Warehouse",
-          "city": "Brockton",
-          "state": "MA",
-          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/ma/brockton/105-industrial-boulevard/s121069417s121069422-l"
-        },
-        {
           "address": "21533 South Cherry Hill Road, Joliet, IL 60433",
           "sqft": 802440,
           "propertyType": "Warehouse",
@@ -869,14 +434,6 @@
           "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/pa/camp-hill/485-terminal-street/s52459550s120577600-l"
         },
         {
-          "address": "30 Montgomery Street, Jersey City, NJ 07302",
-          "sqft": 23390,
-          "propertyType": "Industrial",
-          "city": "Jersey City",
-          "state": "NJ",
-          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/office/nj/jersey-city/30-montgomery-street/s17709s121742565-l"
-        },
-        {
           "address": "155 Fort Hill Drive, Naperville, IL 60540",
           "sqft": 106512,
           "propertyType": "Warehouse",
@@ -923,14 +480,6 @@
           "city": "Chambersburg",
           "state": "PA",
           "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/pa/chambersburg/2294-molly-pitcher-highway/s128755s121424028-l"
-        },
-        {
-          "address": "2524 Ford Road, Bristol, PA 19007",
-          "sqft": 20000,
-          "propertyType": "Warehouse",
-          "city": "Bristol",
-          "state": "PA",
-          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/pa/bristol/2524-ford-road/s131331s119354211-l"
         },
         {
           "address": "20 Leo Lane, York, PA 17406",
@@ -1129,16 +678,6 @@
       "profileUrl": "http://www.linkedin.com/in/jason-west-sior-b5981712"
     },
     {
-      "slug": "jim-carpenter",
-      "name": "Jim",
-      "fullName": "Jim Carpenter",
-      "company": "Cushman & Wakefield",
-      "market": "Illinois",
-      "email": "jim.carpenter@cushwake.com",
-      "phone": "312-470-3830",
-      "buildings": []
-    },
-    {
       "slug": "john-gartland",
       "name": "John",
       "fullName": "John Gartland",
@@ -1147,14 +686,6 @@
       "email": "john.gartland@cushwake.com",
       "phone": "+1 610-772-2005",
       "buildings": [
-        {
-          "address": "2524 Ford Road, Bristol, PA 19007",
-          "sqft": 20000,
-          "propertyType": "Warehouse",
-          "city": "Bristol",
-          "state": "PA",
-          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/pa/bristol/2524-ford-road/s131331s119354211-l"
-        },
         {
           "address": "261 Paulsboro Road, Swedesboro, NJ 08085",
           "sqft": 214467,
@@ -1184,58 +715,6 @@
       "profileUrl": "http://www.linkedin.com/in/john-gartland-39a67311"
     },
     {
-      "slug": "kimberly-bach",
-      "name": "Kimberly",
-      "fullName": "Kimberly Bach",
-      "company": "Cushman & Wakefield",
-      "market": "New Jersey",
-      "email": "kimberly.bach@cushwake.com",
-      "phone": "0650090812",
-      "buildings": [
-        {
-          "address": "410 Texas Road - Bldg. 2, Old Bridge, NJ 08857",
-          "sqft": 24000,
-          "propertyType": "Warehouse",
-          "city": "Old Bridge",
-          "state": "NJ",
-          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/nj/old-bridge/410-texas-road-bldg-2/s121492640s121492641-l"
-        }
-      ],
-      "title": "Senior Director",
-      "profileUrl": "http://www.linkedin.com/in/kimberly-bach-187b36131"
-    },
-    {
-      "slug": "megan-barker",
-      "name": "Megan",
-      "fullName": "Megan Barker",
-      "company": "Cushman & Wakefield",
-      "market": "Illinois",
-      "email": "megan.barker@cushwake.com",
-      "phone": "312-424-8202",
-      "buildings": []
-    },
-    {
-      "slug": "michael-oleary",
-      "name": "Michael",
-      "fullName": "Michael O'Leary",
-      "company": "Cushman & Wakefield",
-      "market": "Massachusetts",
-      "email": "michael.oleary@cushwake.com",
-      "phone": "5449029901",
-      "buildings": [
-        {
-          "address": "18 Sargent Street, Gloucester, MA 01930",
-          "sqft": 26695,
-          "propertyType": "Warehouse",
-          "city": "Gloucester",
-          "state": "MA",
-          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/ma/gloucester/18-sargent-street/s121747260-229296-l"
-        }
-      ],
-      "title": "Executive Director",
-      "profileUrl": "http://www.linkedin.com/in/michaelroleary"
-    },
-    {
       "slug": "mike-magliano",
       "name": "Mike",
       "fullName": "Mike Magliano",
@@ -1255,37 +734,6 @@
       ],
       "title": "Executive Managing Director - Industrial & Corporate Real Estate",
       "profileUrl": "http://www.linkedin.com/in/michaelmagliano"
-    },
-    {
-      "slug": "mike-tenteris",
-      "name": "Mike",
-      "fullName": "Mike Tenteris",
-      "company": "Cushman & Wakefield",
-      "market": "Illinois",
-      "email": "michael.tenteris@cushwake.com",
-      "phone": "312-470-3832",
-      "buildings": []
-    },
-    {
-      "slug": "ryan-klink",
-      "name": "Ryan",
-      "fullName": "Ryan Klink",
-      "company": "Cushman & Wakefield",
-      "market": "Illinois",
-      "email": "ryan.klink@cushwake.com",
-      "phone": "+1 (847) 518-3211",
-      "buildings": [
-        {
-          "address": "602 South Maplewood Avenue, Chicago, IL 60612",
-          "sqft": 12067,
-          "propertyType": "Warehouse",
-          "city": "Chicago",
-          "state": "IL",
-          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/il/chicago/602-south-maplewood-avenue/s121444993s121444998-l"
-        }
-      ],
-      "title": "Managing Director",
-      "profileUrl": "http://www.linkedin.com/in/ryan-klink-96950464"
     },
     {
       "slug": "sean-henrick",
@@ -1368,16 +816,6 @@
       ]
     },
     {
-      "slug": "david-coffman",
-      "name": "David",
-      "fullName": "David Coffman",
-      "company": "JLL",
-      "market": "Massachusetts",
-      "email": "david.coffman@jll.com",
-      "phone": "617-531-4243",
-      "buildings": []
-    },
-    {
       "slug": "dean-brody",
       "name": "Dean",
       "fullName": "Dean Brody",
@@ -1416,16 +854,6 @@
           "city": ""
         }
       ]
-    },
-    {
-      "slug": "ed-halaburt",
-      "name": "Ed",
-      "fullName": "Ed Halaburt",
-      "company": "JLL",
-      "market": "Illinois",
-      "email": "ed.halaburt@jll.com",
-      "phone": "312-228-2007",
-      "buildings": []
     },
     {
       "slug": "gary-politi",
@@ -1467,16 +895,6 @@
           "city": ""
         }
       ]
-    },
-    {
-      "slug": "jason-lundy",
-      "name": "Jason",
-      "fullName": "Jason Lundy",
-      "company": "JLL",
-      "market": "New Jersey",
-      "email": "jason.lundy@jll.com",
-      "phone": "732-850-5326",
-      "buildings": []
     },
     {
       "slug": "jeff-lockard",
@@ -1529,36 +947,6 @@
       ]
     },
     {
-      "slug": "john-plower",
-      "name": "John",
-      "fullName": "John Plower",
-      "company": "JLL",
-      "market": "Pennsylvania",
-      "email": "john.plower@jll.com",
-      "phone": "484-571-1879",
-      "buildings": []
-    },
-    {
-      "slug": "kevin-lammers",
-      "name": "Kevin",
-      "fullName": "Kevin Lammers",
-      "company": "JLL",
-      "market": "New Jersey",
-      "email": "kevin.lammers@jll.com",
-      "phone": "856-448-3226",
-      "buildings": []
-    },
-    {
-      "slug": "kurt-sarbaugh",
-      "name": "Kurt",
-      "fullName": "Kurt Sarbaugh",
-      "company": "JLL",
-      "market": "Illinois",
-      "email": "kurt.sarbaugh@jll.com",
-      "phone": "312-300-7320",
-      "buildings": []
-    },
-    {
       "slug": "kyle-lockard",
       "name": "Kyle",
       "fullName": "Kyle Lockard",
@@ -1579,26 +967,6 @@
       ]
     },
     {
-      "slug": "lenny-pierce",
-      "name": "Lenny",
-      "fullName": "Lenny Pierce",
-      "company": "JLL",
-      "market": "Massachusetts",
-      "email": "lenny.pierce@jll.com",
-      "phone": "617-531-4120",
-      "buildings": []
-    },
-    {
-      "slug": "michael-restivo",
-      "name": "Michael",
-      "fullName": "Michael Restivo",
-      "company": "JLL",
-      "market": "Massachusetts",
-      "email": "michael.restivo@jll.com",
-      "phone": "617-848-5858",
-      "buildings": []
-    },
-    {
       "slug": "nate-demetsky",
       "name": "Nate",
       "fullName": "Nate Demetsky",
@@ -1617,46 +985,6 @@
           "city": ""
         }
       ]
-    },
-    {
-      "slug": "nick-stefans",
-      "name": "Nick",
-      "fullName": "Nick Stefans",
-      "company": "JLL",
-      "market": "New Jersey",
-      "email": "nicholas.stefans@jll.com",
-      "phone": "908-202-3180",
-      "buildings": []
-    },
-    {
-      "slug": "ross-bratcher",
-      "name": "Ross",
-      "fullName": "Ross Bratcher",
-      "company": "JLL",
-      "market": "Illinois",
-      "email": "ross.bratcher@jll.com",
-      "phone": "",
-      "buildings": []
-    },
-    {
-      "slug": "ryan-cottone",
-      "name": "Ryan",
-      "fullName": "Ryan Cottone",
-      "company": "JLL",
-      "market": "Pennsylvania",
-      "email": "ryan.cottone@jll.com",
-      "phone": "610-733-5271",
-      "buildings": []
-    },
-    {
-      "slug": "sean-devaney",
-      "name": "Sean",
-      "fullName": "Sean Devaney",
-      "company": "JLL",
-      "market": "Illinois",
-      "email": "sean.devaney@jll.com",
-      "phone": "312-228-2868",
-      "buildings": []
     },
     {
       "slug": "todd-hughes",
@@ -1702,75 +1030,6 @@
       ]
     },
     {
-      "slug": "tommy-hovey",
-      "name": "Tommy",
-      "fullName": "Tommy Hovey",
-      "company": "JLL",
-      "market": "Massachusetts",
-      "email": "tommy.hovey@jll.com",
-      "phone": "860-944-3851",
-      "buildings": []
-    },
-    {
-      "slug": "tyler-peck",
-      "name": "Tyler",
-      "fullName": "Tyler Peck",
-      "company": "JLL",
-      "market": "New Jersey",
-      "email": "tyler.peck@jll.com",
-      "phone": "908-963-4743",
-      "buildings": []
-    },
-    {
-      "slug": "will-mccormack",
-      "name": "Will",
-      "fullName": "Will McCormack",
-      "company": "JLL",
-      "market": "Massachusetts",
-      "email": "william.mccormack@jll.com",
-      "phone": "203-918-2699",
-      "buildings": []
-    },
-    {
-      "slug": "alan-cafiero",
-      "name": "Alan",
-      "fullName": "Alan Cafiero",
-      "company": "Marcus & Millichap",
-      "market": "New Jersey",
-      "email": "alan.cafiero@marcusmillichap.com",
-      "phone": "(212) 430-5115",
-      "buildings": [
-        {
-          "address": "613 Ridge Rd, South Brunswick Township, NJ 08852",
-          "sqft": 26942,
-          "propertyType": "Flex",
-          "city": "South Brunswick Township",
-          "state": "NJ",
-          "listingUrl": "https://www.marcusmillichap.com/properties/190129/auction-613-ridge-rd-monmouth-junction-nj"
-        }
-      ],
-      "title": "Senior Managing Director Investments"
-    },
-    {
-      "slug": "brian-higgins",
-      "name": "Brian",
-      "fullName": "Brian Higgins",
-      "company": "Marcus & Millichap",
-      "market": "Pennsylvania",
-      "email": "brian.higgins@marcusmillichap.com",
-      "phone": "9601470655",
-      "buildings": [
-        {
-          "address": "37 Industrial Blvd, Paoli, PA 19301",
-          "sqft": 16000,
-          "propertyType": "Warehouse",
-          "city": "Paoli",
-          "state": "PA",
-          "listingUrl": "https://www.marcusmillichap.com/properties/164795/paoli-commons"
-        }
-      ]
-    },
-    {
       "slug": "jack-hamilton",
       "name": "Jack",
       "fullName": "Jack Hamilton",
@@ -1786,63 +1045,6 @@
           "city": "Red Lion",
           "state": "PA",
           "listingUrl": "https://www.marcusmillichap.com/properties/178749/2527-grand-ave-801-cap-130200-noi-nnn-lease-300-annual-increases"
-        }
-      ]
-    },
-    {
-      "slug": "julia-evinger",
-      "name": "Julia",
-      "fullName": "Julia Evinger",
-      "company": "Marcus & Millichap",
-      "market": "Illinois",
-      "email": "julia.evinger@marcusmillichap.com",
-      "phone": "(317) 218-5366",
-      "buildings": [
-        {
-          "address": "1536 E Fairchild St, Danville, IL 61832",
-          "sqft": 25470,
-          "propertyType": "Warehouse",
-          "city": "Danville",
-          "state": "IL",
-          "listingUrl": "https://www.marcusmillichap.com/properties/190792/freezerdry-storage-warehouse-owner-user"
-        }
-      ]
-    },
-    {
-      "slug": "marcus-millichap-listings",
-      "name": "Marcus",
-      "fullName": "Marcus & Millichap Listings",
-      "company": "Marcus & Millichap",
-      "market": "Illinois",
-      "email": "",
-      "phone": "(786) 522-7013",
-      "buildings": [
-        {
-          "address": "3732 Nameoki Rd, Granite City, IL 62040",
-          "sqft": 16380,
-          "propertyType": "Industrial",
-          "city": "Granite City",
-          "state": "IL",
-          "listingUrl": "https://www.marcusmillichap.com/properties/175658/walgreens-absolute-nnn-lease-no-rofr"
-        }
-      ]
-    },
-    {
-      "slug": "mark-krantz",
-      "name": "Mark",
-      "fullName": "Mark Krantz",
-      "company": "Marcus & Millichap",
-      "market": "New Jersey",
-      "email": "mark.krantz@marcusmillichap.com",
-      "phone": "(215) 531-7056",
-      "buildings": [
-        {
-          "address": "3242 US-206, Bordentown, NJ 08505",
-          "sqft": 32981,
-          "propertyType": "Warehouse",
-          "city": "Bordentown",
-          "state": "NJ",
-          "listingUrl": "https://www.marcusmillichap.com/properties/195976/mansfield-square"
         }
       ]
     },
@@ -1913,26 +1115,6 @@
       ]
     },
     {
-      "slug": "steven-weinstock",
-      "name": "Steven",
-      "fullName": "Steven Weinstock",
-      "company": "Marcus & Millichap",
-      "market": "Illinois",
-      "email": "steven.weinstock@marcusmillichap.com",
-      "phone": "(786) 522-7013",
-      "buildings": [
-        {
-          "address": "3732 Nameoki Rd, Granite City, IL 62040",
-          "sqft": 16380,
-          "propertyType": "Industrial",
-          "city": "Granite City",
-          "state": "IL",
-          "listingUrl": "https://www.marcusmillichap.com/properties/175658/walgreens-absolute-nnn-lease-no-rofr"
-        }
-      ],
-      "title": "Senior Managing Director"
-    },
-    {
       "slug": "tyler-sharp",
       "name": "Tyler",
       "fullName": "Tyler Sharp",
@@ -1956,14 +1138,6 @@
           "city": "the two bu",
           "state": "IL",
           "listingUrl": "https://www.marcusmillichap.com/properties/188552/greater-philadelphia-area-i95-corridor-twobuilding-shallowbay-portfolio-credittenant-lease"
-        },
-        {
-          "address": "1605 N 31st Ave, Melrose Park, IL 60160",
-          "sqft": 10060,
-          "propertyType": "Warehouse",
-          "city": "Melrose Park",
-          "state": "IL",
-          "listingUrl": "https://www.marcusmillichap.com/properties/191047/twotenant-melrose-park-industrial"
         }
       ]
     },
