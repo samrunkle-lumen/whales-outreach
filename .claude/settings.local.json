@@ -23,7 +23,16 @@
       "Bash(gh auth:*)",
       "Bash(brew install:*)",
       "Bash(~/bin/gh auth login --web --git-protocol https)",
-      "Bash(~/bin/gh repo create:*)"
+      "Bash(~/bin/gh repo create:*)",
+      "Bash(git push:*)",
+      "Bash(~/bin/gh auth:*)",
+      "Bash(git config:*)",
+      "Bash(GIT_TERMINAL_PROMPT=0 ~/bin/gh auth setup-git:*)",
+      "Bash(npx vercel:*)",
+      "Bash(~/bin/gh repo view:*)",
+      "Bash(~/bin/gh api:*)",
+      "Bash(git stash:*)",
+      "Bash(node:*)"
     ]
   }
 }

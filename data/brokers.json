@@ -486,7 +486,8 @@
           "propertyType": "Warehouse",
           "city": "Imperial",
           "state": "PA",
-          "listingUrl": "https://www.colliers.com/en/properties/s-campus-drive-imperial-pa-building-200-at-westport/usa-256-s-campus-dr-imperial-pa-15126-usa/usa1125124"
+          "listingUrl": "https://www.colliers.com/en/properties/s-campus-drive-imperial-pa-building-200-at-westport/usa-256-s-campus-dr-imperial-pa-15126-usa/usa1125124",
+          "name": "S Campus Drive Imperial Pa Building"
         },
         {
           "address": "1018 South Paca St, Baltimore, MD 21230",
@@ -566,7 +567,8 @@
           "propertyType": "Warehouse",
           "city": "Mansfield",
           "state": "MA",
-          "listingUrl": "https://www.colliers.com/en/properties/warehouseflex-for-lease-575-west-street-mansfield/usa-575-west-street-mansfield-ma-02048/usa1000111"
+          "listingUrl": "https://www.colliers.com/en/properties/warehouseflex-for-lease-575-west-street-mansfield/usa-575-west-street-mansfield-ma-02048/usa1000111",
+          "name": "Warehouseflex For Lease"
         }
       ]
     },
@@ -775,7 +777,8 @@
           "propertyType": "Warehouse",
           "city": "",
           "state": "PA",
-          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/pa/oakdale/phase-ii-building-1/s121454339s121808696-l"
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/pa/oakdale/phase-ii-building-1/s121454339s121808696-l",
+          "name": "Phase Ii Building"
         },
         {
           "address": "749 MD Route 3 N - Bldg 2, Gambrills, MD 21054",
@@ -1322,7 +1325,8 @@
           "sqft": 170858,
           "propertyType": "Industrial",
           "listingUrl": "https://property.jll.com/listings/hagerstown-distribution-center-16604-industrial-ln-not-tracked-maryland",
-          "city": ""
+          "city": "",
+          "name": "Hagerstown Distribution Center"
         },
         {
           "address": "2800 Eastern Blvd, Middle River, MD 21220",
@@ -1330,14 +1334,16 @@
           "propertyType": "Industrial",
           "listingUrl": "https://property.jll.com/listings/aviation-station-2800-eastern-blvd-baltimore-county-east",
           "clearHeight": "30'",
-          "city": ""
+          "city": "",
+          "name": "Aviation Station"
         },
         {
           "address": "1500 Broening Hwy, Baltimore, MD 21224",
           "sqft": 201500,
           "propertyType": "Industrial",
           "listingUrl": "https://property.jll.com/listings/prologis-port-commerce-center-1500-broening-hwy-baltimore",
-          "city": ""
+          "city": "",
+          "name": "Prologis Port Commerce Center"
         }
       ]
     },
@@ -1495,7 +1501,8 @@
           "sqft": 987500,
           "propertyType": "Industrial",
           "listingUrl": "https://property.jll.com/listings/chambersburg-crossroads-at-interstate-81-4507-philadelphia-ave-eastern-central-pa",
-          "city": ""
+          "city": "",
+          "name": "Chambersburg Crossroads At Interstate"
         }
       ]
     },
@@ -1516,7 +1523,8 @@
           "sqft": 149245,
           "propertyType": "Industrial",
           "listingUrl": "https://property.jll.com/listings/western-maryland-logistics-center-2-western-maryland-pkwy-hagerstown-washington-co",
-          "city": ""
+          "city": "",
+          "name": "Western Maryland Logistics Center"
         }
       ]
     },
@@ -1974,7 +1982,8 @@
           "propertyType": "Warehouse",
           "city": "",
           "state": "PA",
-          "listingUrl": "https://www.northmarq.com/transactions/industrial-property-permanent-loan-fixed-2018-03"
+          "listingUrl": "https://www.northmarq.com/transactions/industrial-property-permanent-loan-fixed-2018-03",
+          "name": "Industrial Property Permanent Loan Fixed"
         },
         {
           "address": "10.2 million in acquisition financing for an industrial property located in Libertyville, , IL",
@@ -1982,7 +1991,8 @@
           "propertyType": "Warehouse",
           "city": "",
           "state": "IL",
-          "listingUrl": "https://www.northmarq.com/transactions/industrial-property-debt-2014-04-0"
+          "listingUrl": "https://www.northmarq.com/transactions/industrial-property-debt-2014-04-0",
+          "name": "Industrial Property Debt"
         },
         {
           "address": "1500 Harris Road, Libertyville, IL",
@@ -1990,7 +2000,8 @@
           "propertyType": "Warehouse",
           "city": "Libertyville",
           "state": "IL",
-          "listingUrl": "https://www.northmarq.com/transactions/industrial-property-debt-2014-04-0"
+          "listingUrl": "https://www.northmarq.com/transactions/industrial-property-debt-2014-04-0",
+          "name": "Industrial Property Debt"
         }
       ]
     }

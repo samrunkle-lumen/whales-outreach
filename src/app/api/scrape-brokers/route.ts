@@ -81,9 +81,68 @@ function extractBrokerNames(content: string): string[] {
   return names;
 }
 
+// Extract property name from URL slug
+function extractNameFromUrl(url: string): string | undefined {
+  try {
+    const urlObj = new URL(url);
+    const pathParts = urlObj.pathname.split('/').filter(Boolean);
+
+    // Look for listing path segments that might contain the name
+    // e.g., /listings/hagerstown-distribution-center-16604-industrial-ln...
+    for (const part of pathParts) {
+      // Skip common non-name segments
+      if (['listings', 'properties', 'property', 'for-lease', 'for-sale', 'en', 'united-states'].includes(part.toLowerCase())) {
+        continue;
+      }
+
+      // If it contains numbers at the start (like an address), extract the name part before it
+      const nameMatch = part.match(/^([a-z-]+(?:-[a-z]+)*)-\d/i);
+      if (nameMatch) {
+        const name = nameMatch[1]
+          .split('-')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
+        // Filter out generic names
+        if (!name.match(/^(Industrial|Commercial|Warehouse|Office|For Lease|Property)$/i) && name.length > 3) {
+          return name;
+        }
+      }
+    }
+  } catch {
+    // Invalid URL
+  }
+  return undefined;
+}
+
+// Extract property name from page content
+function extractNameFromContent(content: string): string | undefined {
+  // Look for common title/heading patterns
+  const patterns = [
+    /^#\s+([A-Z][A-Za-z0-9\s&'-]+(?:Center|Centre|Park|Building|Complex|Plaza|Campus|Facility|Distribution|Warehouse|Industrial))/m,
+    /(?:Property|Building|Facility)\s*(?:Name)?[:\s]+([A-Z][A-Za-z0-9\s&'-]+(?:Center|Centre|Park|Building|Complex|Plaza|Campus|Facility|Distribution|Warehouse|Industrial))/i,
+    /title[:\s]+["']?([A-Z][A-Za-z0-9\s&'-]+(?:Center|Centre|Park|Building|Complex|Plaza|Campus|Facility|Distribution|Warehouse|Industrial))["']?/i,
+  ];
+
+  for (const pattern of patterns) {
+    const match = content.match(pattern);
+    if (match && match[1]) {
+      const name = match[1].trim();
+      if (name.length > 5 && name.length < 100) {
+        return name;
+      }
+    }
+  }
+  return undefined;
+}
+
 // Extract properties from scraped content
-function extractProperties(content: string, targetStates: string[]): ScrapedProperty[] {
+function extractProperties(content: string, targetStates: string[], url?: string): ScrapedProperty[] {
   const properties: ScrapedProperty[] = [];
+
+  // Try to extract property name from URL or content
+  const nameFromUrl = url ? extractNameFromUrl(url) : undefined;
+  const nameFromContent = extractNameFromContent(content);
+  const propertyName = nameFromContent || nameFromUrl;
 
   // Look for property patterns in the content
   const propertyPatterns = [
@@ -100,6 +159,7 @@ function extractProperties(content: string, targetStates: string[]): ScrapedProp
         if (sqft >= 20000) {
           properties.push({
             address: `${match[1].trim()}, ${match[2].trim()}, ${state}`,
+            name: propertyName,
             sqft,
             city: match[2].trim(),
             state,
@@ -304,8 +364,8 @@ export async function POST(request: NextRequest) {
             knownBrokers.add(name);
           }
 
-          // Extract properties
-          const properties = extractProperties(content, markets);
+          // Extract properties (pass URL for name extraction)
+          const properties = extractProperties(content, markets, url);
           for (const prop of properties) {
             prop.listingUrl = url;
             allProperties.push(prop);
