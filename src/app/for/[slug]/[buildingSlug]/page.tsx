@@ -183,24 +183,15 @@ export default async function BuildingPage({ params }: PageProps) {
                   {/* Value Uplift Card */}
                   <div className="bg-gradient-to-b from-[#FAFFFE] to-[#F5FFFC] border border-[#E7E8E3] rounded-xl p-5">
                     <p className="eyebrow text-[#9FA38F] text-xs mb-1">Value Uplift at Sale</p>
-                    <p className="display text-[32px] font-light text-[#1A1A1A] tracking-[-0.02em] leading-tight">
-                      {formatMillions(calc.valueUpliftLow)} – {formatMillions(calc.valueUpliftHigh)}
-                    </p>
-
-                    <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-[#E7E8E3]">
-                      <div>
-                        <p className="text-xs text-[#9FA38F]">Property Value</p>
-                        <p className="font-medium text-[#1A1A1A]">{formatMillions(calc.estimatedPropertyValue)}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs text-[#9FA38F]">Value Increase</p>
-                        <p className="font-bold text-[#2E7D32]">+{calc.valueIncreasePctLow}%–{calc.valueIncreasePctHigh}%</p>
-                      </div>
-                      <div>
-                        <p className="text-xs text-[#9FA38F]">Cap Rate</p>
-                        <p className="font-medium text-[#1A1A1A]">6%</p>
-                      </div>
+                    <div className="flex items-baseline gap-3">
+                      <p className="display text-[32px] font-light text-[#1A1A1A] tracking-[-0.02em] leading-tight">
+                        {formatMillions(calc.valueUpliftLow)} – {formatMillions(calc.valueUpliftHigh)}
+                      </p>
+                      <span className="text-sm text-[#9FA38F]">at 6% cap rate</span>
                     </div>
+                    <p className="text-xs text-[#9FA38F] mt-3">
+                      New NOI from solar lease income capitalized at market rate increases property value at sale.
+                    </p>
                   </div>
                 </div>
 

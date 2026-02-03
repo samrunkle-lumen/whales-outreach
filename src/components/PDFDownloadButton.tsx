@@ -109,25 +109,15 @@ export function PDFDownloadButton({
             <!-- Value Uplift Card -->
             <div style="background: linear-gradient(180deg, #FAFFFE 0%, #F5FFFC 100%); border: 1px solid #E7E8E3; border-radius: 12px; padding: 24px;">
               <p style="font-family: 'Roboto Mono', monospace; font-size: 10px; color: #9FA38F; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 8px 0;">Value Uplift at Sale</p>
-              <p style="font-size: 28px; font-weight: 300; color: #1A1A1A; margin: 0 0 4px 0; letter-spacing: -0.02em;">
-                ${formatMillions(calculation.valueUpliftLow)} – ${formatMillions(calculation.valueUpliftHigh)}
-              </p>
-              <p style="font-size: 13px; color: #9FA38F; margin: 0 0 20px 0;">property value increase</p>
-
-              <div style="border-top: 1px solid #E7E8E3; padding-top: 16px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 12px;">
-                  <span style="color: #9FA38F;">Est. Property Value</span>
-                  <span style="color: #1A1A1A; font-weight: 600;">${formatMillions(calculation.estimatedPropertyValue)}</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 12px;">
-                  <span style="color: #9FA38F;">Value Increase</span>
-                  <span style="color: #2E7D32; font-weight: 700;">+${calculation.valueIncreasePctLow}% – ${calculation.valueIncreasePctHigh}%</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 12px;">
-                  <span style="color: #9FA38F;">Cap Rate</span>
-                  <span style="color: #1A1A1A; font-weight: 600;">6%</span>
-                </div>
+              <div style="display: flex; align-items: baseline; gap: 12px;">
+                <p style="font-size: 28px; font-weight: 300; color: #1A1A1A; margin: 0; letter-spacing: -0.02em;">
+                  ${formatMillions(calculation.valueUpliftLow)} – ${formatMillions(calculation.valueUpliftHigh)}
+                </p>
+                <span style="font-size: 12px; color: #9FA38F;">at 6% cap rate</span>
               </div>
+              <p style="font-size: 12px; color: #9FA38F; margin: 16px 0 0 0; line-height: 1.5;">
+                New NOI from solar lease income capitalized at market rate increases property value at sale.
+              </p>
             </div>
           </div>
 

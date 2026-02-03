@@ -10,9 +10,6 @@ const REFERRAL_FEE_PERCENT = 0.10;
 // Cap rate for property value uplift calculation
 const CAP_RATE = 0.06;
 
-// $/SF/year for industrial property value estimation
-const PROPERTY_VALUE_PER_SQFT = 150;
-
 // Solar lease rates by utility ($/SF/year)
 export const UTILITY_RATES: Record<string, { lowRate: number; highRate: number; fullName: string }> = {
   // New Jersey - Higher rates due to strong solar incentives
@@ -189,17 +186,6 @@ export function calculateBuilding(building: Building): BuildingCalculation {
   const valueUpliftLow = Math.round(annualIncomeLow / CAP_RATE);
   const valueUpliftHigh = Math.round(annualIncomeHigh / CAP_RATE);
 
-  // Estimate property value
-  const estimatedPropertyValue = building.sqft * PROPERTY_VALUE_PER_SQFT;
-
-  // Calculate percentage increase
-  const valueIncreasePctLow = estimatedPropertyValue > 0
-    ? Math.round((valueUpliftLow / estimatedPropertyValue) * 1000) / 10
-    : 0;
-  const valueIncreasePctHigh = estimatedPropertyValue > 0
-    ? Math.round((valueUpliftHigh / estimatedPropertyValue) * 1000) / 10
-    : 0;
-
   return {
     address: building.address,
     sqft: building.sqft,
@@ -214,9 +200,6 @@ export function calculateBuilding(building: Building): BuildingCalculation {
     highRate,
     valueUpliftLow,
     valueUpliftHigh,
-    estimatedPropertyValue,
-    valueIncreasePctLow,
-    valueIncreasePctHigh,
   };
 }
 

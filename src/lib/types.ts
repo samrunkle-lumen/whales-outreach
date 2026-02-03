@@ -50,9 +50,6 @@ export interface BuildingCalculation {
   highRate: number;
   valueUpliftLow: number;
   valueUpliftHigh: number;
-  estimatedPropertyValue: number;
-  valueIncreasePctLow: number;
-  valueIncreasePctHigh: number;
 }
 
 export interface PortfolioSummary {
