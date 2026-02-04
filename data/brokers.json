@@ -722,6 +722,34 @@
           "city": "Bedford Park",
           "state": "IL",
           "listingUrl": "https://www.cushmanwakefield.com/en/united-states/people/jason-west"
+        },
+        {
+          "address": "West Steger Road & Cicero Avenue, University Park, IL 60484",
+          "sqft": 1000000,
+          "propertyType": "Warehouse",
+          "city": "University Park",
+          "state": "IL"
+        },
+        {
+          "address": "Mound Road, Joliet, IL 60436",
+          "sqft": 913888,
+          "propertyType": "Warehouse",
+          "city": "Joliet",
+          "state": "IL"
+        },
+        {
+          "address": "25100 South Ridgeland Avenue, Monee, IL 60449",
+          "sqft": 621246,
+          "propertyType": "Warehouse",
+          "city": "Monee",
+          "state": "IL"
+        },
+        {
+          "address": "485-493 Mission Street, Carol Stream, IL 60139",
+          "sqft": 120624,
+          "propertyType": "Warehouse",
+          "city": "Carol Stream",
+          "state": "IL"
         }
       ],
       "title": "Executive Vice Chair",
@@ -1562,6 +1590,41 @@
           "propertyType": "Warehouse",
           "city": "Hillside",
           "state": "NJ"
+        }
+      ]
+    },
+    {
+      "slug": "brian-watts",
+      "name": "Brian",
+      "fullName": "Brian Watts",
+      "company": "Colliers",
+      "market": "Maryland",
+      "email": "Brian.Watts@colliers.com",
+      "phone": "+1 410 319 2408",
+      "title": "Executive Vice President",
+      "profileUrl": "https://www.colliers.com/en/experts/brian-watts",
+      "linkedIn": "",
+      "buildings": [
+        {
+          "address": "8700-8800 Edgeworth Drive, Capitol Heights, MD 20743",
+          "sqft": 100000,
+          "propertyType": "Warehouse",
+          "city": "Capitol Heights",
+          "state": "MD"
+        },
+        {
+          "address": "11159 Hopewell Road, Hagerstown, MD 21740",
+          "sqft": 515000,
+          "propertyType": "Warehouse",
+          "city": "Hagerstown",
+          "state": "MD"
+        },
+        {
+          "address": "12001 Hopewell Road, Hagerstown, MD",
+          "sqft": 208000,
+          "propertyType": "Warehouse",
+          "city": "Hagerstown",
+          "state": "MD"
         }
       ]
     }
