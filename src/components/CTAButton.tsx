@@ -9,7 +9,7 @@ export function CTAButton({ href, children }: CTAButtonProps) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center justify-center px-8 py-4 bg-[#DFFF5E] text-[#1A1A1A] font-mono font-medium text-sm uppercase tracking-wider rounded-lg hover:bg-[#d4f54e] transition-colors shadow-sm hover:shadow-md"
+      className="inline-flex items-center justify-center px-8 py-4 bg-[#DFFF5E] text-[#1A1A1A] font-mono font-medium text-sm uppercase tracking-wider hover:bg-[#d4f54e] transition-colors shadow-sm hover:shadow-md"
     >
       {children}
       <svg

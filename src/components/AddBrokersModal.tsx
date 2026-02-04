@@ -250,7 +250,7 @@ export function AddBrokersModal({ onClose, onSuccess }: AddBrokersModalProps) {
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-3 border border-[#E7E8E3] text-[#4D4D4D] rounded-lg hover:bg-[#F8F8F6] transition-colors font-medium"
+              className="flex-1 px-4 py-3 border border-[#E7E8E3] text-[#4D4D4D] hover:bg-[#F8F8F6] transition-colors font-medium"
               disabled={isLoading}
             >
               Cancel
@@ -258,7 +258,7 @@ export function AddBrokersModal({ onClose, onSuccess }: AddBrokersModalProps) {
             <button
               type="submit"
               disabled={isLoading || !firmName || !markets || !website}
-              className="flex-1 px-4 py-3 bg-[#DFFF5E] text-[#1A1A1A] rounded-lg hover:bg-[#d4f54e] transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 px-4 py-3 bg-[#DFFF5E] text-[#1A1A1A] hover:bg-[#d4f54e] transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? "Scraping..." : "Add Brokers"}
             </button>

@@ -76,7 +76,7 @@ ${broker.company}`;
     <>
       <button
         onClick={() => setShowModal(true)}
-        className="inline-flex items-center px-4 py-2 bg-[#1A1A1A] text-white rounded-lg hover:bg-[#333333] transition-colors text-sm font-medium"
+        className="inline-flex items-center px-3 py-2 bg-[#1A1A1A] text-white hover:bg-[#333333] transition-colors text-sm font-medium"
       >
         <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -121,7 +121,7 @@ ${broker.company}`;
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={handleOpenGmail}
-                  className="flex-1 inline-flex items-center justify-center px-4 py-3 bg-[#DFFF5E] text-[#1A1A1A] rounded-lg hover:bg-[#d4f54e] transition-colors font-medium"
+                  className="flex-1 inline-flex items-center justify-center px-4 py-3 bg-[#DFFF5E] text-[#1A1A1A] hover:bg-[#d4f54e] transition-colors font-medium"
                 >
                   <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
@@ -130,7 +130,7 @@ ${broker.company}`;
                 </button>
                 <button
                   onClick={handleOpenEmail}
-                  className="flex-1 inline-flex items-center justify-center px-4 py-3 border border-[#5A5F52]/30 text-[#1A1A1A] rounded-lg hover:bg-white transition-colors font-medium"
+                  className="flex-1 inline-flex items-center justify-center px-4 py-3 border border-[#5A5F52]/30 text-[#1A1A1A] hover:bg-white transition-colors font-medium"
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
