@@ -41,7 +41,7 @@ export function ShareButton({ address }: ShareButtonProps) {
   return (
     <button
       onClick={handleShare}
-      className="inline-flex items-center px-3 py-2 bg-[#DFFF5E] text-[#1A1A1A] hover:bg-[#d4f54e] transition-colors text-sm font-medium"
+      className="inline-flex items-center justify-center px-3 py-2 bg-[#DFFF5E] text-[#1A1A1A] hover:bg-[#d4f54e] transition-colors text-sm font-medium"
     >
       {copied ? (
         <>
