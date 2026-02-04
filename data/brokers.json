@@ -34,6 +34,16 @@
       "name": "Northmarq",
       "slug": "northmarq",
       "market": "Pennsylvania"
+    },
+    {
+      "name": "Lee & Associates",
+      "slug": "lee-associates",
+      "market": "New Jersey"
+    },
+    {
+      "name": "The Blau & Berg Company",
+      "slug": "blau-berg",
+      "market": "New Jersey"
     }
   ],
   "brokers": [
