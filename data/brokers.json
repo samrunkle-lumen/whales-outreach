@@ -1365,6 +1365,205 @@
           "name": "Centre Pointe 1"
         }
       ]
+    },
+    {
+      "slug": "brian-siegel",
+      "name": "Brian",
+      "fullName": "Brian Siegel",
+      "company": "Colliers",
+      "market": "Maryland",
+      "email": "Brian.Siegel@colliers.com",
+      "phone": "+1 410 319 2410",
+      "title": "Executive Vice President",
+      "profileUrl": "https://www.colliers.com/en/experts/brian-siegel",
+      "linkedIn": "https://www.linkedin.com/in/briansiegelbaltimore/",
+      "buildings": [
+        {
+          "address": "11159 Hopewell Road, Hagerstown, MD 21740",
+          "sqft": 515000,
+          "propertyType": "Warehouse",
+          "city": "Hagerstown",
+          "state": "MD",
+          "listingUrl": "https://www.colliers.com/en/properties/build-to-suit-opportunity-at-11159-hopewell-road/usa-11159-hopewell-rd-hagerstown-md-21740-usa/usa1114637",
+          "name": "Build-To-Suit Opportunity at 11159 Hopewell Road"
+        },
+        {
+          "address": "12001 Hopewell Road, Hagerstown, MD",
+          "sqft": 208000,
+          "propertyType": "Warehouse",
+          "city": "Hagerstown",
+          "state": "MD",
+          "listingUrl": "https://www.colliers.com/en/properties/12001-hopewell-road-hagerstown-md-delivers-q1-2026/usa-12001-hopewell-rd-hagerstown-md-delivers-q1-2026/usa1100869"
+        },
+        {
+          "address": "Mitchell Distributing, White Marsh, MD",
+          "sqft": 250000,
+          "propertyType": "Warehouse",
+          "city": "White Marsh",
+          "state": "MD"
+        },
+        {
+          "address": "BGE, Baltimore, MD",
+          "sqft": 223000,
+          "propertyType": "Warehouse",
+          "city": "Baltimore",
+          "state": "MD"
+        },
+        {
+          "address": "PCFD, Baltimore, MD",
+          "sqft": 175000,
+          "propertyType": "Warehouse",
+          "city": "Baltimore",
+          "state": "MD"
+        },
+        {
+          "address": "Recall Total Information Management, Jessup, MD",
+          "sqft": 170000,
+          "propertyType": "Warehouse",
+          "city": "Jessup",
+          "state": "MD"
+        },
+        {
+          "address": "Wayfair, Jessup, MD",
+          "sqft": 140000,
+          "propertyType": "Warehouse",
+          "city": "Jessup",
+          "state": "MD"
+        },
+        {
+          "address": "United States Postal Service, Baltimore, MD",
+          "sqft": 130000,
+          "propertyType": "Warehouse",
+          "city": "Baltimore",
+          "state": "MD"
+        },
+        {
+          "address": "Caitec, Baltimore, MD",
+          "sqft": 110000,
+          "propertyType": "Warehouse",
+          "city": "Baltimore",
+          "state": "MD"
+        },
+        {
+          "address": "Showtime, Baltimore, MD",
+          "sqft": 100000,
+          "propertyType": "Warehouse",
+          "city": "Baltimore",
+          "state": "MD"
+        }
+      ]
+    },
+    {
+      "slug": "drew-maffey",
+      "name": "Drew",
+      "fullName": "Drew Maffey",
+      "company": "Lee & Associates",
+      "market": "New Jersey",
+      "email": "drew.maffey@lee-associates.com",
+      "phone": "",
+      "title": "Senior Vice President",
+      "profileUrl": "https://www.lee-associates.com/people/broker/18531/",
+      "linkedIn": "",
+      "buildings": [
+        {
+          "address": "1183 Florence Columbus Road, Mansfield, NJ",
+          "sqft": 806000,
+          "propertyType": "Warehouse",
+          "city": "Mansfield",
+          "state": "NJ"
+        },
+        {
+          "address": "1170 Florence Columbus Road, Mansfield, NJ",
+          "sqft": 698500,
+          "propertyType": "Warehouse",
+          "city": "Mansfield",
+          "state": "NJ"
+        },
+        {
+          "address": "500 Ben Fairless Drive, Fairless Hills, PA",
+          "sqft": 517000,
+          "propertyType": "Warehouse",
+          "city": "Fairless Hills",
+          "state": "PA"
+        },
+        {
+          "address": "1620 River Road, Burlington, NJ",
+          "sqft": 478000,
+          "propertyType": "Warehouse",
+          "city": "Burlington",
+          "state": "NJ"
+        },
+        {
+          "address": "201 Elizabeth Street, Bordentown, NJ",
+          "sqft": 275000,
+          "propertyType": "Warehouse",
+          "city": "Bordentown",
+          "state": "NJ"
+        },
+        {
+          "address": "301 Herrod Boulevard, Dayton, NJ",
+          "sqft": 255000,
+          "propertyType": "Warehouse",
+          "city": "Dayton",
+          "state": "NJ"
+        }
+      ]
+    },
+    {
+      "slug": "alex-conte",
+      "name": "Alex",
+      "fullName": "Alessandro Alex Conte",
+      "company": "The Blau & Berg Company",
+      "market": "New Jersey",
+      "email": "aconte@blauberg.com",
+      "phone": "",
+      "title": "Vice President",
+      "profileUrl": "https://blauberg.com/team/alessandro-alex-conte/",
+      "linkedIn": "",
+      "buildings": [
+        {
+          "address": "LF USA and IDS, Robbinsville, NJ",
+          "sqft": 500528,
+          "propertyType": "Warehouse",
+          "city": "Robbinsville",
+          "state": "NJ"
+        },
+        {
+          "address": "Preferred Freezer, Linden, NJ",
+          "sqft": 316000,
+          "propertyType": "Warehouse",
+          "city": "Linden",
+          "state": "NJ"
+        },
+        {
+          "address": "AZ CFS, Linden, NJ",
+          "sqft": 240000,
+          "propertyType": "Warehouse",
+          "city": "Linden",
+          "state": "NJ"
+        },
+        {
+          "address": "Continental Terminals, Kearny, NJ",
+          "sqft": 169864,
+          "propertyType": "Warehouse",
+          "city": "Kearny",
+          "state": "NJ"
+        },
+        {
+          "address": "Skylark Development, Secaucus, NJ",
+          "sqft": 146000,
+          "propertyType": "Warehouse",
+          "city": "Secaucus",
+          "state": "NJ"
+        },
+        {
+          "address": "A & S Russo, Hillside, NJ",
+          "sqft": 105000,
+          "propertyType": "Warehouse",
+          "city": "Hillside",
+          "state": "NJ"
+        }
+      ]
     }
   ]
 }
