@@ -1637,14 +1637,17 @@
           "sqft": 515000,
           "propertyType": "Warehouse",
           "city": "Hagerstown",
-          "state": "MD"
+          "state": "MD",
+          "listingUrl": "https://www.colliers.com/en/properties/build-to-suit-opportunity-at-11159-hopewell-road/usa-11159-hopewell-rd-hagerstown-md-21740-usa/usa1114637",
+          "name": "Build-To-Suit Opportunity at 11159 Hopewell Road"
         },
         {
           "address": "12001 Hopewell Road, Hagerstown, MD",
           "sqft": 208000,
           "propertyType": "Warehouse",
           "city": "Hagerstown",
-          "state": "MD"
+          "state": "MD",
+          "listingUrl": "https://www.colliers.com/en/properties/12001-hopewell-road-hagerstown-md-delivers-q1-2026/usa-12001-hopewell-rd-hagerstown-md-delivers-q1-2026/usa1100869"
         }
       ]
     },
@@ -1665,14 +1668,16 @@
           "sqft": 176244,
           "propertyType": "Warehouse",
           "city": "Forestville",
-          "state": "MD"
+          "state": "MD",
+          "listingUrl": "https://www.naimichael.com/inventory/3300-marlo-industrial-lease/"
         },
         {
           "address": "12000-12038 Old Baltimore Pike, Beltsville, MD 20705",
           "sqft": 195700,
           "propertyType": "Industrial",
           "city": "Beltsville",
-          "state": "MD"
+          "state": "MD",
+          "listingUrl": "https://www.naimichael.com/inventory/12000-old-baltimore-lease/"
         }
       ]
     },
@@ -1693,7 +1698,8 @@
           "sqft": 176244,
           "propertyType": "Warehouse",
           "city": "Forestville",
-          "state": "MD"
+          "state": "MD",
+          "listingUrl": "https://www.naimichael.com/inventory/3300-marlo-industrial-lease/"
         }
       ]
     },
@@ -1714,14 +1720,16 @@
           "sqft": 176244,
           "propertyType": "Warehouse",
           "city": "Forestville",
-          "state": "MD"
+          "state": "MD",
+          "listingUrl": "https://www.naimichael.com/inventory/3300-marlo-industrial-lease/"
         },
         {
           "address": "12000-12038 Old Baltimore Pike, Beltsville, MD 20705",
           "sqft": 195700,
           "propertyType": "Industrial",
           "city": "Beltsville",
-          "state": "MD"
+          "state": "MD",
+          "listingUrl": "https://www.naimichael.com/inventory/12000-old-baltimore-lease/"
         }
       ]
     },
@@ -1742,7 +1750,8 @@
           "sqft": 294176,
           "propertyType": "Warehouse/Distribution",
           "city": "Burlington",
-          "state": "NJ"
+          "state": "NJ",
+          "listingUrl": "http://www.naimertz.com/inventory?propertyId=1804-river-road-building-1-burlington-nj-lease"
         }
       ]
     }
