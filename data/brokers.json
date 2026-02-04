@@ -672,6 +672,56 @@
           "city": "New Lenox",
           "state": "IL",
           "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/il/new-lenox/2401-west-haven-avenue/s118490217s121712920-l"
+        },
+        {
+          "address": "3600 Houbolt Road, Joliet, IL 60431",
+          "sqft": 312306,
+          "propertyType": "Warehouse",
+          "city": "Joliet",
+          "state": "IL",
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/il/joliet/3600-houbolt-road/s121958671s121958677-l"
+        },
+        {
+          "address": "1600 Rock Creek Boulevard, Joliet, IL 60431",
+          "sqft": 137544,
+          "propertyType": "Warehouse",
+          "city": "Joliet",
+          "state": "IL",
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/il/joliet/1600-rock-creek-boulevard/s119928618s121920466-l"
+        },
+        {
+          "address": "900 Carlow Drive, Bolingbrook, IL 60490",
+          "sqft": 240500,
+          "propertyType": "Warehouse",
+          "city": "Bolingbrook",
+          "state": "IL",
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/il/bolingbrook/900-carlow-drive-a/s70375s121539151-l",
+          "name": "Carlow Distribution I"
+        },
+        {
+          "address": "1290 Remington Boulevard, Bolingbrook, IL 60490",
+          "sqft": 313179,
+          "propertyType": "Warehouse",
+          "city": "Bolingbrook",
+          "state": "IL",
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/il/bolingbrook/1290-remington-boulevard/s317491s121864855-l",
+          "name": "Building I"
+        },
+        {
+          "address": "Kirk Road & Fabyan Parkway, Geneva, IL 60134",
+          "sqft": 555900,
+          "propertyType": "Warehouse",
+          "city": "Geneva",
+          "state": "IL",
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/il/geneva/kirk-road-fabyan-parkway/s120768995s120769011-l"
+        },
+        {
+          "address": "5858 West 73rd Street, Bedford Park, IL 60638",
+          "sqft": 151813,
+          "propertyType": "Manufacturing",
+          "city": "Bedford Park",
+          "state": "IL",
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/people/jason-west"
         }
       ],
       "title": "Executive Vice Chair",
@@ -1252,6 +1302,67 @@
           "city": "Elizabeth",
           "state": "NJ",
           "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/nj/elizabeth/711-lidgerwood-avenue/s122008175s122008182-l"
+        }
+      ]
+    },
+    {
+      "slug": "torsten-thaler",
+      "name": "Torsten",
+      "fullName": "Torsten Thaler",
+      "company": "Cushman & Wakefield",
+      "market": "New Jersey",
+      "email": "torsten.thaler@cushwake.com",
+      "phone": "+1 (973) 513-1972",
+      "title": "Managing Director",
+      "profileUrl": "https://www.cushmanwakefield.com/en/united-states/people/torsten-thaler",
+      "linkedIn": "http://www.linkedin.com/in/torsten-thaler-92ba1089",
+      "buildings": [
+        {
+          "address": "290 River Drive, Garfield, NJ 07026",
+          "sqft": 154240,
+          "propertyType": "Warehouse",
+          "city": "Garfield",
+          "state": "NJ",
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/nj/garfield/290-river-drive/s121764120s121764128-l"
+        },
+        {
+          "address": "120 Manunka Chunk Road, Belvidere, NJ 07823",
+          "sqft": 370000,
+          "propertyType": "Warehouse",
+          "city": "Belvidere",
+          "state": "NJ",
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/people/torsten-thaler"
+        },
+        {
+          "address": "145 Industrial Drive, Jersey City, NJ 07305",
+          "sqft": 426275,
+          "propertyType": "Warehouse",
+          "city": "Jersey City",
+          "state": "NJ",
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/nj/jersey-city/145-industrial-drive/s121315329s121315332-l"
+        }
+      ]
+    },
+    {
+      "slug": "melissa-parrish",
+      "name": "Melissa",
+      "fullName": "Melissa Parrish",
+      "company": "Colliers",
+      "market": "Maryland",
+      "email": "melissa.parrish@colliers.com",
+      "phone": "",
+      "title": "Associate Vice President",
+      "profileUrl": "https://www.colliers.com/en/experts/melissa-parrish",
+      "linkedIn": "http://www.linkedin.com/in/melissa-parrish-90718231",
+      "buildings": [
+        {
+          "address": "801-899 Brightseat Road, Landover, MD 20785",
+          "sqft": 144000,
+          "propertyType": "Flex",
+          "city": "Landover",
+          "state": "MD",
+          "listingUrl": "https://www.loopnet.com/Listing/801-899-Brightseat-Rd-Landover-MD/27808342/",
+          "name": "Centre Pointe 1"
         }
       ]
     }
