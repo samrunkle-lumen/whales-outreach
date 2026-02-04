@@ -1178,6 +1178,81 @@
           "name": "Industrial Property Debt"
         }
       ]
+    },
+    {
+      "slug": "bill-waxman",
+      "name": "Bill",
+      "fullName": "Bill Waxman",
+      "company": "Cushman & Wakefield",
+      "market": "New Jersey",
+      "email": "",
+      "phone": "+1 (201) 394-9989",
+      "title": "Vice Chair, United States",
+      "profileUrl": "https://www.cushmanwakefield.com/en/united-states/people/bill-waxman",
+      "buildings": [
+        {
+          "address": "40 Jake Brown Road, Old Bridge, NJ 08857",
+          "sqft": 646278,
+          "propertyType": "Warehouse",
+          "city": "Old Bridge",
+          "state": "NJ",
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/nj/old-bridge/jake-brown-road-bldg-8/s121143824s121143829-l",
+          "name": "Central 9 Logistics Park - Building 8"
+        },
+        {
+          "address": "57 Schulmeister Road, Old Bridge, NJ 08857",
+          "sqft": 139434,
+          "propertyType": "Warehouse",
+          "city": "Old Bridge",
+          "state": "NJ",
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/nj/old-bridge/57-schulmeister-road/s121143832s121143836-l",
+          "name": "Central 9 Logistics Park - Building 9"
+        },
+        {
+          "address": "Jake Brown Road - Bldg 7, Old Bridge, NJ 08857",
+          "sqft": 441000,
+          "propertyType": "Warehouse",
+          "city": "Old Bridge",
+          "state": "NJ",
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/nj/old-bridge/jake-brown-road-bldg-7/s121143777s121143782-l",
+          "name": "Central 9 Logistics Park - Building 7"
+        },
+        {
+          "address": "55 Jake Brown Road, Old Bridge, NJ 08857",
+          "sqft": 303133,
+          "propertyType": "Warehouse",
+          "city": "Old Bridge",
+          "state": "NJ",
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/nj/old-bridge/55-jake-brown-road/s120913305s120913317-l",
+          "name": "Central 9 Logistics Park"
+        },
+        {
+          "address": "201 Jake Brown Road, Old Bridge, NJ 08857",
+          "sqft": 808510,
+          "propertyType": "Warehouse",
+          "city": "Old Bridge",
+          "state": "NJ",
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/nj/old-bridge/201-jake-brown-road/s120624097s120624144-l",
+          "name": "Central 9 Logistics Park - Building 1"
+        },
+        {
+          "address": "85 Amity Street, Jersey City, NJ 07304",
+          "sqft": 56596,
+          "propertyType": "Warehouse",
+          "city": "Jersey City",
+          "state": "NJ",
+          "listingUrl": "https://www.loopnet.com/Listing/85-Amity-St-Jersey-City-NJ/23401346/",
+          "name": "McGinley Square Industrial Property"
+        },
+        {
+          "address": "711 Lidgerwood Avenue, Elizabeth, NJ 07202",
+          "sqft": 189269,
+          "propertyType": "Warehouse",
+          "city": "Elizabeth",
+          "state": "NJ",
+          "listingUrl": "https://www.cushmanwakefield.com/en/united-states/properties/for-lease/warehousedistribution/nj/elizabeth/711-lidgerwood-avenue/s122008175s122008182-l"
+        }
+      ]
     }
   ]
 }
