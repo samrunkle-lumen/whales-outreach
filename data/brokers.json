@@ -44,6 +44,16 @@
       "name": "The Blau & Berg Company",
       "slug": "blau-berg",
       "market": "New Jersey"
+    },
+    {
+      "name": "NAI Michael",
+      "slug": "nai-michael",
+      "market": "Maryland"
+    },
+    {
+      "name": "NAI Mertz",
+      "slug": "nai-mertz",
+      "market": "New Jersey"
     }
   ],
   "brokers": [
@@ -1635,6 +1645,104 @@
           "propertyType": "Warehouse",
           "city": "Hagerstown",
           "state": "MD"
+        }
+      ]
+    },
+    {
+      "slug": "brady-thompson",
+      "name": "Brady",
+      "fullName": "Brady Thompson",
+      "company": "NAI Michael",
+      "market": "Maryland",
+      "email": "bthompson@naimichael.com",
+      "phone": "301.918.2912",
+      "title": "Vice President",
+      "profileUrl": "https://www.naimichael.com/team/brady-thompson/",
+      "linkedIn": "",
+      "buildings": [
+        {
+          "address": "3300 Marlo Lane, Forestville, MD 20747",
+          "sqft": 176244,
+          "propertyType": "Warehouse",
+          "city": "Forestville",
+          "state": "MD"
+        },
+        {
+          "address": "12000-12038 Old Baltimore Pike, Beltsville, MD 20705",
+          "sqft": 195700,
+          "propertyType": "Industrial",
+          "city": "Beltsville",
+          "state": "MD"
+        }
+      ]
+    },
+    {
+      "slug": "lane-schwarz",
+      "name": "Lance",
+      "fullName": "Lance Schwarz",
+      "company": "NAI Michael",
+      "market": "Maryland",
+      "email": "lschwarz@naimichael.com",
+      "phone": "301.918.2938",
+      "title": "Senior Vice President",
+      "profileUrl": "https://www.naimichael.com/team/lance-schwarz/",
+      "linkedIn": "",
+      "buildings": [
+        {
+          "address": "3300 Marlo Lane, Forestville, MD 20747",
+          "sqft": 176244,
+          "propertyType": "Warehouse",
+          "city": "Forestville",
+          "state": "MD"
+        }
+      ]
+    },
+    {
+      "slug": "peter-burleigh",
+      "name": "Peter",
+      "fullName": "Peter Burleigh",
+      "company": "NAI Michael",
+      "market": "Maryland",
+      "email": "pburleigh@naimichael.com",
+      "phone": "301.918.2913",
+      "title": "Senior Vice President",
+      "profileUrl": "https://www.naimichael.com/team/peter-burleigh/",
+      "linkedIn": "",
+      "buildings": [
+        {
+          "address": "3300 Marlo Lane, Forestville, MD 20747",
+          "sqft": 176244,
+          "propertyType": "Warehouse",
+          "city": "Forestville",
+          "state": "MD"
+        },
+        {
+          "address": "12000-12038 Old Baltimore Pike, Beltsville, MD 20705",
+          "sqft": 195700,
+          "propertyType": "Industrial",
+          "city": "Beltsville",
+          "state": "MD"
+        }
+      ]
+    },
+    {
+      "slug": "scott-mertz",
+      "name": "Scott",
+      "fullName": "Scott Mertz",
+      "company": "NAI Mertz",
+      "market": "New Jersey",
+      "email": "scott.mertz@naimertz.com",
+      "phone": "856.802.6529",
+      "title": "President",
+      "profileUrl": "https://www.naimertz.com/people/scott-mertz/",
+      "linkedIn": "",
+      "buildings": [
+        {
+          "address": "1804 River Road, Burlington, NJ 08016",
+          "sqft": 294176,
+          "propertyType": "Warehouse/Distribution",
+          "city": "Burlington",
+          "state": "NJ"
         }
       ]
     }
