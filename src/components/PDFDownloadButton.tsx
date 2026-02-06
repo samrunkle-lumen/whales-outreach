@@ -113,7 +113,7 @@ export function PDFDownloadButton({
             <li style="margin-bottom: 9px;"><strong style="color: #1A1A1A;">Maximize your revenue:</strong> We create transparent competition among top solar developers to secure the best lease rates for your property.</li>
             <li style="margin-bottom: 9px;"><strong style="color: #1A1A1A;">Zero cost or risk:</strong> We handle everything from analysis to project execution at no cost to you.</li>
             <li style="margin-bottom: 9px;"><strong style="color: #1A1A1A;">White-glove service:</strong> Our team provides investment-grade analysis and manages the entire process from start to finish.</li>
-            <li style="margin-bottom: 0;"><strong style="color: #1A1A1A;">Trusted by industry leaders:</strong> We partner with leading commercial real estate owners including Nuveen, JP Morgan, Hines, and others.</li>
+            <li style="margin-bottom: 0;"><strong style="color: #1A1A1A;">Trusted by industry leaders:</strong> We partner with leading commercial real estate owners including <strong style="color: #1A1A1A;">Nuveen, JP Morgan, Hines,</strong> and others.</li>
           </ul>
         </div>
 
