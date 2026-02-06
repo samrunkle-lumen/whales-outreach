@@ -95,7 +95,7 @@ export function PasswordGate({ children }: PasswordGateProps) {
 
       {/* Bottom right text */}
       <div className="absolute bottom-8 right-8">
-        <p className="text-[96px] md:text-[120px] font-bold text-[#1A1A1A] whitespace-nowrap">
+        <p className="text-[43px] md:text-[54px] font-bold text-[#1A1A1A] whitespace-nowrap">
           Turn rooftops into revenue
         </p>
       </div>
