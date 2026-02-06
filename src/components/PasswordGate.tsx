@@ -48,7 +48,7 @@ export function PasswordGate({ children }: PasswordGateProps) {
     <div className="min-h-screen bg-[#DFFF5E] flex flex-col relative">
       {/* Logo in top left */}
       <div className="absolute top-8 left-8">
-        <svg width="140" height="33" viewBox="0 0 836 197" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="420" height="99" viewBox="0 0 836 197" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 68.1688C0 95.4693 16.0494 119.002 39.2261 129.897V6.45319C16.0494 17.3352 0 40.881 0 68.1688Z" fill="#050505"/>
           <path d="M46.0608 68.1685C46.0608 105.816 76.5813 136.337 114.229 136.337V0C76.5813 0 46.0608 30.5205 46.0608 68.1685Z" fill="#050505"/>
           <path d="M189.244 0C186.687 0 184.166 0.152729 181.684 0.420008C147.588 4.18735 121.064 33.066 121.064 68.1685C121.064 103.271 147.588 132.149 181.684 135.917C184.166 136.197 186.687 136.349 189.244 136.349C226.893 136.349 257.414 105.829 257.414 68.1812C257.414 30.5332 226.905 0 189.244 0Z" fill="#050505"/>
@@ -72,17 +72,17 @@ export function PasswordGate({ children }: PasswordGateProps) {
                 setError(false);
               }}
               placeholder="Enter access code"
-              className={`w-full px-6 py-4 pr-12 text-lg bg-white border-2 ${
+              className={`w-full px-6 py-4 pr-16 text-lg bg-white bg-opacity-80 border-2 ${
                 error ? "border-red-500" : "border-[#1A1A1A]"
               } text-[#1A1A1A] placeholder-[#5A5F52] focus:outline-none focus:border-[#1A1A1A]`}
               autoFocus
             />
             <button
               type="submit"
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-[#1A1A1A] hover:text-[#5A5F52] transition-colors"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-[#1A1A1A] hover:text-[#5A5F52] transition-colors"
               aria-label="Submit"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -95,7 +95,7 @@ export function PasswordGate({ children }: PasswordGateProps) {
 
       {/* Bottom right text */}
       <div className="absolute bottom-8 right-8">
-        <p className="text-[32px] md:text-[40px] font-bold text-[#1A1A1A] whitespace-nowrap">
+        <p className="text-[96px] md:text-[120px] font-bold text-[#1A1A1A] whitespace-nowrap">
           Turn rooftops into revenue
         </p>
       </div>
