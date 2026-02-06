@@ -122,13 +122,13 @@ export default async function BrokerPage({ params }: PageProps) {
         <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3]">
           <div className="max-w-[1000px] mx-auto">
             <details className="group">
-              <summary className="flex items-center justify-between mb-6 cursor-pointer list-none">
+              <summary className="flex items-center justify-between mb-6 cursor-pointer list-none border-2 border-[#DFFF5E] bg-gradient-to-r from-[#DFFF5E]/10 to-transparent rounded-lg p-6 hover:border-[#B1E5FF] hover:bg-gradient-to-r hover:from-[#B1E5FF]/20 hover:to-transparent transition-all shadow-sm hover:shadow-md">
                 <h2 className="display text-[28px] font-light tracking-[-0.02em]">Property Analysis</h2>
                 <div className="flex items-center gap-4">
                   <span className="text-lg font-medium text-[#1A1A1A]">
                     {broker.buildings.length} {broker.buildings.length === 1 ? 'property' : 'properties'}
                   </span>
-                  <svg className="w-5 h-5 text-[#5A5F52] transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-[#1A1A1A] transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>

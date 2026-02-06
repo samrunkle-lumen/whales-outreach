@@ -126,7 +126,7 @@ export function PDFDownloadButton({
           </div>
           <div style="padding-left: 12px; border-left: 2px solid #E7E8E3;">
             <p style="font-size: 12px; font-weight: 500; color: #1A1A1A; margin: 0 0 4px 0; line-height: 1.3;">Zero Capital Required</p>
-            <p style="font-size: 11px; color: #5A5F52; margin: 0; line-height: 1.55;">Lumen handles all installation and maintenance at no cost.</p>
+            <p style="font-size: 11px; color: #5A5F52; margin: 0; line-height: 1.55;">Solar developer handles all installation and maintenance at no cost.</p>
           </div>
           <div style="padding-left: 12px; border-left: 2px solid #E7E8E3;">
             <p style="font-size: 12px; font-weight: 500; color: #1A1A1A; margin: 0 0 4px 0; line-height: 1.3;">Increased Property Value</p>

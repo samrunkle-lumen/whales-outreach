@@ -236,7 +236,7 @@ export default async function BuildingPage({ params }: PageProps) {
               </div>
               <div className="pl-5 border-l-2 border-[#E7E8E3]">
                 <h3 className="font-medium mb-1.5">Zero Capital Required</h3>
-                <p className="text-sm text-[#5A5F52] leading-relaxed">Lumen handles all installation and maintenance at no cost.</p>
+                <p className="text-sm text-[#5A5F52] leading-relaxed">Solar developer handles all installation and maintenance at no cost.</p>
               </div>
               <div className="pl-5 border-l-2 border-[#E7E8E3]">
                 <h3 className="font-medium mb-1.5">Increased Property Value</h3>
