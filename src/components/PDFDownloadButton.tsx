@@ -31,12 +31,12 @@ export function PDFDownloadButton({
     // Create a temporary element with the PDF content
     const content = document.createElement("div");
     content.innerHTML = `
-      <div style="font-family: Inter, system-ui, sans-serif; padding: 32px 40px; max-width: 900px; background: white;">
+      <div style="font-family: Inter, system-ui, sans-serif; padding: 36px 48px; max-width: 900px; background: white;">
         <!-- Accent Line -->
         <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, #B1E5FF 0%, #DFFF5E 50%, #B1E5FF 100%);"></div>
 
         <!-- Header -->
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; padding-left: 16px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px;">
           <svg width="180" height="42" viewBox="0 0 836 197" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 68.1688C0 95.4693 16.0494 119.002 39.2261 129.897V6.45319C16.0494 17.3352 0 40.881 0 68.1688Z" fill="#050505"/>
             <path d="M46.0608 68.1685C46.0608 105.816 76.5813 136.337 114.229 136.337V0C76.5813 0 46.0608 30.5205 46.0608 68.1685Z" fill="#050505"/>
@@ -50,115 +50,113 @@ export function PDFDownloadButton({
           <span style="font-size: 11px; color: #5A5F52; font-family: 'Roboto Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em;">${new Date().toLocaleDateString()}</span>
         </div>
 
-        <div style="padding-left: 16px;">
-          <!-- Eyebrow -->
-          <p style="font-family: 'Roboto Mono', monospace; font-size: 11px; color: #5A5F52; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 12px 0;">Solar Lease Opportunity</p>
+        <!-- Eyebrow -->
+        <p style="font-family: 'Roboto Mono', monospace; font-size: 11px; color: #5A5F52; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 10px 0;">Solar Lease Opportunity</p>
 
-          <!-- Title -->
-          <h1 style="font-size: 32px; font-weight: 300; color: #1A1A1A; margin: 0 0 8px 0; line-height: 1.1; letter-spacing: -0.02em;">
-            ${building.address.split(',')[0]}
-          </h1>
-          <p style="font-size: 14px; color: #5A5F52; margin: 0 0 8px 0;">
-            ${building.address}
-          </p>
-          <p style="font-size: 13px; color: #68A2CD; margin: 0 0 24px 0;">
-            Prepared for ${broker.fullName} · ${broker.company}
-          </p>
+        <!-- Title -->
+        <h1 style="font-size: 32px; font-weight: 300; color: #1A1A1A; margin: 0 0 8px 0; line-height: 1.15; letter-spacing: -0.02em;">
+          ${building.address.split(',')[0]}
+        </h1>
+        <p style="font-size: 14px; color: #5A5F52; margin: 0 0 6px 0; line-height: 1.4;">
+          ${building.address}
+        </p>
+        <p style="font-size: 13px; color: #68A2CD; margin: 0 0 22px 0; line-height: 1.4;">
+          Prepared for ${broker.fullName} · ${broker.company}
+        </p>
 
-          <!-- Satellite View -->
-          ${satelliteUrl ? `
-          <div style="margin-bottom: 20px; border-radius: 12px; overflow: hidden; border: 1px solid #E7E8E3; width: 100%; height: 280px;">
-            <img src="${satelliteUrl}" alt="Satellite view" style="width: 100%; height: 280px; object-fit: cover; display: block;" crossorigin="anonymous" />
-          </div>
-          ` : ''}
+        <!-- Satellite View -->
+        ${satelliteUrl ? `
+        <div style="margin-bottom: 22px; border-radius: 12px; overflow: hidden; border: 1px solid #E7E8E3; width: 100%; height: 280px;">
+          <img src="${satelliteUrl}" alt="Satellite view" style="width: 100%; height: 280px; object-fit: cover; display: block;" crossorigin="anonymous" />
+        </div>
+        ` : ''}
 
-          <!-- Property Meta -->
-          <div style="display: flex; gap: 20px; margin-bottom: 20px; font-size: 12px; color: #5A5F52;">
-            <span><span style="color: #1A1A1A; font-weight: 500;">${formatNumber(building.sqft)} ft²</span> building</span>
-            <span><span style="color: #1A1A1A; font-weight: 500;">${formatNumber(calculation.usableRoofSqft)} ft²</span> usable roof</span>
-            <span><span style="color: #1A1A1A; font-weight: 500;">${building.propertyType || 'Industrial'}</span></span>
-            <span style="color: #68A2CD;">${getUtilityFullName(calculation.utility)}</span>
-          </div>
+        <!-- Property Meta -->
+        <div style="display: flex; gap: 18px; margin-bottom: 22px; font-size: 12px; color: #5A5F52; line-height: 1.5;">
+          <span><span style="color: #1A1A1A; font-weight: 500;">${formatNumber(building.sqft)} ft²</span> building</span>
+          <span><span style="color: #1A1A1A; font-weight: 500;">${formatNumber(calculation.usableRoofSqft)} ft²</span> usable roof</span>
+          <span><span style="color: #1A1A1A; font-weight: 500;">${building.propertyType || 'Industrial'}</span></span>
+          <span style="color: #68A2CD;">${getUtilityFullName(calculation.utility)}</span>
+        </div>
 
-          <!-- Stacked Cards -->
-          <div style="margin-bottom: 24px;">
-            <!-- Annual Lease Revenue Card -->
-            <div style="background: white; border: 1px solid #E7E8E3; border-radius: 12px; padding: 20px; margin-bottom: 12px;">
-              <p style="font-family: 'Roboto Mono', monospace; font-size: 10px; color: #5A5F52; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 6px 0;">Annual Lease Revenue</p>
-              <p style="font-size: 28px; font-weight: 300; color: #1A1A1A; margin: 0; letter-spacing: -0.02em;">
-                ${formatCurrency(calculation.annualIncomeLow)} – ${formatCurrency(calculation.annualIncomeHigh)}<span style="font-size: 16px; color: #5A5F52; margin-left: 4px;">per year</span>
-              </p>
-            </div>
-
-            <!-- Value Uplift Card -->
-            <div style="background: linear-gradient(180deg, #FAFFFE 0%, #F5FFFC 100%); border: 1px solid #E7E8E3; border-radius: 12px; padding: 20px;">
-              <p style="font-family: 'Roboto Mono', monospace; font-size: 10px; color: #5A5F52; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 6px 0;">Value Uplift at Sale</p>
-              <p style="font-size: 28px; font-weight: 300; color: #1A1A1A; margin: 0 0 8px 0; letter-spacing: -0.02em;">
-                ${formatMillions(calculation.valueUpliftLow)} – ${formatMillions(calculation.valueUpliftHigh)}<span style="font-size: 13px; color: #5A5F52; margin-left: 8px;">at 6% cap rate</span>
-              </p>
-              <p style="font-size: 11px; color: #5A5F52; margin: 0; line-height: 1.4;">
-                New NOI from solar lease income capitalized at market rate increases property value at sale.
-              </p>
-            </div>
+        <!-- Stacked Cards -->
+        <div style="margin-bottom: 22px;">
+          <!-- Annual Lease Revenue Card -->
+          <div style="background: white; border: 1px solid #E7E8E3; border-radius: 12px; padding: 18px 20px; margin-bottom: 10px;">
+            <p style="font-family: 'Roboto Mono', monospace; font-size: 10px; color: #5A5F52; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 8px 0; line-height: 1.2;">Annual Lease Revenue</p>
+            <p style="font-size: 28px; font-weight: 300; color: #1A1A1A; margin: 0; letter-spacing: -0.02em; line-height: 1.2;">
+              ${formatCurrency(calculation.annualIncomeLow)} – ${formatCurrency(calculation.annualIncomeHigh)}<span style="font-size: 16px; color: #5A5F52; margin-left: 6px;">per year</span>
+            </p>
           </div>
 
-          <!-- Disclaimer -->
-          <p style="font-size: 10px; color: #5A5F52; margin: 0 0 24px 0;">
-            Estimates based on ${getUtilityFullName(calculation.utility)} utility market rates. Actual rates depend on roof condition, orientation, and local utility rates.
-          </p>
-
-          <!-- Why Lumen Section -->
-          <div style="background: #F8F8F6; border: 1px solid #E7E8E3; border-radius: 8px; padding: 20px; margin-bottom: 24px;">
-            <h3 style="font-size: 16px; font-weight: 500; color: #1A1A1A; margin: 0 0 12px 0;">Why Lumen?</h3>
-            <ul style="margin: 0; padding-left: 20px; color: #5A5F52; line-height: 1.7; font-size: 12px;">
-              <li style="margin-bottom: 8px;"><strong style="color: #1A1A1A;">Maximize your revenue:</strong> We create transparent competition among top solar developers to secure the best lease rates for your property.</li>
-              <li style="margin-bottom: 8px;"><strong style="color: #1A1A1A;">Zero cost or risk:</strong> We handle everything from analysis to project execution at no cost to you.</li>
-              <li style="margin-bottom: 8px;"><strong style="color: #1A1A1A;">White-glove service:</strong> Our team provides investment-grade analysis and manages the entire process from start to finish.</li>
-              <li><strong style="color: #1A1A1A;">Trusted by industry leaders:</strong> We partner with leading commercial real estate owners including Nuveen, JP Morgan, Hines, and others.</li>
-            </ul>
+          <!-- Value Uplift Card -->
+          <div style="background: linear-gradient(180deg, #FAFFFE 0%, #F5FFFC 100%); border: 1px solid #E7E8E3; border-radius: 12px; padding: 18px 20px;">
+            <p style="font-family: 'Roboto Mono', monospace; font-size: 10px; color: #5A5F52; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 8px 0; line-height: 1.2;">Value Uplift at Sale</p>
+            <p style="font-size: 28px; font-weight: 300; color: #1A1A1A; margin: 0 0 8px 0; letter-spacing: -0.02em; line-height: 1.2;">
+              ${formatMillions(calculation.valueUpliftLow)} – ${formatMillions(calculation.valueUpliftHigh)}<span style="font-size: 13px; color: #5A5F52; margin-left: 8px;">at 6% cap rate</span>
+            </p>
+            <p style="font-size: 11px; color: #5A5F52; margin: 0; line-height: 1.5;">
+              New NOI from solar lease income capitalized at market rate increases property value at sale.
+            </p>
           </div>
+        </div>
 
-          <!-- Why Solar Leasing Section -->
-          <h3 style="font-size: 16px; font-weight: 300; color: #1A1A1A; margin: 0 0 12px 0; letter-spacing: -0.02em;">Why Solar Leasing</h3>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;">
-            <div style="padding-left: 12px; border-left: 2px solid #E7E8E3;">
-              <p style="font-size: 12px; font-weight: 500; color: #1A1A1A; margin: 0 0 3px 0;">Passive Income</p>
-              <p style="font-size: 11px; color: #5A5F52; margin: 0; line-height: 1.4;">Generate steady annual revenue with zero operational involvement.</p>
-            </div>
-            <div style="padding-left: 12px; border-left: 2px solid #E7E8E3;">
-              <p style="font-size: 12px; font-weight: 500; color: #1A1A1A; margin: 0 0 3px 0;">Zero Capital Required</p>
-              <p style="font-size: 11px; color: #5A5F52; margin: 0; line-height: 1.4;">Lumen handles all installation and maintenance at no cost.</p>
-            </div>
-            <div style="padding-left: 12px; border-left: 2px solid #E7E8E3;">
-              <p style="font-size: 12px; font-weight: 500; color: #1A1A1A; margin: 0 0 3px 0;">Increased Property Value</p>
-              <p style="font-size: 11px; color: #5A5F52; margin: 0; line-height: 1.4;">New NOI directly increases property value at sale.</p>
-            </div>
-            <div style="padding-left: 12px; border-left: 2px solid #E7E8E3;">
-              <p style="font-size: 12px; font-weight: 500; color: #1A1A1A; margin: 0 0 3px 0;">Long-Term Stability</p>
-              <p style="font-size: 11px; color: #5A5F52; margin: 0; line-height: 1.4;">20-25 year agreements with inflation-adjusted payments.</p>
-            </div>
+        <!-- Disclaimer -->
+        <p style="font-size: 10px; color: #5A5F52; margin: 0 0 22px 0; line-height: 1.5;">
+          Estimates based on ${getUtilityFullName(calculation.utility)} utility market rates. Actual rates depend on roof condition, orientation, and local utility rates.
+        </p>
+
+        <!-- Why Lumen Section -->
+        <div style="background: #F8F8F6; border: 1px solid #E7E8E3; border-radius: 8px; padding: 18px 20px; margin-bottom: 22px;">
+          <h3 style="font-size: 16px; font-weight: 500; color: #1A1A1A; margin: 0 0 14px 0; line-height: 1.3;">Why Lumen?</h3>
+          <ul style="margin: 0; padding-left: 20px; color: #5A5F52; line-height: 1.65; font-size: 12px;">
+            <li style="margin-bottom: 9px;"><strong style="color: #1A1A1A;">Maximize your revenue:</strong> We create transparent competition among top solar developers to secure the best lease rates for your property.</li>
+            <li style="margin-bottom: 9px;"><strong style="color: #1A1A1A;">Zero cost or risk:</strong> We handle everything from analysis to project execution at no cost to you.</li>
+            <li style="margin-bottom: 9px;"><strong style="color: #1A1A1A;">White-glove service:</strong> Our team provides investment-grade analysis and manages the entire process from start to finish.</li>
+            <li style="margin-bottom: 0;"><strong style="color: #1A1A1A;">Trusted by industry leaders:</strong> We partner with leading commercial real estate owners including Nuveen, JP Morgan, Hines, and others.</li>
+          </ul>
+        </div>
+
+        <!-- Why Solar Leasing Section -->
+        <h3 style="font-size: 16px; font-weight: 300; color: #1A1A1A; margin: 0 0 14px 0; letter-spacing: -0.02em; line-height: 1.3;">Why Solar Leasing</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; margin-bottom: 22px;">
+          <div style="padding-left: 12px; border-left: 2px solid #E7E8E3;">
+            <p style="font-size: 12px; font-weight: 500; color: #1A1A1A; margin: 0 0 4px 0; line-height: 1.3;">Passive Income</p>
+            <p style="font-size: 11px; color: #5A5F52; margin: 0; line-height: 1.55;">Generate steady annual revenue with zero operational involvement.</p>
           </div>
-
-          <!-- Next Steps -->
-          <div style="background: #F8F8F6; border: 1px solid #E7E8E3; border-radius: 8px; padding: 16px; margin-bottom: 24px;">
-            <h3 style="font-size: 13px; font-weight: 500; color: #1A1A1A; margin: 0 0 10px 0;">Next Steps</h3>
-            <ol style="margin: 0; padding-left: 20px; color: #5A5F52; line-height: 1.6; font-size: 11px;">
-              <li>Schedule a 15-minute intro call with Lumen Energy</li>
-              <li>Receive investment-grade financial analysis at no cost</li>
-              <li>Review competitive bids from top solar developers</li>
-            </ol>
+          <div style="padding-left: 12px; border-left: 2px solid #E7E8E3;">
+            <p style="font-size: 12px; font-weight: 500; color: #1A1A1A; margin: 0 0 4px 0; line-height: 1.3;">Zero Capital Required</p>
+            <p style="font-size: 11px; color: #5A5F52; margin: 0; line-height: 1.55;">Lumen handles all installation and maintenance at no cost.</p>
           </div>
+          <div style="padding-left: 12px; border-left: 2px solid #E7E8E3;">
+            <p style="font-size: 12px; font-weight: 500; color: #1A1A1A; margin: 0 0 4px 0; line-height: 1.3;">Increased Property Value</p>
+            <p style="font-size: 11px; color: #5A5F52; margin: 0; line-height: 1.55;">New NOI directly increases property value at sale.</p>
+          </div>
+          <div style="padding-left: 12px; border-left: 2px solid #E7E8E3;">
+            <p style="font-size: 12px; font-weight: 500; color: #1A1A1A; margin: 0 0 4px 0; line-height: 1.3;">Long-Term Stability</p>
+            <p style="font-size: 11px; color: #5A5F52; margin: 0; line-height: 1.55;">20-25 year agreements with inflation-adjusted payments.</p>
+          </div>
+        </div>
 
-          <!-- Footer -->
-          <div style="border-top: 1px solid #E7E8E3; padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <p style="font-size: 10px; color: #5A5F52; margin: 0;">Contact Lumen Energy</p>
-              <p style="font-size: 12px; color: #1A1A1A; margin: 3px 0 0 0;">hello@lumen.energy · getlumen.com</p>
-            </div>
-            <div style="text-align: right;">
-              <p style="font-size: 10px; color: #5A5F52; margin: 0;">Schedule a call</p>
-              <p style="font-size: 11px; color: #1A1A1A; font-weight: 500; margin: 3px 0 0 0;">getclockwise.com/c/sam-runkle-lumen-energy</p>
-            </div>
+        <!-- Next Steps -->
+        <div style="background: #F8F8F6; border: 1px solid #E7E8E3; border-radius: 8px; padding: 16px 20px; margin-bottom: 22px;">
+          <h3 style="font-size: 13px; font-weight: 500; color: #1A1A1A; margin: 0 0 12px 0; line-height: 1.3;">Next Steps</h3>
+          <ol style="margin: 0; padding-left: 20px; color: #5A5F52; line-height: 1.7; font-size: 11px;">
+            <li style="margin-bottom: 6px;">Schedule a 15-minute intro call with Lumen Energy</li>
+            <li style="margin-bottom: 6px;">Receive investment-grade financial analysis at no cost</li>
+            <li style="margin-bottom: 0;">Review competitive bids from top solar developers</li>
+          </ol>
+        </div>
+
+        <!-- Footer -->
+        <div style="border-top: 1px solid #E7E8E3; padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <p style="font-size: 10px; color: #5A5F52; margin: 0 0 4px 0; line-height: 1.3;">Contact Lumen Energy</p>
+            <p style="font-size: 12px; color: #1A1A1A; margin: 0; line-height: 1.4;">hello@lumen.energy · getlumen.com</p>
+          </div>
+          <div style="text-align: right;">
+            <p style="font-size: 10px; color: #5A5F52; margin: 0 0 4px 0; line-height: 1.3;">Schedule a call</p>
+            <p style="font-size: 11px; color: #1A1A1A; font-weight: 500; margin: 0; line-height: 1.4;">getclockwise.com/c/sam-runkle-lumen-energy</p>
           </div>
         </div>
       </div>
