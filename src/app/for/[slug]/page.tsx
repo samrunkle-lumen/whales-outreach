@@ -121,11 +121,11 @@ export default async function BrokerPage({ params }: PageProps) {
         {/* Buildings Grid */}
         <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3]">
           <div className="max-w-[1000px] mx-auto">
-            <details className="group" open>
+            <details className="group">
               <summary className="flex items-center justify-between mb-6 cursor-pointer list-none">
                 <h2 className="display text-[28px] font-light tracking-[-0.02em]">Property Analysis</h2>
                 <div className="flex items-center gap-4">
-                  <span className="text-sm text-[#5A5F52]">
+                  <span className="text-lg font-medium text-[#1A1A1A]">
                     {broker.buildings.length} {broker.buildings.length === 1 ? 'property' : 'properties'}
                   </span>
                   <svg className="w-5 h-5 text-[#5A5F52] transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -305,7 +305,7 @@ export default async function BrokerPage({ params }: PageProps) {
                     <svg className="w-5 h-5 text-[#2E7D32] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span><strong className="text-[#1A1A1A]">Trusted partner</strong> for leading commercial real estate owners</span>
+                    <span><strong className="text-[#1A1A1A]">Trusted partner</strong> for leading commercial real estate owners <strong className="text-[#1A1A1A]">like Nuveen, JP Morgan, Hines, and others.</strong></span>
                   </li>
                 </ul>
               </div>
