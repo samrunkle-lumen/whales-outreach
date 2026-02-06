@@ -4,8 +4,8 @@ import { Building, BuildingCalculation, PortfolioSummary, ReferralFee } from "./
 const USABLE_ROOF_PERCENTAGE = 0.80;
 
 // Lumen revenue per watt for referral fee calculation
-const LUMEN_REVENUE_PER_WATT = 0.13;
-const REFERRAL_FEE_PERCENT = 0.10;
+const LUMEN_REVENUE_PER_WATT = 0.15;
+const REFERRAL_FEE_PERCENT = 0.15;
 
 // Cap rate for property value uplift calculation
 const CAP_RATE = 0.06;
@@ -225,7 +225,7 @@ export function calculateReferralFee(systemSizeLow: number, systemSizeHigh: numb
   const systemWattsLow = systemSizeLow * 1000;
   const systemWattsHigh = systemSizeHigh * 1000;
 
-  // Referral fee = 10% of Lumen revenue ($0.13/W)
+  // Referral fee = 15% of Lumen revenue ($0.15/W)
   const low = Math.round(systemWattsLow * LUMEN_REVENUE_PER_WATT * REFERRAL_FEE_PERCENT);
   const high = Math.round(systemWattsHigh * LUMEN_REVENUE_PER_WATT * REFERRAL_FEE_PERCENT);
 
