@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FilterableBrokerList } from "@/components/FilterableBrokerList";
 import { AddBrokersButton } from "@/components/AddBrokersButton";
+import { PasswordGate } from "@/components/PasswordGate";
 import { BrokersData } from "@/lib/types";
 import { calculatePortfolio, formatCurrency, formatNumber } from "@/lib/calculations";
 import brokersData from "@/../data/brokers.json";
@@ -15,11 +16,12 @@ export default function Home() {
   const totalSqft = allBuildings.reduce((acc, b) => acc + b.sqft, 0);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      {/* Accent Line */}
-      <div className="accent-line" />
+    <PasswordGate>
+      <div className="min-h-screen flex flex-col bg-white">
+        {/* Accent Line */}
+        <div className="accent-line" />
 
-      <Header />
+        <Header />
 
       <main className="flex-1">
         {/* Hero Section - Internal Dashboard Style */}
@@ -100,7 +102,8 @@ export default function Home() {
         </section>
       </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </PasswordGate>
   );
 }

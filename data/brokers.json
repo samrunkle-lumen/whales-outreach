@@ -58,7 +58,7 @@
   ],
   "brokers": [
     {
-      "slug": "cbre-listings",
+      "slug": "cbre-listings-nWmM",
       "name": "CBRE",
       "fullName": "CBRE Listings",
       "company": "CBRE",
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "slug": "colliers-listings",
+      "slug": "colliers-listings-VQy3",
       "name": "Colliers",
       "fullName": "Colliers Listings",
       "company": "Colliers",
@@ -265,7 +265,7 @@
       ]
     },
     {
-      "slug": "john-bilyak",
+      "slug": "john-bilyak-12rA",
       "name": "John",
       "fullName": "John Bilyak",
       "company": "Colliers",
@@ -284,7 +284,7 @@
       ]
     },
     {
-      "slug": "blake-baldwin",
+      "slug": "blake-baldwin-hFH8",
       "name": "Blake",
       "fullName": "Blake Baldwin",
       "company": "Cushman & Wakefield",
@@ -303,7 +303,7 @@
       ]
     },
     {
-      "slug": "chris-copenhaver",
+      "slug": "chris-copenhaver-lNZ4",
       "name": "Chris",
       "fullName": "Chris Copenhaver",
       "company": "Cushman & Wakefield",
@@ -324,7 +324,7 @@
       "profileUrl": "http://www.linkedin.com/in/chris-copenhaver-58734223"
     },
     {
-      "slug": "cushman-wakefield-listings",
+      "slug": "cushman-wakefield-listings-IRHo",
       "name": "Cushman",
       "fullName": "Cushman & Wakefield Listings",
       "company": "Cushman & Wakefield",
@@ -576,7 +576,7 @@
       ]
     },
     {
-      "slug": "david-dannenfelser",
+      "slug": "david-dannenfelser-ZdZK",
       "name": "David",
       "fullName": "David Dannenfelser",
       "company": "Cushman & Wakefield",
@@ -611,7 +611,7 @@
       ]
     },
     {
-      "slug": "george-oconnor",
+      "slug": "george-oconnor-eUIV",
       "name": "George",
       "fullName": "George O'Connor",
       "company": "Cushman & Wakefield",
@@ -632,7 +632,7 @@
       "profileUrl": "http://www.linkedin.com/in/george-o-connor-5569101a3"
     },
     {
-      "slug": "jason-barton",
+      "slug": "jason-barton-BdP4",
       "name": "Jason",
       "fullName": "Jason Barton",
       "company": "Cushman & Wakefield",
@@ -776,7 +776,7 @@
       "profileUrl": "http://www.linkedin.com/in/jason-west-sior-b5981712"
     },
     {
-      "slug": "john-gartland",
+      "slug": "john-gartland-NNrS",
       "name": "John",
       "fullName": "John Gartland",
       "company": "Cushman & Wakefield",
@@ -813,7 +813,7 @@
       "profileUrl": "http://www.linkedin.com/in/john-gartland-39a67311"
     },
     {
-      "slug": "mike-magliano",
+      "slug": "mike-magliano-zLrm",
       "name": "Mike",
       "fullName": "Mike Magliano",
       "company": "Cushman & Wakefield",
@@ -834,7 +834,7 @@
       "profileUrl": "http://www.linkedin.com/in/michaelmagliano"
     },
     {
-      "slug": "sean-henrick",
+      "slug": "sean-henrick-L93L",
       "name": "Sean",
       "fullName": "Sean Henrick",
       "company": "Cushman & Wakefield",
@@ -855,7 +855,7 @@
       "profileUrl": "http://www.linkedin.com/in/sean-henrick-sior-3703365"
     },
     {
-      "slug": "ben-meisels",
+      "slug": "ben-meisels-TZxy",
       "name": "Ben",
       "fullName": "Ben Meisels",
       "company": "JLL",
@@ -914,7 +914,7 @@
       ]
     },
     {
-      "slug": "dean-brody",
+      "slug": "dean-brody-9W17",
       "name": "Dean",
       "fullName": "Dean Brody",
       "company": "JLL",
@@ -934,7 +934,7 @@
       ]
     },
     {
-      "slug": "dean-torosian",
+      "slug": "dean-torosian-pZtN",
       "name": "Dean",
       "fullName": "Dean Torosian",
       "company": "JLL",
@@ -954,7 +954,7 @@
       ]
     },
     {
-      "slug": "gary-politi",
+      "slug": "gary-politi-ZdQJ",
       "name": "Gary",
       "fullName": "Gary Politi",
       "company": "JLL",
@@ -995,7 +995,7 @@
       ]
     },
     {
-      "slug": "jeff-lockard",
+      "slug": "jeff-lockard-JZ7g",
       "name": "Jeff",
       "fullName": "Jeff Lockard",
       "company": "JLL",
@@ -1023,7 +1023,7 @@
       ]
     },
     {
-      "slug": "john-dettleff",
+      "slug": "john-dettleff-3DqY",
       "name": "John",
       "fullName": "John Dettleff",
       "company": "JLL",
@@ -1045,7 +1045,7 @@
       ]
     },
     {
-      "slug": "kyle-lockard",
+      "slug": "kyle-lockard-tQYf",
       "name": "Kyle",
       "fullName": "Kyle Lockard",
       "company": "JLL",
@@ -1065,7 +1065,7 @@
       ]
     },
     {
-      "slug": "nate-demetsky",
+      "slug": "nate-demetsky-Hqpk",
       "name": "Nate",
       "fullName": "Nate Demetsky",
       "company": "JLL",
@@ -1085,7 +1085,7 @@
       ]
     },
     {
-      "slug": "todd-hughes",
+      "slug": "todd-hughes-R7ko",
       "name": "Todd",
       "fullName": "Todd Hughes",
       "company": "JLL",
@@ -1128,7 +1128,7 @@
       ]
     },
     {
-      "slug": "jack-hamilton",
+      "slug": "jack-hamilton-jTj6",
       "name": "Jack",
       "fullName": "Jack Hamilton",
       "company": "Marcus & Millichap",
@@ -1147,7 +1147,7 @@
       ]
     },
     {
-      "slug": "peter-doughty",
+      "slug": "peter-doughty-HJIw",
       "name": "Peter",
       "fullName": "Peter Doughty",
       "company": "Marcus & Millichap",
@@ -1166,7 +1166,7 @@
       ]
     },
     {
-      "slug": "scott-geller",
+      "slug": "scott-geller-PhMt",
       "name": "Scott",
       "fullName": "Scott Geller",
       "company": "Marcus & Millichap",
@@ -1194,7 +1194,7 @@
       "title": "Director of Investments"
     },
     {
-      "slug": "shane-sullivan",
+      "slug": "shane-sullivan-NbnP",
       "name": "Shane",
       "fullName": "Shane Sullivan",
       "company": "Marcus & Millichap",
@@ -1213,7 +1213,7 @@
       ]
     },
     {
-      "slug": "tyler-sharp",
+      "slug": "tyler-sharp-NrSJ",
       "name": "Tyler",
       "fullName": "Tyler Sharp",
       "company": "Marcus & Millichap",
@@ -1240,7 +1240,7 @@
       ]
     },
     {
-      "slug": "northmarq-listings",
+      "slug": "northmarq-listings-hSH3",
       "name": "Northmarq",
       "fullName": "Northmarq Listings",
       "company": "Northmarq",
@@ -1278,7 +1278,7 @@
       ]
     },
     {
-      "slug": "bill-waxman",
+      "slug": "bill-waxman-5KDP",
       "name": "Bill",
       "fullName": "Bill Waxman",
       "company": "Cushman & Wakefield",
@@ -1354,7 +1354,7 @@
       ]
     },
     {
-      "slug": "torsten-thaler",
+      "slug": "torsten-thaler-lnlE",
       "name": "Torsten",
       "fullName": "Torsten Thaler",
       "company": "Cushman & Wakefield",
@@ -1392,7 +1392,7 @@
       ]
     },
     {
-      "slug": "melissa-parrish",
+      "slug": "melissa-parrish-v2Bh",
       "name": "Melissa",
       "fullName": "Melissa Parrish",
       "company": "Colliers",
@@ -1415,7 +1415,7 @@
       ]
     },
     {
-      "slug": "brian-siegel",
+      "slug": "brian-siegel-JVb7",
       "name": "Brian",
       "fullName": "Brian Siegel",
       "company": "Colliers",
@@ -1502,7 +1502,7 @@
       ]
     },
     {
-      "slug": "drew-maffey",
+      "slug": "drew-maffey-7wZT",
       "name": "Drew",
       "fullName": "Drew Maffey",
       "company": "Lee & Associates",
@@ -1558,7 +1558,7 @@
       ]
     },
     {
-      "slug": "alex-conte",
+      "slug": "alex-conte-nZLf",
       "name": "Alex",
       "fullName": "Alessandro Alex Conte",
       "company": "The Blau & Berg Company",
@@ -1607,7 +1607,7 @@
       ]
     },
     {
-      "slug": "brian-watts",
+      "slug": "brian-watts-XHrc",
       "name": "Brian",
       "fullName": "Brian Watts",
       "company": "Colliers",
@@ -1645,7 +1645,7 @@
       ]
     },
     {
-      "slug": "brady-thompson",
+      "slug": "brady-thompson-lyzb",
       "name": "Brady",
       "fullName": "Brady Thompson",
       "company": "NAI Michael",
@@ -1675,7 +1675,7 @@
       ]
     },
     {
-      "slug": "lane-schwarz",
+      "slug": "lane-schwarz-23f9",
       "name": "Lance",
       "fullName": "Lance Schwarz",
       "company": "NAI Michael",
@@ -1697,7 +1697,7 @@
       ]
     },
     {
-      "slug": "peter-burleigh",
+      "slug": "peter-burleigh-5a4G",
       "name": "Peter",
       "fullName": "Peter Burleigh",
       "company": "NAI Michael",
@@ -1727,7 +1727,7 @@
       ]
     },
     {
-      "slug": "scott-mertz",
+      "slug": "scott-mertz-zKnb",
       "name": "Scott",
       "fullName": "Scott Mertz",
       "company": "NAI Mertz",
