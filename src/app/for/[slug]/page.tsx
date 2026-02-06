@@ -137,6 +137,7 @@ export default async function BrokerPage({ params }: PageProps) {
               <div className="space-y-3">
                 {broker.buildings.map((building, index) => {
                   const calc = calculateBuilding(building);
+                  const referralFee = calculateReferralFee(calc.systemSizeLow, calc.systemSizeHigh);
                   const buildingSlug = slugifyBuilding(building.address, index);
                   return (
                     <Link
@@ -158,14 +159,20 @@ export default async function BrokerPage({ params }: PageProps) {
                           </div>
                         </div>
                         <div className="flex items-center gap-4">
-                          <div className="text-right">
-                            <p className="text-lg font-medium text-[#1A1A1A]">
-                              {formatCurrency(calc.annualIncomeLow)}–{formatCurrency(calc.annualIncomeHigh)}
-                              <span className="text-[#5A5F52] text-sm font-normal">/yr</span>
-                            </p>
-                            <p className="text-xs text-[#5A5F52]">
-                              +{formatMillions(calc.valueUpliftLow)} value uplift
-                            </p>
+                          <div className="text-right space-y-1">
+                            <div>
+                              <p className="text-[10px] uppercase tracking-wide text-[#5A5F52] font-medium mb-0.5">Annual Lease</p>
+                              <p className="text-base font-medium text-[#1A1A1A]">
+                                {formatCurrency(calc.annualIncomeLow)}–{formatCurrency(calc.annualIncomeHigh)}
+                                <span className="text-[#5A5F52] text-xs font-normal">/yr</span>
+                              </p>
+                            </div>
+                            <div>
+                              <p className="text-[10px] uppercase tracking-wide text-[#5A5F52] font-medium mb-0.5">Referral Income</p>
+                              <p className="text-sm font-medium text-[#2E7D32]">
+                                {formatCurrency(referralFee.low)}–{formatCurrency(referralFee.high)}
+                              </p>
+                            </div>
                           </div>
                           <div className="w-10 h-10 rounded-full bg-[#F8F8F6] flex items-center justify-center group-hover/item:bg-[#B1E5FF] transition-colors">
                             <svg className="w-5 h-5 text-[#5A5F52] group-hover/item:text-[#1A1A1A] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
