@@ -163,21 +163,6 @@ export default async function BuildingPage({ params }: PageProps) {
                       {formatCurrency(calc.annualIncomeLow)} – {formatCurrency(calc.annualIncomeHigh)}
                       <span className="text-[#5A5F52] text-lg ml-1">/yr</span>
                     </p>
-
-                    <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-[#E7E8E3]">
-                      <div>
-                        <p className="text-xs text-[#5A5F52]">Lease Rate</p>
-                        <p className="font-medium text-[#1A1A1A]">${calc.lowRate.toFixed(2)}–${calc.highRate.toFixed(2)}/ft²</p>
-                      </div>
-                      <div>
-                        <p className="text-xs text-[#5A5F52]">Usable Roof</p>
-                        <p className="font-medium text-[#1A1A1A]">{formatNumber(calc.usableRoofSqft)} SF</p>
-                      </div>
-                      <div>
-                        <p className="text-xs text-[#5A5F52]">System Size</p>
-                        <p className="font-medium text-[#1A1A1A]">{formatMW(calc.systemSizeLow)}–{formatMW(calc.systemSizeHigh)}</p>
-                      </div>
-                    </div>
                   </div>
 
                   {/* Value Uplift Card */}

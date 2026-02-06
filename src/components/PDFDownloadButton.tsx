@@ -88,22 +88,7 @@ export function PDFDownloadButton({
               <p style="font-size: 28px; font-weight: 300; color: #1A1A1A; margin: 0 0 4px 0; letter-spacing: -0.02em;">
                 ${formatCurrency(calculation.annualIncomeLow)} – ${formatCurrency(calculation.annualIncomeHigh)}
               </p>
-              <p style="font-size: 13px; color: #5A5F52; margin: 0 0 20px 0;">per year</p>
-
-              <div style="border-top: 1px solid #E7E8E3; padding-top: 16px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 12px;">
-                  <span style="color: #5A5F52;">Lease Rate</span>
-                  <span style="color: #1A1A1A; font-weight: 600;">$${calculation.lowRate.toFixed(2)} – $${calculation.highRate.toFixed(2)}/ft²</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 12px;">
-                  <span style="color: #5A5F52;">Usable Roof</span>
-                  <span style="color: #1A1A1A; font-weight: 600;">${formatNumber(calculation.usableRoofSqft)} ft²</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 12px;">
-                  <span style="color: #5A5F52;">System Size</span>
-                  <span style="color: #1A1A1A; font-weight: 600;">${calculation.systemSizeLow >= 1000 ? (calculation.systemSizeLow / 1000).toFixed(1) + ' MW' : calculation.systemSizeLow + ' kW'} – ${calculation.systemSizeHigh >= 1000 ? (calculation.systemSizeHigh / 1000).toFixed(1) + ' MW' : calculation.systemSizeHigh + ' kW'}</span>
-                </div>
-              </div>
+              <p style="font-size: 13px; color: #5A5F52; margin: 0;">per year</p>
             </div>
 
             <!-- Value Uplift Card -->
@@ -189,11 +174,26 @@ export function PDFDownloadButton({
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF({
         orientation: "portrait",
-        unit: "px",
-        format: [canvas.width / 2, canvas.height / 2],
+        unit: "pt",
+        format: "letter",
       });
 
-      pdf.addImage(imgData, "PNG", 0, 0, canvas.width / 2, canvas.height / 2);
+      // Letter size is 612 x 792 points
+      const pdfWidth = 612;
+      const pdfHeight = 792;
+
+      // Calculate image dimensions to fit within PDF while maintaining aspect ratio
+      const imgWidth = canvas.width / 2;
+      const imgHeight = canvas.height / 2;
+      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+      const scaledWidth = imgWidth * ratio;
+      const scaledHeight = imgHeight * ratio;
+
+      // Center the image on the page
+      const x = (pdfWidth - scaledWidth) / 2;
+      const y = (pdfHeight - scaledHeight) / 2;
+
+      pdf.addImage(imgData, "PNG", x, y, scaledWidth, scaledHeight);
 
       const filename = `${building.address.replace(/[^a-zA-Z0-9]/g, "-")}-solar-analysis.pdf`;
       pdf.save(filename);

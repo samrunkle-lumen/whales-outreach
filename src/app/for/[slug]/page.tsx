@@ -121,57 +121,64 @@ export default async function BrokerPage({ params }: PageProps) {
         {/* Buildings Grid */}
         <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3]">
           <div className="max-w-[1000px] mx-auto">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="display text-[28px] font-light tracking-[-0.02em]">Property Analysis</h2>
-              <span className="text-sm text-[#5A5F52]">
-                {broker.buildings.length} {broker.buildings.length === 1 ? 'property' : 'properties'}
-              </span>
-            </div>
+            <details className="group" open>
+              <summary className="flex items-center justify-between mb-6 cursor-pointer list-none">
+                <h2 className="display text-[28px] font-light tracking-[-0.02em]">Property Analysis</h2>
+                <div className="flex items-center gap-4">
+                  <span className="text-sm text-[#5A5F52]">
+                    {broker.buildings.length} {broker.buildings.length === 1 ? 'property' : 'properties'}
+                  </span>
+                  <svg className="w-5 h-5 text-[#5A5F52] transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </summary>
 
-            <div className="space-y-3">
-              {broker.buildings.map((building, index) => {
-                const calc = calculateBuilding(building);
-                const buildingSlug = slugifyBuilding(building.address, index);
-                return (
-                  <Link
-                    key={index}
-                    href={`/for/${broker.slug}/${buildingSlug}`}
-                    className="group block bg-white border border-[#E7E8E3] p-5 hover:border-[#B1E5FF] hover:shadow-md transition-all"
-                  >
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                      <div className="flex-1">
-                        <h3 className="font-medium text-[#1A1A1A] group-hover:text-[#68A2CD] transition-colors mb-1">
-                          {building.address.split(',')[0]}
-                        </h3>
-                        <div className="flex flex-wrap items-center gap-2 text-sm text-[#5A5F52]">
-                          <span>{formatNumber(building.sqft)} SF</span>
-                          <span className="w-1 h-1 rounded-full bg-[#5A5F52]"></span>
-                          <span>{formatNumber(calc.usableRoofSqft)} SF usable roof</span>
-                          <span className="w-1 h-1 rounded-full bg-[#5A5F52]"></span>
-                          <span className="text-[#68A2CD]">{getUtilityFullName(calc.utility)}</span>
+              <div className="space-y-3">
+                {broker.buildings.map((building, index) => {
+                  const calc = calculateBuilding(building);
+                  const buildingSlug = slugifyBuilding(building.address, index);
+                  return (
+                    <Link
+                      key={index}
+                      href={`/for/${broker.slug}/${buildingSlug}`}
+                      className="group/item block bg-white border border-[#E7E8E3] p-5 hover:border-[#B1E5FF] hover:shadow-md transition-all"
+                    >
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div className="flex-1">
+                          <h3 className="font-medium text-[#1A1A1A] group-hover/item:text-[#68A2CD] transition-colors mb-1">
+                            {building.address.split(',')[0]}
+                          </h3>
+                          <div className="flex flex-wrap items-center gap-2 text-sm text-[#5A5F52]">
+                            <span>{formatNumber(building.sqft)} SF</span>
+                            <span className="w-1 h-1 rounded-full bg-[#5A5F52]"></span>
+                            <span>{formatNumber(calc.usableRoofSqft)} SF usable roof</span>
+                            <span className="w-1 h-1 rounded-full bg-[#5A5F52]"></span>
+                            <span className="text-[#68A2CD]">{getUtilityFullName(calc.utility)}</span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <div className="text-right">
+                            <p className="text-lg font-medium text-[#1A1A1A]">
+                              {formatCurrency(calc.annualIncomeLow)}–{formatCurrency(calc.annualIncomeHigh)}
+                              <span className="text-[#5A5F52] text-sm font-normal">/yr</span>
+                            </p>
+                            <p className="text-xs text-[#5A5F52]">
+                              +{formatMillions(calc.valueUpliftLow)} value uplift
+                            </p>
+                          </div>
+                          <div className="w-10 h-10 rounded-full bg-[#F8F8F6] flex items-center justify-center group-hover/item:bg-[#B1E5FF] transition-colors">
+                            <svg className="w-5 h-5 text-[#5A5F52] group-hover/item:text-[#1A1A1A] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-4">
-                        <div className="text-right">
-                          <p className="text-lg font-medium text-[#1A1A1A]">
-                            {formatCurrency(calc.annualIncomeLow)}–{formatCurrency(calc.annualIncomeHigh)}
-                            <span className="text-[#5A5F52] text-sm font-normal">/yr</span>
-                          </p>
-                          <p className="text-xs text-[#5A5F52]">
-                            +{formatMillions(calc.valueUpliftLow)} value uplift
-                          </p>
-                        </div>
-                        <div className="w-10 h-10 rounded-full bg-[#F8F8F6] flex items-center justify-center group-hover:bg-[#B1E5FF] transition-colors">
-                          <svg className="w-5 h-5 text-[#5A5F52] group-hover:text-[#1A1A1A] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </details>
           </div>
         </section>
 
@@ -256,21 +263,52 @@ export default async function BrokerPage({ params }: PageProps) {
         {/* CTA Section */}
         <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3]">
           <div className="max-w-[1000px] mx-auto">
-            <div className="max-w-[500px]">
-              <h2 className="display text-[32px] font-light tracking-[-0.02em] mb-3">
-                Ready to unlock this value for your clients?
-              </h2>
-              <p className="text-[#5A5F52] mb-6">
-                Schedule a 15-minute call to discuss how we can help you differentiate your listings with solar revenue potential.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <CTAButton href="https://www.getclockwise.com/c/sam-runkle-lumen-energy/lumen">
-                  Book a Call
-                </CTAButton>
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+              <div>
+                <h2 className="display text-[32px] font-light tracking-[-0.02em] mb-3">
+                  Ready to unlock this value for your clients?
+                </h2>
+                <p className="text-[#5A5F52] mb-6">
+                  Schedule a 15-minute call to discuss how we can help you differentiate your listings with solar revenue potential.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <CTAButton href="https://www.getclockwise.com/c/sam-runkle-lumen-energy/lumen">
+                    Book a Call
+                  </CTAButton>
+                </div>
+                <p className="mt-4 text-sm text-[#5A5F52]">
+                  No commitment · Investment-grade analysis · White-glove service
+                </p>
               </div>
-              <p className="mt-4 text-sm text-[#5A5F52]">
-                No commitment · Investment-grade analysis · White-glove service
-              </p>
+              <div className="bg-[#F8F8F6] border border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="font-medium text-[#1A1A1A] mb-4">Why Lumen?</h3>
+                <ul className="space-y-3 text-sm text-[#5A5F52]">
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-[#2E7D32] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span><strong className="text-[#1A1A1A]">Maximize revenue</strong> through competitive bidding among top solar developers</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-[#2E7D32] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span><strong className="text-[#1A1A1A]">Zero upfront cost or risk</strong> — we handle everything at no cost to your clients</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-[#2E7D32] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span><strong className="text-[#1A1A1A]">White-glove service</strong> from investment-grade analysis to project execution</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-[#2E7D32] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span><strong className="text-[#1A1A1A]">Trusted partner</strong> for leading commercial real estate owners</span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>

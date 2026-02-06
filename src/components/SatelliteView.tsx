@@ -1,42 +1,79 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+
 interface SatelliteViewProps {
   address: string;
   className?: string;
 }
 
-export function SatelliteView({ address, className = "" }: SatelliteViewProps) {
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-  const encodedAddress = encodeURIComponent(address);
-
-  if (!apiKey) {
-    // Fallback when no API key is configured
-    return (
-      <div
-        className={`bg-gradient-to-br from-[#B1E5FF]/20 to-[#ECFFB2]/20 flex flex-col items-center justify-center p-8 h-full ${className}`}
-      >
-        <div className="w-16 h-16 bg-[#5A5F52]/20 rounded-full flex items-center justify-center mb-4">
-          <svg className="w-8 h-8 text-[#5A5F52]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-          </svg>
-        </div>
-        <p className="text-[#5A5F52] text-center text-sm mb-2">Satellite view available</p>
-        <p className="text-[#4D4D4D] text-center text-xs max-w-[200px]">{address}</p>
-      </div>
-    );
+declare global {
+  interface Window {
+    google?: typeof google;
   }
+}
 
-  // Use a larger static image size for better quality
-  const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${encodedAddress}&zoom=18&size=800x600&maptype=satellite&key=${apiKey}`;
+export function SatelliteView({ address, className = "" }: SatelliteViewProps) {
+  const mapRef = useRef<HTMLDivElement>(null);
+  const mapInstanceRef = useRef<google.maps.Map | null>(null);
+  const apiKey = "AIzaSyBnSayfhKzhVGXZrpbl6xfMyuRfZJKq9oI";
 
-  return (
-    <div className={`overflow-hidden h-full ${className}`}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={mapUrl}
-        alt={`Satellite view of ${address}`}
-        className="w-full h-full object-cover"
-      />
-    </div>
-  );
+  useEffect(() => {
+    if (!mapRef.current || mapInstanceRef.current) return;
+
+    const loadMap = async () => {
+      // Load Google Maps script
+      if (!window.google) {
+        const script = document.createElement("script");
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+
+        await new Promise<void>((resolve) => {
+          script.onload = () => resolve();
+        });
+      }
+
+      if (!mapRef.current) return;
+
+      // Geocode the address
+      const geocoder = new google.maps.Geocoder();
+      geocoder.geocode(
+        { address },
+        (
+          results: google.maps.GeocoderResult[] | null,
+          status: google.maps.GeocoderStatus
+        ) => {
+          if (status === "OK" && results && results[0] && mapRef.current) {
+            const location = results[0].geometry.location;
+
+            // Create the map
+            const map = new google.maps.Map(mapRef.current, {
+              center: location,
+              zoom: 18,
+              mapTypeId: google.maps.MapTypeId.SATELLITE,
+              mapTypeControl: true,
+              streetViewControl: false,
+              fullscreenControl: true,
+              zoomControl: true,
+            });
+
+            mapInstanceRef.current = map;
+
+            // Add a marker
+            new google.maps.Marker({
+              position: location,
+              map: map,
+              title: address,
+            });
+          }
+        }
+      );
+    };
+
+    loadMap();
+  }, [address]);
+
+  return <div ref={mapRef} className={`h-full w-full ${className}`} />;
 }
