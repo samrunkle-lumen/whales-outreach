@@ -15,6 +15,9 @@ const robotoMono = Roboto_Mono({
 export const metadata: Metadata = {
   title: "Lumen Energy | Solar Broker",
   description: "The Modern Solar Broker - Unlock the value of your commercial rooftops",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
