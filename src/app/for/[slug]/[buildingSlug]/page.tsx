@@ -225,6 +225,66 @@ export default async function BuildingPage({ params }: PageProps) {
           </div>
         </section>
 
+        {/* Why Now Section */}
+        <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3] bg-[#F8F8F6]">
+          <div className="max-w-[1200px] mx-auto">
+            <h2 className="display text-[28px] font-light tracking-[-0.02em] mb-8">Why Building Owners Are Choosing Solar Leasing Now</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="font-medium text-[#1A1A1A] mb-3">Institutional Investors Care About Sustainability</h3>
+                <ul className="space-y-2 text-sm text-[#5A5F52] leading-relaxed">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>ESG credentials matter for acquisition and financing</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Solar increases property value and marketability</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Demonstrates forward-thinking asset management</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="font-medium text-[#1A1A1A] mb-3">Tenants Want Energy Savings</h3>
+                <ul className="space-y-2 text-sm text-[#5A5F52] leading-relaxed">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Community solar subscriptions reduce tenant energy costs</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Competitive advantage in attracting quality tenants</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>No installation required on tenant&apos;s part</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="font-medium text-[#1A1A1A] mb-3">Smart Asset Management</h3>
+                <ul className="space-y-2 text-sm text-[#5A5F52] leading-relaxed">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Unused rooftop space becomes revenue-generating</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Zero capital required, zero operational complexity</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Predictable income stream with inflation adjustments</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Benefits Section */}
         <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3]">
           <div className="max-w-[1200px] mx-auto">

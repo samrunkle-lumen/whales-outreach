@@ -118,6 +118,111 @@ export default async function BrokerPage({ params }: PageProps) {
           </div>
         </section>
 
+        {/* Why This Matters Section */}
+        <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3] bg-[#F8F8F6]">
+          <div className="max-w-[1000px] mx-auto">
+            <p className="eyebrow text-[#5A5F52] mb-3">Why This Matters</p>
+            <h2 className="display text-[clamp(28px,4vw,36px)] leading-[1.05] tracking-[-0.02em] text-[#1A1A1A] mb-6">
+              Stay Strategic. Stay Top-of-Mind. Stay Competitive.
+            </h2>
+            <p className="text-lg text-[#5A5F52] max-w-3xl mb-10 leading-relaxed">
+              CRE is the long game. The brokers who succeed aren&apos;t just transaction facilitators—they&apos;re
+              strategic advisors who bring ongoing opportunities to their clients. Solar leasing gives you a way to
+              provide tangible value, stay relevant between deals, and differentiate yourself from peers.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="text-lg font-medium text-[#1A1A1A] mb-3">Stay Relevant Between Deals</h3>
+                <ul className="space-y-2 text-sm text-[#5A5F52] leading-relaxed">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Clients remember brokers who bring opportunities, not just transactions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Solar gives you a reason to reach out even when they&apos;re not buying or selling</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Annual lease payments create annual conversation opportunities</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Position yourself as a strategic advisor throughout the property lifecycle</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="text-lg font-medium text-[#1A1A1A] mb-3">Differentiate from Your Peers</h3>
+                <ul className="space-y-2 text-sm text-[#5A5F52] leading-relaxed">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Most brokers only call when there&apos;s a deal on the table</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>You&apos;re bringing a revenue opportunity they didn&apos;t know existed</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Add value that offsets your fees and makes you more competitive</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Clients will remember you 10 years later when it&apos;s time to sell</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="text-lg font-medium text-[#1A1A1A] mb-3">Strengthen Client Relationships</h3>
+                <ul className="space-y-2 text-sm text-[#5A5F52] leading-relaxed">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Provide tangible value that benefits their NOI and property value</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Help them offer energy savings to tenants (competitive advantage)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Be the broker who brings solutions, not just problems</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Create touchpoints throughout the property lifecycle</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="text-lg font-medium text-[#1A1A1A] mb-3">Build Your Reputation</h3>
+                <ul className="space-y-2 text-sm text-[#5A5F52] leading-relaxed">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Partner with leading owners (Nuveen, JP Morgan, Hines use Lumen)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Position yourself as forward-thinking and sustainability-aware</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Help clients achieve ESG goals (matters for institutional investors)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#2E7D32] mt-1">→</span>
+                    <span>Be known as the broker who maximizes every revenue opportunity</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Buildings Grid */}
         <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3]">
           <div className="max-w-[1000px] mx-auto">
@@ -189,6 +294,89 @@ export default async function BrokerPage({ params }: PageProps) {
           </div>
         </section>
 
+        {/* Tenant & Property Benefits Section */}
+        <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3]">
+          <div className="max-w-[1000px] mx-auto">
+            <p className="eyebrow text-[#5A5F52] mb-3">Client Value</p>
+            <h2 className="display text-[clamp(28px,4vw,36px)] leading-[1.05] tracking-[-0.02em] text-[#1A1A1A] mb-6">
+              How This Helps You Serve Your Clients Better
+            </h2>
+            <p className="text-lg text-[#5A5F52] max-w-3xl mb-10 leading-relaxed">
+              Solar isn&apos;t just about NOI—it&apos;s about making properties more competitive and helping your clients
+              attract and retain quality tenants. This gives you more powerful stories to tell when marketing properties.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Tenant Benefits Card */}
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="text-lg font-medium text-[#1A1A1A] mb-4">Tenant Benefits</h3>
+                <ul className="space-y-3 text-sm text-[#5A5F52] leading-relaxed">
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-[#2E7D32] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span><strong className="text-[#1A1A1A]">Energy cost savings</strong> through community solar subscriptions</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-[#2E7D32] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span><strong className="text-[#1A1A1A]">Sustainability credentials</strong> for ESG-focused companies</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-[#2E7D32] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span><strong className="text-[#1A1A1A]">No upfront cost</strong> for tenants or landlords</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-[#2E7D32] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span><strong className="text-[#1A1A1A]">Competitive advantage</strong> in attracting quality tenants</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Marketing Advantages Card */}
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="text-lg font-medium text-[#1A1A1A] mb-4">Marketing Advantages</h3>
+                <ul className="space-y-3 text-sm text-[#5A5F52] leading-relaxed">
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-[#2E7D32] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span><strong className="text-[#1A1A1A]">Differentiate listings</strong> with passive income story</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-[#2E7D32] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span><strong className="text-[#1A1A1A]">Appeal to institutional investors</strong> focused on sustainability</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-[#2E7D32] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span><strong className="text-[#1A1A1A]">Increase property value</strong> from added NOI capitalized at sale</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-[#2E7D32] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span><strong className="text-[#1A1A1A]">Create refinancing opportunities</strong> with improved cash flow</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <p className="text-sm text-[#5A5F52] mt-8 leading-relaxed">
+              This means you can market properties more effectively and help clients maximize value across the entire
+              property lifecycle—from tenant attraction to exit strategy.
+            </p>
+          </div>
+        </section>
+
         {/* Referral Fee Section */}
         <section id="partner-benefits" className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3] scroll-mt-8">
           <div className="max-w-[1000px] mx-auto">
@@ -196,44 +384,68 @@ export default async function BrokerPage({ params }: PageProps) {
               <div className="flex flex-col">
                 <p className="eyebrow text-[#5A5F52] mb-3">Partner Benefits</p>
                 <h2 className="display text-[28px] font-light tracking-[-0.02em] mb-4">
-                  Earn While Helping Your Clients
+                  Build Stronger Client Relationships
                 </h2>
                 <p className="text-[#5A5F52] mb-6 leading-relaxed">
-                  When you refer your clients to Lumen, you&apos;ll receive a meaningful referral fee for every project that closes.
-                  It&apos;s a win-win: your clients get new revenue from their rooftops, and you get compensated for the introduction.
+                  When you introduce your clients to Lumen, you&apos;re not just earning a referral fee—you&apos;re
+                  positioning yourself as a strategic partner who maximizes every opportunity.
                 </p>
+
+                <div className="mb-6">
+                  <p className="font-medium text-[#1A1A1A] mb-3">What this means for your practice:</p>
+                  <ul className="space-y-2 text-sm text-[#5A5F52] leading-relaxed">
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#2E7D32] mt-0.5">→</span>
+                      <span><strong className="text-[#1A1A1A]">Stay top-of-mind:</strong> Annual lease payments give you a reason to check in every year</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#2E7D32] mt-0.5">→</span>
+                      <span><strong className="text-[#1A1A1A]">Create touchpoints:</strong> Refinancing opportunities when NOI increases, portfolio reviews, optimization discussions</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#2E7D32] mt-0.5">→</span>
+                      <span><strong className="text-[#1A1A1A]">Differentiate your service:</strong> Bring value that offsets your fees and makes you irreplaceable</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#2E7D32] mt-0.5">→</span>
+                      <span><strong className="text-[#1A1A1A]">Build your brand:</strong> Be the broker who thinks holistically about asset value</span>
+                    </li>
+                  </ul>
+                </div>
+
                 <div className="bg-gradient-to-b from-[#FAFFFE] to-[#F5FFFC] border border-[#E7E8E3] rounded-xl p-6 mt-auto">
                   <p className="eyebrow text-[#5A5F52] text-xs mb-2">Your Potential Referral Fee</p>
                   <p className="display text-[36px] text-[#1A1A1A]">
                     {formatCurrency(referralFee.low)}+
                   </p>
                   <p className="text-sm text-[#5A5F52] mt-2">
-                    Based on the portfolio above. Paid upon project completion.
+                    Based on the portfolio above. But the real value? Clients remember brokers who bring
+                    opportunities like this—often for a decade or more, long after the referral fee.
                   </p>
                 </div>
               </div>
               <div className="bg-[#F8F8F6] border border-[#E7E8E3] rounded-xl p-6 flex flex-col">
-                <h3 className="font-medium text-[#1A1A1A] mb-6">How Referrals Work</h3>
+                <h3 className="font-medium text-[#1A1A1A] mb-6">How It Works</h3>
                 <div className="space-y-8 flex-1 flex flex-col justify-center">
                   <div className="flex items-start gap-4">
                     <div className="w-8 h-8 rounded-full bg-[#B1E5FF] flex items-center justify-center flex-shrink-0 text-sm font-bold text-[#1A1A1A]">1</div>
                     <div className="pt-1">
                       <p className="font-medium text-[#1A1A1A]">Introduce Your Client</p>
-                      <p className="text-sm text-[#5A5F52]">Connect us with the building owner or decision maker</p>
+                      <p className="text-sm text-[#5A5F52]">5-minute intro call to connect us with the decision maker</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-8 h-8 rounded-full bg-[#B1E5FF] flex items-center justify-center flex-shrink-0 text-sm font-bold text-[#1A1A1A]">2</div>
                     <div className="pt-1">
-                      <p className="font-medium text-[#1A1A1A]">We Handle Everything</p>
-                      <p className="text-sm text-[#5A5F52]">Analysis, competitive bidding, and project execution</p>
+                      <p className="font-medium text-[#1A1A1A]">We Provide Investment-Grade Analysis</p>
+                      <p className="text-sm text-[#5A5F52]">Rigorous portfolio analysis and competitive bids from top developers</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-8 h-8 rounded-full bg-[#B1E5FF] flex items-center justify-center flex-shrink-0 text-sm font-bold text-[#1A1A1A]">3</div>
                     <div className="pt-1">
-                      <p className="font-medium text-[#1A1A1A]">Get Paid</p>
-                      <p className="text-sm text-[#5A5F52]">Receive your referral fee when the project closes</p>
+                      <p className="font-medium text-[#1A1A1A]">You Get Compensated & Positioned</p>
+                      <p className="text-sm text-[#5A5F52]">Referral fee at project close AND positioned as the strategic advisor who made it happen</p>
                     </div>
                   </div>
                 </div>

@@ -16,31 +16,38 @@ export function EmailShareButton({ building, broker, calculation }: EmailShareBu
 
   const pageUrl = typeof window !== "undefined" ? window.location.href : "";
 
-  const emailSubject = `Solar Revenue Opportunity: ${building.address}`;
+  const emailSubject = `An opportunity I thought you'd want to know about - ${building.address}`;
 
   const emailBody = `Hi,
 
-I wanted to share an exciting opportunity regarding ${building.address}.
+I've been researching ways to help you maximize the value of your property at ${building.address}, and I came across something worth discussing.
 
-Based on a preliminary analysis by Lumen Energy, this ${formatNumber(building.sqft)} ft² property could generate ${formatCurrency(calculation.annualIncomeLow)} to ${formatCurrency(calculation.annualIncomeHigh)} per year in solar lease revenue—with no upfront investment required.
+Your property could generate ${formatCurrency(calculation.annualIncomeLow)}–${formatCurrency(calculation.annualIncomeHigh)} per year in solar lease revenue—with zero upfront investment or operational involvement. More importantly, this adds directly to your NOI, which could increase your property value by ${formatCurrency(calculation.valueUpliftLow)}+ at sale.
 
-Key Details:
-• Building: ${building.address}
-• Size: ${formatNumber(building.sqft)} ft²
-• Utility: ${getUtilityFullName(calculation.utility)}
-• Estimated Annual Revenue: ${formatCurrency(calculation.annualIncomeLow)}–${formatCurrency(calculation.annualIncomeHigh)}
-• System Size: ${formatNumber(calculation.systemSizeLow)}–${formatNumber(calculation.systemSizeHigh)} kW
+Why this matters:
+→ Passive income stream (20-25 year agreement)
+→ Property value increase from NOI bump
+→ Sustainability story for ESG-focused investors/tenants
+→ Potential refinancing opportunity with improved cash flow
 
-How It Works:
-1. Lumen provides a free, detailed analysis of your property
-2. Top solar developers compete to offer the best lease terms
-3. You receive predictable annual income with no capital outlay
+How it works:
+1. Lumen provides free investment-grade analysis
+2. Top solar developers compete for your rooftop
+3. You receive predictable annual income + property value increase
 
-View the full analysis here: ${pageUrl}
+Property Details:
+• ${building.address}
+• ${formatNumber(building.sqft)} ft² building
+• ${getUtilityFullName(calculation.utility)} utility territory
+• Estimated annual revenue: ${formatCurrency(calculation.annualIncomeLow)}–${formatCurrency(calculation.annualIncomeHigh)}
 
-Would you be interested in learning more? I can connect you with Lumen Energy to discuss the opportunity in detail.
+View the full analysis: ${pageUrl}
 
-Best regards,
+Happy to discuss on our next call or schedule a brief intro with Lumen.
+
+This is one of those opportunities that doesn't come around often—wanted to make sure you were aware of it.
+
+Best,
 ${broker.fullName}
 ${broker.company}`;
 
