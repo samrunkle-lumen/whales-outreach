@@ -117,7 +117,76 @@ export default async function BrokerPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+        {/* Buildings Grid */}
+        <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3]">
+          <div className="max-w-[1000px] mx-auto">
+            <details className="group">
+              <summary className="flex items-center justify-between mb-6 cursor-pointer list-none border-2 border-[#DFFF5E] bg-gradient-to-r from-[#DFFF5E]/10 to-transparent rounded-lg p-6 hover:border-[#B1E5FF] hover:bg-gradient-to-r hover:from-[#B1E5FF]/20 hover:to-transparent transition-all shadow-sm hover:shadow-md">
+                <h2 className="display text-[28px] font-light tracking-[-0.02em]">Property Analysis</h2>
+                <div className="flex items-center gap-4">
+                  <span className="text-lg font-medium text-[#1A1A1A]">
+                    {broker.buildings.length} {broker.buildings.length === 1 ? 'property' : 'properties'}
+                  </span>
+                  <svg className="w-6 h-6 text-[#1A1A1A] transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </summary>
 
+              <div className="space-y-3">
+                {broker.buildings.map((building, index) => {
+                  const calc = calculateBuilding(building);
+                  const referralFee = calculateReferralFee(calc.systemSizeLow, calc.systemSizeHigh);
+                  const buildingSlug = slugifyBuilding(building.address, index);
+                  return (
+                    <Link
+                      key={index}
+                      href={`/for/${broker.slug}/${buildingSlug}`}
+                      className="group/item block bg-white border border-[#E7E8E3] p-5 hover:border-[#B1E5FF] hover:shadow-md transition-all"
+                    >
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div className="flex-1">
+                          <h3 className="font-medium text-[#1A1A1A] group-hover/item:text-[#68A2CD] transition-colors mb-1">
+                            {building.address.split(',')[0]}
+                          </h3>
+                          <div className="flex flex-wrap items-center gap-2 text-sm text-[#5A5F52]">
+                            <span>{formatNumber(building.sqft)} SF</span>
+                            <span className="w-1 h-1 rounded-full bg-[#5A5F52]"></span>
+                            <span>{formatNumber(calc.usableRoofSqft)} SF usable roof</span>
+                            <span className="w-1 h-1 rounded-full bg-[#5A5F52]"></span>
+                            <span className="text-[#68A2CD]">{getUtilityFullName(calc.utility)}</span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <div className="text-right space-y-1">
+                            <div>
+                              <p className="text-[10px] uppercase tracking-wide text-[#5A5F52] font-medium mb-0.5">Annual Lease</p>
+                              <p className="text-base font-medium text-[#1A1A1A]">
+                                {formatCurrency(calc.annualIncomeLow)}–{formatCurrency(calc.annualIncomeHigh)}
+                                <span className="text-[#5A5F52] text-xs font-normal">/yr</span>
+                              </p>
+                            </div>
+                            <div>
+                              <p className="text-[10px] uppercase tracking-wide text-[#5A5F52] font-medium mb-0.5">Referral Income</p>
+                              <p className="text-sm font-medium text-[#2E7D32]">
+                                {formatCurrency(referralFee.low)}–{formatCurrency(referralFee.high)}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="w-10 h-10 rounded-full bg-[#F8F8F6] flex items-center justify-center group-hover/item:bg-[#B1E5FF] transition-colors">
+                            <svg className="w-5 h-5 text-[#5A5F52] group-hover/item:text-[#1A1A1A] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </details>
+          </div>
+        </section>
         {/* Why This Matters Section */}
         <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3] bg-[#F8F8F6]">
           <div className="max-w-[1000px] mx-auto">
@@ -242,78 +311,6 @@ export default async function BrokerPage({ params }: PageProps) {
             </div>
           </div>
         </section>
-
-        {/* Buildings Grid */}
-        <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3]">
-          <div className="max-w-[1000px] mx-auto">
-            <details className="group">
-              <summary className="flex items-center justify-between mb-6 cursor-pointer list-none border-2 border-[#DFFF5E] bg-gradient-to-r from-[#DFFF5E]/10 to-transparent rounded-lg p-6 hover:border-[#B1E5FF] hover:bg-gradient-to-r hover:from-[#B1E5FF]/20 hover:to-transparent transition-all shadow-sm hover:shadow-md">
-                <h2 className="display text-[28px] font-light tracking-[-0.02em]">Property Analysis</h2>
-                <div className="flex items-center gap-4">
-                  <span className="text-lg font-medium text-[#1A1A1A]">
-                    {broker.buildings.length} {broker.buildings.length === 1 ? 'property' : 'properties'}
-                  </span>
-                  <svg className="w-6 h-6 text-[#1A1A1A] transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
-              </summary>
-
-              <div className="space-y-3">
-                {broker.buildings.map((building, index) => {
-                  const calc = calculateBuilding(building);
-                  const referralFee = calculateReferralFee(calc.systemSizeLow, calc.systemSizeHigh);
-                  const buildingSlug = slugifyBuilding(building.address, index);
-                  return (
-                    <Link
-                      key={index}
-                      href={`/for/${broker.slug}/${buildingSlug}`}
-                      className="group/item block bg-white border border-[#E7E8E3] p-5 hover:border-[#B1E5FF] hover:shadow-md transition-all"
-                    >
-                      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                        <div className="flex-1">
-                          <h3 className="font-medium text-[#1A1A1A] group-hover/item:text-[#68A2CD] transition-colors mb-1">
-                            {building.address.split(',')[0]}
-                          </h3>
-                          <div className="flex flex-wrap items-center gap-2 text-sm text-[#5A5F52]">
-                            <span>{formatNumber(building.sqft)} SF</span>
-                            <span className="w-1 h-1 rounded-full bg-[#5A5F52]"></span>
-                            <span>{formatNumber(calc.usableRoofSqft)} SF usable roof</span>
-                            <span className="w-1 h-1 rounded-full bg-[#5A5F52]"></span>
-                            <span className="text-[#68A2CD]">{getUtilityFullName(calc.utility)}</span>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-4">
-                          <div className="text-right space-y-1">
-                            <div>
-                              <p className="text-[10px] uppercase tracking-wide text-[#5A5F52] font-medium mb-0.5">Annual Lease</p>
-                              <p className="text-base font-medium text-[#1A1A1A]">
-                                {formatCurrency(calc.annualIncomeLow)}–{formatCurrency(calc.annualIncomeHigh)}
-                                <span className="text-[#5A5F52] text-xs font-normal">/yr</span>
-                              </p>
-                            </div>
-                            <div>
-                              <p className="text-[10px] uppercase tracking-wide text-[#5A5F52] font-medium mb-0.5">Referral Income</p>
-                              <p className="text-sm font-medium text-[#2E7D32]">
-                                {formatCurrency(referralFee.low)}–{formatCurrency(referralFee.high)}
-                              </p>
-                            </div>
-                          </div>
-                          <div className="w-10 h-10 rounded-full bg-[#F8F8F6] flex items-center justify-center group-hover/item:bg-[#B1E5FF] transition-colors">
-                            <svg className="w-5 h-5 text-[#5A5F52] group-hover/item:text-[#1A1A1A] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
-            </details>
-          </div>
-        </section>
-
         {/* Tenant & Property Benefits Section */}
         <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3]">
           <div className="max-w-[1000px] mx-auto">
