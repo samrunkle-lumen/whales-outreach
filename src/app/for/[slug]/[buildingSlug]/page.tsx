@@ -225,86 +225,37 @@ export default async function BuildingPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Why Now Section */}
+        {/* Why Solar Leasing Section */}
         <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3] bg-[#F8F8F6]">
           <div className="max-w-[1200px] mx-auto">
-            <h2 className="display text-[28px] font-light tracking-[-0.02em] mb-8">Why Building Owners Are Choosing Solar Leasing Now</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
-                <h3 className="font-medium text-[#1A1A1A] mb-3">Institutional Investors Care About Sustainability</h3>
-                <ul className="space-y-2 text-sm text-[#5A5F52] leading-relaxed">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#2E7D32] mt-1">→</span>
-                    <span>ESG credentials matter for acquisition and financing</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#2E7D32] mt-1">→</span>
-                    <span>Solar increases property value and marketability</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#2E7D32] mt-1">→</span>
-                    <span>Demonstrates forward-thinking asset management</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
-                <h3 className="font-medium text-[#1A1A1A] mb-3">Tenants Want Energy Savings</h3>
-                <ul className="space-y-2 text-sm text-[#5A5F52] leading-relaxed">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#2E7D32] mt-1">→</span>
-                    <span>Community solar subscriptions reduce tenant energy costs</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#2E7D32] mt-1">→</span>
-                    <span>Competitive advantage in attracting quality tenants</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#2E7D32] mt-1">→</span>
-                    <span>No installation required on tenant&apos;s part</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
-                <h3 className="font-medium text-[#1A1A1A] mb-3">Smart Asset Management</h3>
-                <ul className="space-y-2 text-sm text-[#5A5F52] leading-relaxed">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#2E7D32] mt-1">→</span>
-                    <span>Unused rooftop space becomes revenue-generating</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#2E7D32] mt-1">→</span>
-                    <span>Zero capital required, zero operational complexity</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#2E7D32] mt-1">→</span>
-                    <span>Predictable income stream with inflation adjustments</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Benefits Section */}
-        <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3]">
-          <div className="max-w-[1200px] mx-auto">
             <h2 className="display text-[28px] font-light tracking-[-0.02em] mb-8">Why Solar Leasing</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="pl-5 border-l-2 border-[#E7E8E3]">
-                <h3 className="font-medium mb-1.5">Passive Income</h3>
-                <p className="text-sm text-[#5A5F52] leading-relaxed">Generate steady annual revenue with zero operational involvement.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="font-medium text-[#1A1A1A] mb-3">Passive Income, Zero Risk</h3>
+                <p className="text-sm text-[#5A5F52] leading-relaxed mb-3">
+                  Turn unused rooftop space into steady revenue with zero capital required and zero operational complexity.
+                </p>
+                <p className="text-sm text-[#5A5F52] leading-relaxed">
+                  20-25 year agreements with inflation-adjusted payments provide predictable, long-term cash flow.
+                </p>
               </div>
-              <div className="pl-5 border-l-2 border-[#E7E8E3]">
-                <h3 className="font-medium mb-1.5">Zero Capital Required</h3>
-                <p className="text-sm text-[#5A5F52] leading-relaxed">Solar developer handles all installation and maintenance at no cost.</p>
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="font-medium text-[#1A1A1A] mb-3">Increased Property Value</h3>
+                <p className="text-sm text-[#5A5F52] leading-relaxed mb-3">
+                  New NOI from solar lease income directly increases property value at sale.
+                </p>
+                <p className="text-sm text-[#5A5F52] leading-relaxed">
+                  ESG credentials improve marketability and attract institutional investors who prioritize sustainability.
+                </p>
               </div>
-              <div className="pl-5 border-l-2 border-[#E7E8E3]">
-                <h3 className="font-medium mb-1.5">Increased Property Value</h3>
-                <p className="text-sm text-[#5A5F52] leading-relaxed">New NOI from solar lease directly increases property value at sale.</p>
-              </div>
-              <div className="pl-5 border-l-2 border-[#E7E8E3]">
-                <h3 className="font-medium mb-1.5">Long-Term Stability</h3>
-                <p className="text-sm text-[#5A5F52] leading-relaxed">20-25 year agreements with inflation-adjusted payments.</p>
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="font-medium text-[#1A1A1A] mb-3">Tenant Benefits</h3>
+                <p className="text-sm text-[#5A5F52] leading-relaxed mb-3">
+                  Community solar subscriptions reduce tenant energy costs with no installation required on their part.
+                </p>
+                <p className="text-sm text-[#5A5F52] leading-relaxed">
+                  Competitive advantage in attracting and retaining quality tenants.
+                </p>
               </div>
             </div>
           </div>
