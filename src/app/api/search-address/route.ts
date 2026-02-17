@@ -1,0 +1,272 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
+import { join } from 'path';
+
+interface PropertyListing {
+  address: string;
+  slug: string;
+  brokerName?: string;
+  brokerCompany?: string;
+  brokerEmail?: string;
+  brokerPhone?: string;
+  propertyType?: string;
+  sqft?: number;
+  listingUrl?: string;
+  listingDate?: string;
+  description?: string;
+  price?: string;
+  searchResults: string[];
+  scrapedContent?: string;
+  createdAt: string;
+}
+
+function createSlug(address: string): string {
+  return address
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .trim();
+}
+
+async function searchWithFirecrawl(address: string): Promise<any> {
+  const apiKey = process.env.FIRECRAWL_API_KEY;
+
+  if (!apiKey) {
+    console.warn('FIRECRAWL_API_KEY not found, using mock data');
+    return {
+      searchResults: [
+        `"${address}" site:loopnet.com`,
+        `"${address}" site:crexi.com`,
+        `"${address}" commercial real estate listing`,
+      ],
+      listingUrls: [],
+      content: null,
+    };
+  }
+
+  try {
+    // Search for the address across multiple broker platforms
+    const searchQueries = [
+      `"${address}" site:loopnet.com`,
+      `"${address}" site:crexi.com`,
+      `"${address}" site:cbre.com`,
+      `"${address}" site:cushmanwakefield.com`,
+      `"${address}" site:jll.com`,
+      `"${address}" commercial real estate broker listing`,
+    ];
+
+    // Use Firecrawl's search endpoint
+    const searchResponse = await fetch('https://api.firecrawl.dev/v1/search', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: `"${address}" commercial real estate listing broker`,
+        limit: 5,
+      }),
+    });
+
+    if (!searchResponse.ok) {
+      throw new Error(`Firecrawl search failed: ${searchResponse.statusText}`);
+    }
+
+    const searchData = await searchResponse.json();
+    const listingUrls = searchData.data?.map((result: any) => result.url) || [];
+
+    // If we found listings, scrape the first one for details
+    let scrapedData = null;
+    if (listingUrls.length > 0) {
+      const scrapeResponse = await fetch('https://api.firecrawl.dev/v1/scrape', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          url: listingUrls[0],
+          formats: ['markdown', 'html'],
+        }),
+      });
+
+      if (scrapeResponse.ok) {
+        scrapedData = await scrapeResponse.json();
+      }
+    }
+
+    return {
+      searchResults: searchQueries,
+      listingUrls,
+      content: scrapedData,
+    };
+  } catch (error) {
+    console.error('Firecrawl error:', error);
+    return {
+      searchResults: [
+        `"${address}" site:loopnet.com`,
+        `"${address}" commercial real estate listing`,
+      ],
+      listingUrls: [],
+      content: null,
+    };
+  }
+}
+
+function extractBrokerInfo(content: any, address: string): Partial<PropertyListing> {
+  if (!content?.data?.markdown) {
+    return {
+      brokerName: 'To be determined',
+      brokerCompany: 'Search for broker',
+      propertyType: 'Commercial',
+    };
+  }
+
+  const markdown = content.data.markdown;
+  const extracted: Partial<PropertyListing> = {};
+
+  // Extract broker name (look for common patterns)
+  const brokerPatterns = [
+    /(?:Broker|Agent|Representative):\s*([^\n]+)/i,
+    /(?:Contact|Listed by):\s*([^\n]+)/i,
+    /([A-Z][a-z]+ [A-Z][a-z]+)\s*(?:CCIM|SIOR|MAI)/i,
+  ];
+
+  for (const pattern of brokerPatterns) {
+    const match = markdown.match(pattern);
+    if (match) {
+      extracted.brokerName = match[1].trim();
+      break;
+    }
+  }
+
+  // Extract company name
+  const companyPatterns = [
+    /(?:Company|Firm|Brokerage):\s*([^\n]+)/i,
+    /(CBRE|Colliers|Cushman & Wakefield|JLL|Marcus & Millichap|Newmark)/i,
+  ];
+
+  for (const pattern of companyPatterns) {
+    const match = markdown.match(pattern);
+    if (match) {
+      extracted.brokerCompany = match[1].trim();
+      break;
+    }
+  }
+
+  // Extract email
+  const emailMatch = markdown.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/);
+  if (emailMatch) {
+    extracted.brokerEmail = emailMatch[1];
+  }
+
+  // Extract phone
+  const phoneMatch = markdown.match(/(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})/);
+  if (phoneMatch) {
+    extracted.brokerPhone = phoneMatch[1];
+  }
+
+  // Extract square footage
+  const sqftMatch = markdown.match(/([\d,]+)\s*(?:SF|sq\.?\s*ft\.?|square feet)/i);
+  if (sqftMatch) {
+    extracted.sqft = parseInt(sqftMatch[1].replace(/,/g, ''));
+  }
+
+  // Extract property type
+  const typeMatch = markdown.match(/(?:Property Type|Building Type|Type):\s*([^\n]+)/i);
+  if (typeMatch) {
+    extracted.propertyType = typeMatch[1].trim();
+  }
+
+  // Extract price
+  const priceMatch = markdown.match(/\$[\d,]+(?:\/(?:SF|mo|yr|month|year))?/i);
+  if (priceMatch) {
+    extracted.price = priceMatch[0];
+  }
+
+  return extracted;
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const { address } = await request.json();
+
+    if (!address || typeof address !== 'string') {
+      return NextResponse.json(
+        { error: 'Valid address is required' },
+        { status: 400 }
+      );
+    }
+
+    const slug = createSlug(address);
+
+    // Check if property already exists
+    const propertiesDir = join(process.cwd(), 'data', 'properties');
+    const propertyFile = join(propertiesDir, `${slug}.json`);
+
+    if (existsSync(propertyFile)) {
+      // Property already searched
+      return NextResponse.json({ slug, exists: true });
+    }
+
+    // Search for broker listings with Firecrawl
+    const firecrawlResults = await searchWithFirecrawl(address);
+
+    // Extract broker information from scraped content
+    const extractedInfo = extractBrokerInfo(firecrawlResults.content, address);
+
+    // Create property listing data
+    const propertyListing: PropertyListing = {
+      address,
+      slug,
+      searchResults: firecrawlResults.searchResults,
+      listingUrl: firecrawlResults.listingUrls[0],
+      scrapedContent: firecrawlResults.content?.data?.markdown?.substring(0, 5000), // Limit stored content
+      createdAt: new Date().toISOString(),
+      ...extractedInfo,
+    };
+
+    // Ensure properties directory exists
+    if (!existsSync(propertiesDir)) {
+      mkdirSync(propertiesDir, { recursive: true });
+    }
+
+    // Save property data
+    writeFileSync(propertyFile, JSON.stringify(propertyListing, null, 2));
+
+    // Update properties index
+    const indexFile = join(propertiesDir, 'index.json');
+    let propertiesIndex: PropertyListing[] = [];
+
+    if (existsSync(indexFile)) {
+      propertiesIndex = JSON.parse(readFileSync(indexFile, 'utf-8'));
+    }
+
+    propertiesIndex.push({
+      address: propertyListing.address,
+      slug: propertyListing.slug,
+      brokerName: propertyListing.brokerName,
+      brokerCompany: propertyListing.brokerCompany,
+      propertyType: propertyListing.propertyType,
+      sqft: propertyListing.sqft,
+      createdAt: propertyListing.createdAt,
+      searchResults: [],
+    });
+
+    writeFileSync(indexFile, JSON.stringify(propertiesIndex, null, 2));
+
+    return NextResponse.json({
+      slug,
+      exists: false,
+      message: 'Property search completed',
+      found: firecrawlResults.listingUrls.length > 0,
+    });
+  } catch (error) {
+    console.error('Error searching address:', error);
+    return NextResponse.json(
+      { error: 'Failed to search address', details: error instanceof Error ? error.message : 'Unknown error' },
+      { status: 500 }
+    );
+  }
+}

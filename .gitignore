@@ -40,3 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .firecrawl/
+
+# sensitive data - customer information and scraped properties
+data/properties/
+data/*-results.json
+data/Huggable*.csv

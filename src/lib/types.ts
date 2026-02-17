@@ -64,3 +64,24 @@ export interface ReferralFee {
   low: number;
   high: number;
 }
+
+export interface PropertyListing {
+  address: string;
+  slug: string;
+  brokerName?: string;
+  brokerCompany?: string;
+  brokerEmail?: string;
+  brokerPhone?: string;
+  propertyType?: string;
+  sqft?: number;
+  listingUrl?: string;
+  listingDate?: string;
+  description?: string;
+  price?: string;
+  searchResults: string[];
+  createdAt: string;
+}
+
+export interface PropertiesIndex {
+  properties: PropertyListing[];
+}
