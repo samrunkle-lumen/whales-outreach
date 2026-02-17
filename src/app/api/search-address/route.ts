@@ -70,6 +70,8 @@ async function searchWithFirecrawl(address: string): Promise<any> {
     });
 
     if (!searchResponse.ok) {
+      const errorText = await searchResponse.text();
+      console.error('Firecrawl search failed:', searchResponse.status, errorText);
       throw new Error(`Firecrawl search failed: ${searchResponse.statusText}`);
     }
 
@@ -102,10 +104,12 @@ async function searchWithFirecrawl(address: string): Promise<any> {
       content: scrapedData,
     };
   } catch (error) {
-    console.error('Firecrawl error:', error);
+    console.error('Firecrawl error:', error instanceof Error ? error.message : error);
+    // Return fallback data even on error - still create the property
     return {
       searchResults: [
         `"${address}" site:loopnet.com`,
+        `"${address}" site:crexi.com`,
         `"${address}" commercial real estate listing`,
       ],
       listingUrls: [],

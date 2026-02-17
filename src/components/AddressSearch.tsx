@@ -36,10 +36,17 @@ export function AddressSearch() {
       }
 
       if (data.slug) {
-        // Redirect to the property page
-        router.push(`/property/${data.slug}`);
+        // Show success message before redirect
+        if (data.exists) {
+          setError('');
+          router.push(`/property/${data.slug}`);
+        } else {
+          // New property created
+          setError('');
+          router.push(`/property/${data.slug}`);
+        }
       } else {
-        setError('No broker listings found for this address');
+        setError('Unable to process this address. Please try again.');
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
@@ -85,9 +92,15 @@ export function AddressSearch() {
           </div>
         </div>
 
-        {error && (
+        {error && !error.includes('Success') && (
           <div className="p-4 bg-red-50 border-2 border-red-200 rounded-lg">
-            <p className="text-red-800 text-sm">{error}</p>
+            <p className="text-red-800 text-sm font-medium">{error}</p>
+          </div>
+        )}
+
+        {error && error.includes('Success') && (
+          <div className="p-4 bg-green-50 border-2 border-green-200 rounded-lg">
+            <p className="text-green-800 text-sm font-medium">{error}</p>
           </div>
         )}
 

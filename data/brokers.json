@@ -54,6 +54,11 @@
       "name": "NAI Mertz",
       "slug": "nai-mertz",
       "market": "New Jersey"
+    },
+    {
+      "name": "Unassigned Properties",
+      "slug": "unassigned-properties",
+      "market": "Huggable Whales (IL, NJ, MD, MA)"
     }
   ],
   "brokers": [
