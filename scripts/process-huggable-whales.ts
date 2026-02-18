@@ -143,55 +143,52 @@ async function main() {
 
     console.log(`[${processed}/${addressMap.size}] Processing: ${address}`);
 
-    // Search the address
-    const result = await searchAddress(address);
+    // Create slug to check if property already exists
+    const slug = address
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .trim();
 
-    if (result && result.slug) {
-      // Load the created property data
-      const propertyPath = join(process.cwd(), 'data', 'properties', `${result.slug}.json`);
+    const propertyPath = join(process.cwd(), 'data', 'properties', `${slug}.json`);
 
-      if (existsSync(propertyPath)) {
-        const propertyData: PropertyListing = JSON.parse(readFileSync(propertyPath, 'utf-8'));
+    // If property already exists, just update it without calling API
+    if (existsSync(propertyPath)) {
+      const propertyData: PropertyListing = JSON.parse(readFileSync(propertyPath, 'utf-8'));
 
-        // Update property to mark it as from Huggable Whales
-        propertyData.source = 'Huggable Whales';
-        propertyData.customerId = customerIds.join(','); // Store all customer IDs for this address
-        writeFileSync(propertyPath, JSON.stringify(propertyData, null, 2));
+      // Update property to mark it as from Huggable Whales
+      propertyData.source = 'Huggable Whales';
+      propertyData.customerId = customerIds.join(',');
+      writeFileSync(propertyPath, JSON.stringify(propertyData, null, 2));
 
-        // Check if broker was found and matches existing brokers
-        const brokerCompany = propertyData.brokerCompany?.toLowerCase();
-        const isMatched = brokerCompany &&
-                         brokerCompany !== 'search for broker' &&
-                         existingBrokers.has(brokerCompany);
+      // Check if broker was found and matches existing brokers
+      const brokerCompany = propertyData.brokerCompany?.toLowerCase();
+      const isMatched = brokerCompany &&
+                       brokerCompany !== 'search for broker' &&
+                       existingBrokers.has(brokerCompany);
 
-        const match: BrokerMatch = {
-          address,
-          customerId: customerIds.join(','),
-          brokerName: propertyData.brokerName,
-          brokerCompany: propertyData.brokerCompany,
-          matched: !!isMatched,
-        };
+      const match: BrokerMatch = {
+        address,
+        customerId: customerIds.join(','),
+        brokerName: propertyData.brokerName,
+        brokerCompany: propertyData.brokerCompany,
+        matched: !!isMatched,
+      };
 
-        results.push(match);
+      results.push(match);
 
-        if (isMatched) {
-          matched.push(match);
-          console.log(`  ✅ Matched to existing broker: ${propertyData.brokerCompany}`);
-        } else {
-          unassigned.push(match);
-          console.log(`  ⚪ Unassigned (no broker match)`);
-        }
+      if (isMatched) {
+        matched.push(match);
+        console.log(`  ✅ Matched to existing broker: ${propertyData.brokerCompany}`);
       } else {
-        console.log(`  ⚠️  Property file not found`);
+        unassigned.push(match);
+        console.log(`  ⚪ Unassigned (sqft: ${propertyData.sqft?.toLocaleString() || 'N/A'})`);
       }
     } else {
+      // Property doesn't exist, would need to scrape it
+      console.log(`  ⚠️  Property file not found - skipping new scrape`);
       errors++;
-      console.log(`  ❌ Search failed`);
-    }
-
-    // Rate limiting - wait 2 seconds between requests
-    if (processed < addressMap.size) {
-      await sleep(2000);
     }
   }
 
@@ -231,6 +228,33 @@ async function main() {
 
   // Create/update Unassigned Properties broker profile
   if (unassigned.length > 0) {
+    // Load actual property data for each unassigned property
+    const buildings = unassigned.map(prop => {
+      const slug = prop.address
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .trim();
+
+      const propertyPath = join(process.cwd(), 'data', 'properties', `${slug}.json`);
+
+      if (existsSync(propertyPath)) {
+        const propertyData: PropertyListing = JSON.parse(readFileSync(propertyPath, 'utf-8'));
+        return {
+          address: prop.address,
+          sqft: propertyData.sqft || 0,
+          propertyType: propertyData.propertyType || 'Commercial',
+        };
+      }
+
+      return {
+        address: prop.address,
+        sqft: 0,
+        propertyType: 'Commercial',
+      };
+    });
+
     const unassignedBroker = {
       slug: 'unassigned-properties',
       name: 'Unassigned',
@@ -240,11 +264,7 @@ async function main() {
       email: '',
       phone: '',
       title: 'Huggable Whales - Unassigned',
-      buildings: unassigned.map(prop => ({
-        address: prop.address,
-        sqft: 0,
-        propertyType: 'To be determined',
-      })),
+      buildings,
     };
 
     // Update brokers.json to include the unassigned broker

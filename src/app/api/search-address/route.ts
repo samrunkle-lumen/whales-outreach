@@ -165,28 +165,64 @@ function extractBrokerInfo(content: any, address: string): Partial<PropertyListi
     extracted.brokerEmail = emailMatch[1];
   }
 
-  // Extract phone
-  const phoneMatch = markdown.match(/(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})/);
+  // Extract phone (more strict to avoid parcel IDs)
+  const phoneMatch = markdown.match(/(?:Phone|Tel|Call|Contact):\s*(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})|(\(\d{3}\)\s*\d{3}[-.\s]?\d{4})/i);
   if (phoneMatch) {
-    extracted.brokerPhone = phoneMatch[1];
+    extracted.brokerPhone = (phoneMatch[1] || phoneMatch[2]).trim();
   }
 
-  // Extract square footage
-  const sqftMatch = markdown.match(/([\d,]+)\s*(?:SF|sq\.?\s*ft\.?|square feet)/i);
-  if (sqftMatch) {
-    extracted.sqft = parseInt(sqftMatch[1].replace(/,/g, ''));
+  // Extract square footage - handle LoopNet "TOTAL SIZE" pattern and other formats
+  const sqftPatterns = [
+    /TOTAL\s+SIZE\s*\n+\s*([\d,]+)\s*SF/i,  // LoopNet: "TOTAL SIZE\n\n578,873 SF"
+    /Building\s+Size[:\s]+([\d,]+)\s*(?:SF|sq\.?\s*ft\.?)/i,
+    /([\d,]+)\s*(?:SF|sq\.?\s*ft\.?|square\s+feet)\s*(?:available|total|building)/i,
+    /([\d,]+)\s*(?:SF|sq\.?\s*ft\.?)/i, // Generic fallback
+  ];
+
+  for (const pattern of sqftPatterns) {
+    const match = markdown.match(pattern);
+    if (match && match[1]) {
+      const sqftValue = parseInt(match[1].replace(/,/g, ''));
+      // Sanity check - must be reasonable building size (100 SF - 10M SF)
+      if (sqftValue >= 100 && sqftValue <= 10000000) {
+        extracted.sqft = sqftValue;
+        break;
+      }
+    }
   }
 
-  // Extract property type
-  const typeMatch = markdown.match(/(?:Property Type|Building Type|Type):\s*([^\n]+)/i);
-  if (typeMatch) {
-    extracted.propertyType = typeMatch[1].trim();
+  // Extract property type - handle LoopNet "Land Use" and other patterns
+  const typePatterns = [
+    /Land\s+Use\s*\n+\s*([^\n]+)/i,  // LoopNet: "Land Use\n\nWarehouse"
+    /(?:Property\s+Type|Building\s+Type|Type)[:\s]+([^\n]+)/i,
+    /(?:Class|Category)[:\s]+([A-Z][^\n,]+)/i,
+  ];
+
+  for (const pattern of typePatterns) {
+    const match = markdown.match(pattern);
+    if (match && match[1]) {
+      const type = match[1].trim();
+      // Filter out common non-property-type values
+      if (type && type.length > 2 && type.length < 50 && !type.match(/^\d+$/)) {
+        extracted.propertyType = type;
+        break;
+      }
+    }
   }
 
-  // Extract price
-  const priceMatch = markdown.match(/\$[\d,]+(?:\/(?:SF|mo|yr|month|year))?/i);
-  if (priceMatch) {
-    extracted.price = priceMatch[0];
+  // Extract price - match full price with decimals and units
+  const pricePatterns = [
+    /\$([\d,]+\.?\d*)\s*(?:SF\/YR|per\s+SF|\/SF)/i,  // "$14.95 SF/YR"
+    /\$([\d,]+\.?\d*)\s*\/\s*(?:mo|month|yr|year)/i,
+    /(?:Price|Asking|Rent)[:\s]+\$([\d,]+\.?\d*)/i,
+  ];
+
+  for (const pattern of pricePatterns) {
+    const match = markdown.match(pattern);
+    if (match) {
+      extracted.price = match[0];
+      break;
+    }
   }
 
   return extracted;
