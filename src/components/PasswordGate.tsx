@@ -13,7 +13,7 @@ export function PasswordGate({ children }: PasswordGateProps) {
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const CORRECT_PASSWORD = "Br0K3rch4nN3L$";
+  const CORRECT_PASSWORD = "Wh4L3$";
 
   useEffect(() => {
     // Check if already authenticated

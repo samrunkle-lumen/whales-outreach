@@ -1,5 +1,5 @@
 {
-  "name": "lumen-outreach",
+  "name": "whales-outreach",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "convert-to-owners": "tsx scripts/convert-to-owners.ts",
+    "process-owners-csv": "tsx scripts/process-owners-csv.ts",
     "process-whales": "tsx scripts/process-huggable-whales.ts",
     "process-whales-test": "tsx scripts/process-huggable-whales-test.ts",
     "reprocess-properties": "tsx scripts/reprocess-properties.ts",

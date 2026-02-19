@@ -13,8 +13,8 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Lumen Energy | Solar Broker",
-  description: "The Modern Solar Broker - Unlock the value of your commercial rooftops",
+  title: "Whales Outreach",
+  description: "Property owner outreach and tracking system",
   icons: {
     icon: "/favicon.svg",
   },

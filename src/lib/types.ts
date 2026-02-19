@@ -1,3 +1,16 @@
+export interface Property {
+  address: string;
+  sqft: number;
+  propertyType: string;
+  city?: string;
+  state?: string;
+  customerId?: string;
+  systemSize?: number; // kW
+  leaseValue?: number; // Annual NOI
+  grossRoofArea?: number; // ft²
+  utility?: string;
+}
+
 export interface Building {
   address: string;
   name?: string;
@@ -29,6 +42,17 @@ export interface Firm {
   name: string;
   slug: string;
   market: string;
+}
+
+export interface Owner {
+  name: string;
+  slug: string;
+  propertyCount: number;
+  properties: Property[];
+}
+
+export interface OwnersData {
+  owners: Owner[];
 }
 
 export interface BrokersData {

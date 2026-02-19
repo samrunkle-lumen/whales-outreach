@@ -1,7 +1,8 @@
-import { Building, BuildingCalculation, PortfolioSummary, ReferralFee } from "./types";
+import { Building, Property, BuildingCalculation, PortfolioSummary, ReferralFee } from "./types";
 
-// Usable roof percentage range (40-70% of building sqft is usable for solar)
-const USABLE_ROOF_PERCENTAGE = 0.80;
+// Usable roof percentage by property type
+const USABLE_ROOF_PERCENTAGE_INDUSTRIAL = 0.80;
+const USABLE_ROOF_PERCENTAGE_OTHER = 0.50;
 
 // Lumen revenue per watt for referral fee calculation
 const LUMEN_REVENUE_PER_WATT = 0.15;
@@ -158,7 +159,19 @@ export function getUtilityFullName(utility: string): string {
   return UTILITY_RATES[utility]?.fullName || utility;
 }
 
-export function calculateBuilding(building: Building): BuildingCalculation {
+function isIndustrialProperty(propertyType?: string): boolean {
+  if (!propertyType) return false;
+  const type = propertyType.toLowerCase();
+  return type.includes('industrial') || type.includes('warehouse') || type.includes('manufacturing');
+}
+
+function getUsableRoofPercentage(propertyType?: string): number {
+  return isIndustrialProperty(propertyType)
+    ? USABLE_ROOF_PERCENTAGE_INDUSTRIAL
+    : USABLE_ROOF_PERCENTAGE_OTHER;
+}
+
+export function calculateBuilding(building: Building | Property): BuildingCalculation {
   // Extract state from address
   const addressParts = building.address.split(",");
   const lastPart = addressParts[addressParts.length - 1]?.trim() || "";
@@ -171,16 +184,46 @@ export function calculateBuilding(building: Building): BuildingCalculation {
   const utility = building.utility || getUtilityForLocation(state, city);
   const { lowRate, highRate } = getLeaseRates(utility);
 
-  // Calculate usable roof area
-  const usableRoofSqft = Math.round(building.sqft * USABLE_ROOF_PERCENTAGE);
+  // Get property type (Property has propertyType, Building has propertyType as optional)
+  const propertyType = 'propertyType' in building ? building.propertyType : (building as any).propertyType;
 
-  // Calculate solar revenue using $/SF/year
-  const annualIncomeLow = Math.round(usableRoofSqft * lowRate);
-  const annualIncomeHigh = Math.round(usableRoofSqft * highRate);
+  // Calculate usable roof area using property-type-specific heuristic
+  const usableRoofPercentage = getUsableRoofPercentage(propertyType);
+  const usableRoofSqft = Math.round(building.sqft * usableRoofPercentage);
 
-  // Keep system size for referral calculations (100 SF per kW)
-  const systemSizeLow = Math.round(usableRoofSqft * 0.5 / 100);
-  const systemSizeHigh = Math.round(usableRoofSqft / 100);
+  // If property has CSV data, use it; otherwise calculate
+  const hasCSVData = 'leaseValue' in building && building.leaseValue && building.leaseValue > 0;
+
+  let annualIncomeLow: number;
+  let annualIncomeHigh: number;
+  let systemSizeLow: number;
+  let systemSizeHigh: number;
+
+  if (hasCSVData) {
+    // Use CSV lease value (CS - NOI) as the income
+    const csvLeaseValue = (building as Property).leaseValue || 0;
+    annualIncomeLow = Math.round(csvLeaseValue * 0.9); // 10% variance for range
+    annualIncomeHigh = Math.round(csvLeaseValue * 1.1);
+
+    // Use CSV system size if available
+    const csvSystemSize = (building as Property).systemSize || 0;
+    if (csvSystemSize > 0) {
+      systemSizeLow = Math.round(csvSystemSize * 0.9);
+      systemSizeHigh = Math.round(csvSystemSize * 1.1);
+    } else {
+      // Calculate from usable roof (100 SF per kW)
+      systemSizeLow = Math.round(usableRoofSqft * 0.5 / 100);
+      systemSizeHigh = Math.round(usableRoofSqft / 100);
+    }
+  } else {
+    // Calculate solar revenue using $/SF/year
+    annualIncomeLow = Math.round(usableRoofSqft * lowRate);
+    annualIncomeHigh = Math.round(usableRoofSqft * highRate);
+
+    // Calculate system size (100 SF per kW)
+    systemSizeLow = Math.round(usableRoofSqft * 0.5 / 100);
+    systemSizeHigh = Math.round(usableRoofSqft / 100);
+  }
 
   // Calculate property value uplift at cap rate
   const valueUpliftLow = Math.round(annualIncomeLow / CAP_RATE);
@@ -203,7 +246,7 @@ export function calculateBuilding(building: Building): BuildingCalculation {
   };
 }
 
-export function calculatePortfolio(buildings: Building[]): PortfolioSummary {
+export function calculatePortfolio(buildings: (Building | Property)[]): PortfolioSummary {
   const calculatedBuildings = buildings.map(calculateBuilding);
 
   const totalLow = calculatedBuildings.reduce((sum, b) => sum + b.annualIncomeLow, 0);
