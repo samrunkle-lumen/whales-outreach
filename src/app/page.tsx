@@ -32,7 +32,7 @@ export default function Home() {
               Property Owner Pipeline
             </h1>
             <p className="text-lg text-[#5A5F52] max-w-2xl mb-8">
-              Track and manage outreach for 1,641 high-value commercial properties across {data.owners.length} property owners.
+              Track and manage outreach for {formatNumber(allProperties.length)} high-value commercial properties across {formatNumber(data.owners.length)} property owners.
               Organized by owner for targeted contact strategies.
             </p>
 
