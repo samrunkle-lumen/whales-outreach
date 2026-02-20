@@ -462,7 +462,7 @@ export async function POST(request: NextRequest) {
         {
           success: false,
           message: "Invalid input",
-          details: validationResult.error.errors
+          details: validationResult.error.issues
         },
         { status: 400 }
       );
