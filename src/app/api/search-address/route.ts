@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
+import { z } from 'zod';
+import { checkRateLimit, getClientIP } from '@/lib/ratelimit';
 
 interface PropertyListing {
   address: string;
@@ -56,18 +58,27 @@ async function searchWithFirecrawl(address: string): Promise<any> {
       `"${address}" commercial real estate broker listing`,
     ];
 
-    // Use Firecrawl's search endpoint
-    const searchResponse = await fetch('https://api.firecrawl.dev/v1/search', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: `"${address}" commercial real estate listing broker`,
-        limit: 5,
-      }),
-    });
+    // Use Firecrawl's search endpoint with timeout
+    const searchController = new AbortController();
+    const searchTimeout = setTimeout(() => searchController.abort(), 10000); // 10s timeout
+
+    let searchResponse;
+    try {
+      searchResponse = await fetch('https://api.firecrawl.dev/v1/search', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          query: `"${address}" commercial real estate listing broker`,
+          limit: 5,
+        }),
+        signal: searchController.signal,
+      });
+    } finally {
+      clearTimeout(searchTimeout);
+    }
 
     if (!searchResponse.ok) {
       const errorText = await searchResponse.text();
@@ -81,20 +92,34 @@ async function searchWithFirecrawl(address: string): Promise<any> {
     // If we found listings, scrape the first one for details
     let scrapedData = null;
     if (listingUrls.length > 0) {
-      const scrapeResponse = await fetch('https://api.firecrawl.dev/v1/scrape', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          url: listingUrls[0],
-          formats: ['markdown', 'html'],
-        }),
-      });
+      const scrapeController = new AbortController();
+      const scrapeTimeout = setTimeout(() => scrapeController.abort(), 15000); // 15s timeout
 
-      if (scrapeResponse.ok) {
-        scrapedData = await scrapeResponse.json();
+      try {
+        const scrapeResponse = await fetch('https://api.firecrawl.dev/v1/scrape', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            url: listingUrls[0],
+            formats: ['markdown', 'html'],
+          }),
+          signal: scrapeController.signal,
+        });
+
+        if (scrapeResponse.ok) {
+          scrapedData = await scrapeResponse.json();
+        }
+      } catch (error) {
+        if (error instanceof Error && error.name === 'AbortError') {
+          console.warn('Scrape request timed out');
+        } else {
+          throw error;
+        }
+      } finally {
+        clearTimeout(scrapeTimeout);
       }
     }
 
@@ -117,6 +142,14 @@ async function searchWithFirecrawl(address: string): Promise<any> {
     };
   }
 }
+
+// Input validation schema
+const addressSchema = z.object({
+  address: z.string()
+    .min(5, 'Address too short')
+    .max(200, 'Address too long')
+    .regex(/^[a-zA-Z0-9\s,.\-#]+$/, 'Invalid characters in address'),
+});
 
 function extractBrokerInfo(content: any, address: string): Partial<PropertyListing> {
   if (!content?.data?.markdown) {
@@ -230,14 +263,42 @@ function extractBrokerInfo(content: any, address: string): Partial<PropertyListi
 
 export async function POST(request: NextRequest) {
   try {
-    const { address } = await request.json();
+    // Rate limiting - 10 requests per minute per IP
+    const clientIP = getClientIP(request);
+    const rateLimitResult = checkRateLimit(clientIP, {
+      maxRequests: 10,
+      windowMs: 60 * 1000, // 1 minute
+    });
 
-    if (!address || typeof address !== 'string') {
+    if (!rateLimitResult.success) {
       return NextResponse.json(
-        { error: 'Valid address is required' },
+        { error: 'Too many requests. Please try again later.' },
+        {
+          status: 429,
+          headers: {
+            'X-RateLimit-Limit': rateLimitResult.limit.toString(),
+            'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
+            'X-RateLimit-Reset': new Date(rateLimitResult.reset).toISOString(),
+          }
+        }
+      );
+    }
+
+    const body = await request.json();
+
+    // Validate input
+    const validationResult = addressSchema.safeParse(body);
+    if (!validationResult.success) {
+      return NextResponse.json(
+        {
+          error: 'Invalid input',
+          details: validationResult.error.errors
+        },
         { status: 400 }
       );
     }
+
+    const { address } = validationResult.data;
 
     const slug = createSlug(address);
 

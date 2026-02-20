@@ -46,11 +46,17 @@ function formatMW(kw: number): string {
   return `${kw} kW`;
 }
 
+// Generate only buildings from top 10 brokers at build time
 export async function generateStaticParams() {
   const data = brokersData as BrokersData;
   const params: { slug: string; buildingSlug: string }[] = [];
 
-  for (const broker of data.brokers) {
+  // Sort brokers by building count and take top 10
+  const topBrokers = data.brokers
+    .sort((a, b) => b.buildings.length - a.buildings.length)
+    .slice(0, 10);
+
+  for (const broker of topBrokers) {
     broker.buildings.forEach((building, index) => {
       params.push({
         slug: broker.slug,
@@ -61,6 +67,9 @@ export async function generateStaticParams() {
 
   return params;
 }
+
+// Allow dynamic params for all other buildings
+export const dynamicParams = true;
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug, buildingSlug } = await params;

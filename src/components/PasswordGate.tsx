@@ -12,8 +12,7 @@ export function PasswordGate({ children }: PasswordGateProps) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
-  const CORRECT_PASSWORD = "Wh4L3$";
+  const [isVerifying, setIsVerifying] = useState(false);
 
   useEffect(() => {
     // Check if already authenticated
@@ -24,15 +23,35 @@ export function PasswordGate({ children }: PasswordGateProps) {
     setIsLoading(false);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === CORRECT_PASSWORD) {
-      localStorage.setItem("lumen-auth", "authenticated");
-      setIsAuthenticated(true);
-      setError(false);
-    } else {
+    setIsVerifying(true);
+    setError(false);
+
+    try {
+      const response = await fetch("/api/auth/verify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ password }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        localStorage.setItem("lumen-auth", "authenticated");
+        setIsAuthenticated(true);
+      } else {
+        setError(true);
+        setPassword("");
+      }
+    } catch (error) {
+      console.error("Authentication error:", error);
       setError(true);
       setPassword("");
+    } finally {
+      setIsVerifying(false);
     }
   };
 
@@ -79,12 +98,20 @@ export function PasswordGate({ children }: PasswordGateProps) {
             />
             <button
               type="submit"
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-[#1A1A1A] hover:text-[#5A5F52] transition-colors"
+              disabled={isVerifying}
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-[#1A1A1A] hover:text-[#5A5F52] transition-colors disabled:opacity-50"
               aria-label="Submit"
             >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+              {isVerifying ? (
+                <svg className="w-6 h-6 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+              ) : (
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              )}
             </button>
           </div>
           {error && (

@@ -1,10 +1,85 @@
 import { NextRequest, NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
+import { z } from "zod";
+import { checkRateLimit, getClientIP } from "@/lib/ratelimit";
 
 // API Keys from environment
 const FIRECRAWL_API_KEY = process.env.FIRECRAWL_API_KEY;
 const APOLLO_API_KEY = process.env.APOLLO_API_KEY;
+
+// Input validation schema
+const scrapeBrokersSchema = z.object({
+  firmName: z.string()
+    .min(2, 'Firm name too short')
+    .max(100, 'Firm name too long')
+    .regex(/^[a-zA-Z0-9\s&.,'-]+$/, 'Invalid characters in firm name'),
+  markets: z.array(z.string().regex(/^[A-Z]{2}$/, 'Invalid state code'))
+    .min(1, 'At least one market required')
+    .max(10, 'Too many markets'),
+  website: z.string().url('Invalid website URL'),
+  brokerNames: z.array(z.string()).optional(),
+});
+
+// Validate external URLs to prevent SSRF attacks
+function validateExternalURL(urlString: string): boolean {
+  try {
+    const url = new URL(urlString);
+
+    // Only allow HTTP/HTTPS
+    if (!['http:', 'https:'].includes(url.protocol)) {
+      return false;
+    }
+
+    // Block internal IPs and localhost
+    const hostname = url.hostname.toLowerCase();
+
+    // Block localhost variations
+    if (
+      hostname === 'localhost' ||
+      hostname === '[::1]' ||
+      hostname === '0.0.0.0'
+    ) {
+      return false;
+    }
+
+    // Block private IP ranges (IPv4)
+    if (
+      hostname.startsWith('127.') ||
+      hostname.startsWith('192.168.') ||
+      hostname.startsWith('10.') ||
+      hostname.startsWith('172.16.') ||
+      hostname.startsWith('172.17.') ||
+      hostname.startsWith('172.18.') ||
+      hostname.startsWith('172.19.') ||
+      hostname.startsWith('172.2') ||
+      hostname.startsWith('172.30.') ||
+      hostname.startsWith('172.31.') ||
+      hostname.startsWith('169.254.')
+    ) {
+      return false;
+    }
+
+    // Whitelist approach - only allow known safe domains
+    const allowedDomains = [
+      'loopnet.com',
+      'crexi.com',
+      'costar.com',
+      'ten-x.com',
+      'commercialcafe.com',
+      'commercialsearch.com'
+    ];
+
+    // Check if hostname ends with any allowed domain
+    const isAllowed = allowedDomains.some(domain =>
+      hostname === domain || hostname.endsWith('.' + domain)
+    );
+
+    return isAllowed;
+  } catch {
+    return false;
+  }
+}
 
 interface ScrapedProperty {
   address: string;
@@ -179,6 +254,10 @@ async function scrapeWithFirecrawl(url: string): Promise<string | null> {
     throw new Error("FIRECRAWL_API_KEY not configured");
   }
 
+  // Set up timeout
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000); // 15s timeout
+
   try {
     const response = await fetch("https://api.firecrawl.dev/v1/scrape", {
       method: "POST",
@@ -190,6 +269,7 @@ async function scrapeWithFirecrawl(url: string): Promise<string | null> {
         url,
         formats: ["markdown"],
       }),
+      signal: controller.signal,
     });
 
     if (!response.ok) {
@@ -200,8 +280,14 @@ async function scrapeWithFirecrawl(url: string): Promise<string | null> {
     const data = await response.json();
     return data.data?.markdown || null;
   } catch (error) {
-    console.error("Firecrawl scrape error:", error);
+    if (error instanceof Error && error.name === 'AbortError') {
+      console.error("Firecrawl scrape timeout");
+    } else {
+      console.error("Firecrawl scrape error:", error);
+    }
     return null;
+  } finally {
+    clearTimeout(timeout);
   }
 }
 
@@ -214,6 +300,11 @@ async function searchPropertyUrls(
     throw new Error("FIRECRAWL_API_KEY not configured");
   }
 
+  // Validate baseUrl before proceeding
+  if (!validateExternalURL(baseUrl)) {
+    throw new Error("Invalid or disallowed base URL");
+  }
+
   const urls: string[] = [];
 
   // Build search queries
@@ -223,6 +314,10 @@ async function searchPropertyUrls(
   ]);
 
   for (const term of searchTerms) {
+    // Set up timeout for each search
+    const searchController = new AbortController();
+    const searchTimeout = setTimeout(() => searchController.abort(), 10000); // 10s timeout
+
     try {
       const response = await fetch("https://api.firecrawl.dev/v1/search", {
         method: "POST",
@@ -237,20 +332,28 @@ async function searchPropertyUrls(
             formats: ["markdown"],
           },
         }),
+        signal: searchController.signal,
       });
 
       if (response.ok) {
         const data = await response.json();
         if (data.data) {
           for (const result of data.data) {
-            if (result.url && result.url.includes(new URL(baseUrl).hostname)) {
+            // Validate each URL before adding
+            if (result.url && validateExternalURL(result.url) && result.url.includes(new URL(baseUrl).hostname)) {
               urls.push(result.url);
             }
           }
         }
       }
     } catch (error) {
-      console.error(`Search error for ${term}:`, error);
+      if (error instanceof Error && error.name === 'AbortError') {
+        console.error(`Search timeout for ${term}`);
+      } else {
+        console.error(`Search error for ${term}:`, error);
+      }
+    } finally {
+      clearTimeout(searchTimeout);
     }
   }
 
@@ -274,6 +377,10 @@ async function enrichWithApollo(
   const firstName = nameParts[0];
   const lastName = nameParts.slice(1).join(" ");
 
+  // Set up timeout
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000); // 5s timeout
+
   try {
     const response = await fetch("https://api.apollo.io/api/v1/people/match", {
       method: "POST",
@@ -287,6 +394,7 @@ async function enrichWithApollo(
         organization_name: firmName,
         domain: firmDomain,
       }),
+      signal: controller.signal,
     });
 
     if (response.ok) {
@@ -300,7 +408,13 @@ async function enrichWithApollo(
       }
     }
   } catch (error) {
-    console.error(`Apollo enrichment error for ${brokerName}:`, error);
+    if (error instanceof Error && error.name === 'AbortError') {
+      console.warn(`Apollo enrichment timeout for ${brokerName}`);
+    } else {
+      console.error(`Apollo enrichment error for ${brokerName}:`, error);
+    }
+  } finally {
+    clearTimeout(timeout);
   }
 
   return {};
@@ -318,12 +432,48 @@ function slugify(text: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { firmName, markets, website, brokerNames } = body;
+    // Rate limiting - 5 requests per 5 minutes per IP (scraping is expensive)
+    const clientIP = getClientIP(request);
+    const rateLimitResult = checkRateLimit(clientIP, {
+      maxRequests: 5,
+      windowMs: 5 * 60 * 1000, // 5 minutes
+    });
 
-    if (!firmName || !markets || !website) {
+    if (!rateLimitResult.success) {
       return NextResponse.json(
-        { success: false, message: "Missing required fields" },
+        { success: false, message: "Too many requests. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            'X-RateLimit-Limit': rateLimitResult.limit.toString(),
+            'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
+            'X-RateLimit-Reset': new Date(rateLimitResult.reset).toISOString(),
+          }
+        }
+      );
+    }
+
+    const body = await request.json();
+
+    // Validate input
+    const validationResult = scrapeBrokersSchema.safeParse(body);
+    if (!validationResult.success) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Invalid input",
+          details: validationResult.error.errors
+        },
+        { status: 400 }
+      );
+    }
+
+    const { firmName, markets, website, brokerNames } = validationResult.data;
+
+    // Validate website URL to prevent SSRF attacks
+    if (!validateExternalURL(website)) {
+      return NextResponse.json(
+        { success: false, message: "Invalid or disallowed website URL" },
         { status: 400 }
       );
     }
@@ -355,6 +505,13 @@ export async function POST(request: NextRequest) {
     const allProperties: ScrapedProperty[] = [];
     for (const url of propertyUrls.slice(0, 30)) {
       // Limit to 30 URLs
+
+      // Validate URL before scraping
+      if (!validateExternalURL(url)) {
+        errors.push(`Skipped invalid URL: ${url}`);
+        continue;
+      }
+
       try {
         const content = await scrapeWithFirecrawl(url);
         if (content) {

@@ -45,3 +45,4 @@ next-env.d.ts
 data/properties/
 data/*-results.json
 data/Huggable*.csv
+.env*.local

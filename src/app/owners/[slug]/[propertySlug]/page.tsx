@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SatelliteView } from "@/components/SatelliteView";
+import { PropertyPDFExport } from "@/components/PropertyPDFExport";
 import { calculateBuilding, formatCurrency, formatNumber, getUtilityFullName } from "@/lib/calculations";
 import { OwnersData, Property } from "@/lib/types";
 import ownersData from "@/../data/owners.json";
@@ -42,11 +44,17 @@ function findPropertyBySlug(
   };
 }
 
+// Generate only properties from top 10 owners at build time
 export async function generateStaticParams() {
   const data = ownersData as OwnersData;
   const params: { slug: string; propertySlug: string }[] = [];
 
-  data.owners.forEach((owner) => {
+  // Sort owners by property count and take top 10
+  const topOwners = data.owners
+    .sort((a, b) => b.propertyCount - a.propertyCount)
+    .slice(0, 10);
+
+  topOwners.forEach((owner) => {
     owner.properties.forEach((property, index) => {
       params.push({
         slug: owner.slug,
@@ -58,18 +66,21 @@ export async function generateStaticParams() {
   return params;
 }
 
+// Allow dynamic params for all other properties
+export const dynamicParams = true;
+
 export async function generateMetadata({ params }: PageProps) {
   const { slug, propertySlug } = await params;
   const result = findPropertyBySlug(slug, propertySlug);
 
   if (!result) {
     return {
-      title: "Not Found | Whales Outreach",
+      title: "Not Found | Lumen Energy",
     };
   }
 
   return {
-    title: `${result.property.address} | ${result.owner.name} | Whales Outreach`,
+    title: `${result.property.address} | ${result.owner.name} | Lumen Energy`,
     description: `Solar analysis for ${result.property.address}. Property owned by ${result.owner.name}. ${result.property.systemSize ? `System size: ${formatNumber(result.property.systemSize)} kW` : ''}`,
   };
 }
@@ -108,9 +119,28 @@ export default async function PropertyPage({ params }: PageProps) {
             <h1 className="display text-[clamp(36px,5vw,56px)] leading-[1.0] tracking-[-0.03em] text-[#1A1A1A] mb-6">
               {property.address}
             </h1>
-            <p className="text-lg text-[#5A5F52] max-w-2xl">
+            <p className="text-lg text-[#5A5F52] max-w-2xl mb-6">
               Solar opportunity analysis for this commercial property owned by {owner.name}.
             </p>
+
+            {/* PDF Export Button */}
+            <div className="flex gap-3">
+              <PropertyPDFExport
+                property={property}
+                calculation={calc}
+                owner={owner}
+                variant="outline"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Satellite View */}
+        <section className="px-6 md:px-12 py-8 md:py-12 border-b border-[#E7E8E3]">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="h-[400px] md:h-[500px] rounded-xl overflow-hidden border-2 border-[#E7E8E3]">
+              <SatelliteView address={property.address} />
+            </div>
           </div>
         </section>
 
@@ -195,25 +225,51 @@ export default async function PropertyPage({ params }: PageProps) {
                     ) : (
                       <div>
                         <p className="eyebrow text-[#5A5F52] text-xs mb-2">ESTIMATED ANNUAL REVENUE</p>
-                        <p className="display text-[28px] text-[#1A1A1A]">
-                          {formatCurrency(calc.annualIncomeLow)}
-                        </p>
-                        <p className="text-sm text-[#5A5F52] mt-1">
-                          to {formatCurrency(calc.annualIncomeHigh)}/year
-                        </p>
+                        {calc.annualIncomeLow === calc.annualIncomeHigh ? (
+                          <p className="display text-[28px] text-[#1A1A1A]">
+                            {formatCurrency(calc.annualIncomeLow)}
+                            <span className="text-[#5A5F52] text-lg">/yr</span>
+                          </p>
+                        ) : (
+                          <>
+                            <p className="display text-[28px] text-[#1A1A1A]">
+                              {formatCurrency(calc.annualIncomeLow)}
+                            </p>
+                            <p className="text-sm text-[#5A5F52] mt-1">
+                              to {formatCurrency(calc.annualIncomeHigh)}/year
+                            </p>
+                          </>
+                        )}
                       </div>
                     )}
 
                     {!property.systemSize && calc.systemSizeLow > 0 && (
                       <div>
                         <p className="eyebrow text-[#5A5F52] text-xs mb-2">ESTIMATED SYSTEM SIZE</p>
-                        <p className="text-[#1A1A1A] text-lg">
-                          {formatNumber(calc.systemSizeLow)}–{formatNumber(calc.systemSizeHigh)} kW
-                        </p>
+                        {calc.systemSizeLow === calc.systemSizeHigh ? (
+                          <p className="text-[#1A1A1A] text-lg">
+                            {formatNumber(calc.systemSizeLow)} kW
+                          </p>
+                        ) : (
+                          <p className="text-[#1A1A1A] text-lg">
+                            {formatNumber(calc.systemSizeLow)}–{formatNumber(calc.systemSizeHigh)} kW
+                          </p>
+                        )}
                       </div>
                     )}
 
                     <div className="pt-4 border-t border-[#E7E8E3]">
+                      <div className="mb-3">
+                        <p className="eyebrow text-[#5A5F52] text-xs mb-1">VALUE UPLIFT AT SALE</p>
+                        <p className="text-[22px] font-medium text-[#1A1A1A]">
+                          {property.leaseValue && property.leaseValue > 0
+                            ? formatCurrency(Math.round(property.leaseValue / 0.06))
+                            : calc.annualIncomeLow === calc.annualIncomeHigh
+                            ? formatCurrency(calc.valueUpliftLow)
+                            : `${formatCurrency(calc.valueUpliftLow)}–${formatCurrency(calc.valueUpliftHigh)}`}
+                          <span className="text-[#5A5F52] text-sm font-normal ml-2">at 6% cap</span>
+                        </p>
+                      </div>
                       <p className="text-sm text-[#5A5F52] leading-relaxed">
                         Transform unused rooftop space into predictable annual income without upfront costs through solar leasing.
                       </p>
@@ -225,25 +281,144 @@ export default async function PropertyPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Owner Context */}
-        <section className="px-6 md:px-12 py-12 md:py-16 bg-[#F8F8F6] border-t border-[#E7E8E3]">
+        {/* Why Solar Leasing */}
+        <section className="px-6 md:px-12 py-12 md:py-16 border-t border-[#E7E8E3]">
           <div className="max-w-[1200px] mx-auto">
-            <p className="eyebrow text-[#5A5F52] mb-3">PROPERTY OWNER</p>
-            <h2 className="display text-[28px] font-light tracking-[-0.02em] text-[#1A1A1A] mb-4">
-              Part of {owner.name} Portfolio
+            <h2 className="display text-[clamp(32px,4vw,42px)] leading-[1.0] tracking-[-0.03em] text-[#1A1A1A] mb-8">
+              Why Solar Leasing
             </h2>
-            <p className="text-[#5A5F52] mb-6">
-              This property is part of a larger portfolio with significant solar opportunity potential.
+
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              {/* Passive Income */}
+              <div className="bg-white border-2 border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="text-[20px] font-medium text-[#1A1A1A] mb-3">Passive Income, Zero Risk</h3>
+                <p className="text-[#5A5F52] leading-relaxed mb-4">
+                  Turn unused rooftop space into steady revenue with zero capital required and zero operational complexity.
+                </p>
+                <p className="text-[#5A5F52] leading-relaxed">
+                  20-25 year agreements with inflation-adjusted payments provide predictable, long-term cash flow.
+                </p>
+              </div>
+
+              {/* Property Value */}
+              <div className="bg-gradient-to-b from-[#FAFFFE] to-[#F5FFFC] border-2 border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="text-[20px] font-medium text-[#1A1A1A] mb-3">Increased Property Value</h3>
+                <p className="text-[#5A5F52] leading-relaxed mb-4">
+                  New NOI from solar lease income directly increases property value at sale. At a 6% cap rate, annual lease revenue adds substantial value to your asset.
+                </p>
+                <p className="text-[#5A5F52] leading-relaxed">
+                  ESG credentials improve marketability and attract institutional investors who prioritize sustainability.
+                </p>
+              </div>
+
+              {/* Tenant Benefits */}
+              <div className="bg-white border-2 border-[#E7E8E3] rounded-xl p-6">
+                <h3 className="text-[20px] font-medium text-[#1A1A1A] mb-3">Tenant Benefits</h3>
+                <p className="text-[#5A5F52] leading-relaxed mb-4">
+                  Community solar subscriptions reduce tenant energy costs with no installation required on their part.
+                </p>
+                <p className="text-[#5A5F52] leading-relaxed">
+                  Competitive advantage in attracting and retaining quality tenants.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How to Get Competitive Offers */}
+        <section className="px-6 md:px-12 py-12 md:py-16 bg-gradient-to-b from-[#FAFFFE] to-[#F5FFFC] border-t border-[#E7E8E3]">
+          <div className="max-w-[1200px] mx-auto">
+            <h2 className="display text-[clamp(32px,4vw,42px)] leading-[1.0] tracking-[-0.03em] text-[#1A1A1A] mb-6">
+              How to Get Competitive Offers
+            </h2>
+            <p className="text-lg text-[#5A5F52] max-w-3xl mb-8 leading-relaxed">
+              Lumen Energy is the modern solar broker, partnering with leading real estate owners to turn their rooftops into new revenue. We deliver rigorous portfolio analysis, create transparent competition among top developers, and provide white-glove service throughout.
             </p>
-            <Link
-              href={`/owners/${owner.slug}`}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#DFFF5E] text-[#1A1A1A] font-medium hover:bg-[#d4f54e] transition-colors rounded-lg border-2 border-[#1A1A1A]"
-            >
-              View Full Portfolio
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#DFFF5E] flex items-center justify-center flex-shrink-0">
+                    <span className="text-[#1A1A1A] font-bold">1</span>
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-[#1A1A1A] mb-2">Portfolio Analysis</h3>
+                    <p className="text-sm text-[#5A5F52] leading-relaxed">
+                      We evaluate your entire portfolio to identify the properties with the highest solar revenue potential.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#DFFF5E] flex items-center justify-center flex-shrink-0">
+                    <span className="text-[#1A1A1A] font-bold">2</span>
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-[#1A1A1A] mb-2">Competitive Bidding</h3>
+                    <p className="text-sm text-[#5A5F52] leading-relaxed">
+                      We create transparent competition among top solar developers to maximize your lease rates.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#DFFF5E] flex items-center justify-center flex-shrink-0">
+                    <span className="text-[#1A1A1A] font-bold">3</span>
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-[#1A1A1A] mb-2">Investment-Grade Analysis</h3>
+                    <p className="text-sm text-[#5A5F52] leading-relaxed">
+                      Receive detailed financial modeling and due diligence at no cost to you.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white border border-[#E7E8E3] rounded-xl p-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#DFFF5E] flex items-center justify-center flex-shrink-0">
+                    <span className="text-[#1A1A1A] font-bold">4</span>
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-[#1A1A1A] mb-2">White-Glove Execution</h3>
+                    <p className="text-sm text-[#5A5F52] leading-relaxed">
+                      We manage the entire process from start to finish, ensuring seamless execution.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white border-2 border-[#E7E8E3] rounded-xl p-6">
+              <p className="eyebrow text-[#5A5F52] text-xs mb-3">TRUSTED BY INDUSTRY LEADERS</p>
+              <p className="text-[#1A1A1A] leading-relaxed mb-4">
+                We partner with leading commercial real estate owners including <strong>Nuveen, JP Morgan, Hines,</strong> and others to maximize their solar revenue potential.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="mailto:hello@lumen.energy"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#DFFF5E] text-[#1A1A1A] font-medium hover:bg-[#d4f54e] transition-colors rounded-lg border-2 border-[#1A1A1A]"
+                >
+                  Contact Us
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </a>
+                <Link
+                  href={`/owners/${owner.slug}`}
+                  className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[#E7E8E3] text-[#1A1A1A] font-medium hover:border-[#B1E5FF] hover:bg-[#CAEDFF] transition-colors rounded-lg"
+                >
+                  View Full Portfolio
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
       </main>

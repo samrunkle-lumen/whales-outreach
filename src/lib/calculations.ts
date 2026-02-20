@@ -193,6 +193,7 @@ export function calculateBuilding(building: Building | Property): BuildingCalcul
 
   // If property has CSV data, use it; otherwise calculate
   const hasCSVData = 'leaseValue' in building && building.leaseValue && building.leaseValue > 0;
+  const hasCSVSystemSize = 'systemSize' in building && building.systemSize && building.systemSize > 0;
 
   let annualIncomeLow: number;
   let annualIncomeHigh: number;
@@ -200,26 +201,22 @@ export function calculateBuilding(building: Building | Property): BuildingCalcul
   let systemSizeHigh: number;
 
   if (hasCSVData) {
-    // Use CSV lease value (CS - NOI) as the income
+    // Use exact CSV lease value (CS - NOI) as the income - no ranges
     const csvLeaseValue = (building as Property).leaseValue || 0;
-    annualIncomeLow = Math.round(csvLeaseValue * 0.9); // 10% variance for range
-    annualIncomeHigh = Math.round(csvLeaseValue * 1.1);
-
-    // Use CSV system size if available
-    const csvSystemSize = (building as Property).systemSize || 0;
-    if (csvSystemSize > 0) {
-      systemSizeLow = Math.round(csvSystemSize * 0.9);
-      systemSizeHigh = Math.round(csvSystemSize * 1.1);
-    } else {
-      // Calculate from usable roof (100 SF per kW)
-      systemSizeLow = Math.round(usableRoofSqft * 0.5 / 100);
-      systemSizeHigh = Math.round(usableRoofSqft / 100);
-    }
+    annualIncomeLow = csvLeaseValue;
+    annualIncomeHigh = csvLeaseValue;
   } else {
     // Calculate solar revenue using $/SF/year
     annualIncomeLow = Math.round(usableRoofSqft * lowRate);
     annualIncomeHigh = Math.round(usableRoofSqft * highRate);
+  }
 
+  if (hasCSVSystemSize) {
+    // Use exact CSV system size - no ranges
+    const csvSystemSize = (building as Property).systemSize || 0;
+    systemSizeLow = csvSystemSize;
+    systemSizeHigh = csvSystemSize;
+  } else {
     // Calculate system size (100 SF per kW)
     systemSizeLow = Math.round(usableRoofSqft * 0.5 / 100);
     systemSizeHigh = Math.round(usableRoofSqft / 100);

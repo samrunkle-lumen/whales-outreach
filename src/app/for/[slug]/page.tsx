@@ -21,12 +21,19 @@ function slugifyBuilding(address: string, index: number): string {
   return `${baseSlug}-${index}`;
 }
 
+// Generate only top 10 broker pages at build time
 export async function generateStaticParams() {
   const data = brokersData as BrokersData;
-  return data.brokers.map((broker) => ({
-    slug: broker.slug,
-  }));
+  return data.brokers
+    .sort((a, b) => b.buildings.length - a.buildings.length)
+    .slice(0, 10)
+    .map((broker) => ({
+      slug: broker.slug,
+    }));
 }
+
+// Allow dynamic params for the rest
+export const dynamicParams = true;
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;

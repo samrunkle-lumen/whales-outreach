@@ -20,12 +20,20 @@ function slugifyProperty(address: string, index: number): string {
   return `${baseSlug}-${index}`;
 }
 
+// Generate only top 10 most important pages at build time
 export async function generateStaticParams() {
   const data = ownersData as OwnersData;
-  return data.owners.map((owner) => ({
-    slug: owner.slug,
-  }));
+  // Sort by property count and take top 10
+  return data.owners
+    .sort((a, b) => b.propertyCount - a.propertyCount)
+    .slice(0, 10)
+    .map((owner) => ({
+      slug: owner.slug,
+    }));
 }
+
+// Allow dynamic params for the rest
+export const dynamicParams = true;
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
@@ -34,12 +42,12 @@ export async function generateMetadata({ params }: PageProps) {
 
   if (!owner) {
     return {
-      title: "Not Found | Whales Outreach",
+      title: "Not Found | Lumen Energy",
     };
   }
 
   return {
-    title: `${owner.name} Portfolio | Whales Outreach`,
+    title: `${owner.name} Portfolio | Lumen Energy`,
     description: `Solar revenue analysis for ${owner.name}'s ${owner.propertyCount} properties. Total system size: ${formatNumber(owner.properties.reduce((sum, p) => sum + (p.systemSize || 0), 0))} kW.`,
   };
 }
@@ -80,11 +88,29 @@ export default async function OwnerPage({ params }: PageProps) {
             {/* Portfolio Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               <div className="bg-gradient-to-b from-[#FAFFFE] to-[#F5FFFC] border border-[#E7E8E3] rounded-xl p-5">
-                <p className="eyebrow text-[#5A5F52] text-xs mb-1">Annual Revenue Potential</p>
-                <p className="display text-[24px] text-[#1A1A1A]">
-                  {formatCurrency(portfolio.totalLow)}
-                </p>
-                <p className="text-sm text-[#5A5F52]">to {formatCurrency(portfolio.totalHigh)}/yr</p>
+                <p className="eyebrow text-[#5A5F52] text-xs mb-1">{totalLeaseValue > 0 ? 'Total Annual Lease Value' : 'Annual Revenue Potential'}</p>
+                {totalLeaseValue > 0 ? (
+                  <>
+                    <p className="display text-[24px] text-[#2E7D32]">
+                      {formatCurrency(totalLeaseValue)}
+                    </p>
+                    <p className="text-sm text-[#5A5F52]">from solar leases</p>
+                  </>
+                ) : portfolio.totalLow === portfolio.totalHigh ? (
+                  <>
+                    <p className="display text-[24px] text-[#1A1A1A]">
+                      {formatCurrency(portfolio.totalLow)}
+                    </p>
+                    <p className="text-sm text-[#5A5F52]">per year</p>
+                  </>
+                ) : (
+                  <>
+                    <p className="display text-[24px] text-[#1A1A1A]">
+                      {formatCurrency(portfolio.totalLow)}
+                    </p>
+                    <p className="text-sm text-[#5A5F52]">to {formatCurrency(portfolio.totalHigh)}/yr</p>
+                  </>
+                )}
               </div>
               <div className="bg-[#F8F8F6] border border-[#E7E8E3] rounded-xl p-5">
                 <p className="eyebrow text-[#5A5F52] text-xs mb-1">Total System Size</p>
@@ -155,8 +181,16 @@ export default async function OwnerPage({ params }: PageProps) {
                           {property.leaseValue && property.leaseValue > 0 ? (
                             <div>
                               <p className="text-[10px] uppercase tracking-wide text-[#5A5F52] font-medium mb-0.5">Annual Lease</p>
-                              <p className="text-base font-medium text-[#1A1A1A]">
+                              <p className="text-base font-medium text-[#2E7D32]">
                                 {formatCurrency(property.leaseValue)}
+                                <span className="text-[#5A5F52] text-xs font-normal">/yr</span>
+                              </p>
+                            </div>
+                          ) : calc.annualIncomeLow === calc.annualIncomeHigh ? (
+                            <div>
+                              <p className="text-[10px] uppercase tracking-wide text-[#5A5F52] font-medium mb-0.5">Annual Revenue</p>
+                              <p className="text-base font-medium text-[#1A1A1A]">
+                                {formatCurrency(calc.annualIncomeLow)}
                                 <span className="text-[#5A5F52] text-xs font-normal">/yr</span>
                               </p>
                             </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { loadGoogleMapsScript } from "@/lib/googleMaps";
 
 interface SatelliteViewProps {
   address: string;
@@ -16,23 +17,18 @@ declare global {
 export function SatelliteView({ address, className = "" }: SatelliteViewProps) {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<google.maps.Map | null>(null);
-  const apiKey = "AIzaSyBnSayfhKzhVGXZrpbl6xfMyuRfZJKq9oI";
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "";
 
   useEffect(() => {
     if (!mapRef.current || mapInstanceRef.current) return;
 
     const loadMap = async () => {
-      // Load Google Maps script
-      if (!window.google) {
-        const script = document.createElement("script");
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
-        script.async = true;
-        script.defer = true;
-        document.head.appendChild(script);
-
-        await new Promise<void>((resolve) => {
-          script.onload = () => resolve();
-        });
+      try {
+        // Load Google Maps script (handles duplicate loading prevention)
+        await loadGoogleMapsScript(apiKey);
+      } catch (error) {
+        console.error("Failed to load Google Maps:", error);
+        return;
       }
 
       if (!mapRef.current) return;

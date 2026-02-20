@@ -2,6 +2,7 @@
 
 import { Building, Broker, BuildingCalculation } from "@/lib/types";
 import { formatCurrency, formatNumber, getUtilityFullName, formatMillions } from "@/lib/calculations";
+import DOMPurify from "isomorphic-dompurify";
 
 interface PDFDownloadButtonProps {
   building: Building;
@@ -30,7 +31,8 @@ export function PDFDownloadButton({
 
     // Create a temporary element with the PDF content
     const content = document.createElement("div");
-    content.innerHTML = `
+    // Sanitize HTML to prevent XSS attacks
+    content.innerHTML = DOMPurify.sanitize(`
       <div style="font-family: Inter, system-ui, sans-serif; padding: 36px 48px; max-width: 900px; background: white;">
         <!-- Accent Line -->
         <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, #B1E5FF 0%, #DFFF5E 50%, #B1E5FF 100%);"></div>
@@ -160,7 +162,7 @@ export function PDFDownloadButton({
           </div>
         </div>
       </div>
-    `;
+    `);
 
     content.style.position = "absolute";
     content.style.left = "-9999px";
