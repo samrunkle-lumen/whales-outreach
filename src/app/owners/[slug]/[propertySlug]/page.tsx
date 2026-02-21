@@ -44,17 +44,12 @@ function findPropertyBySlug(
   };
 }
 
-// Generate only properties from top 10 owners at build time
+// Pre-generate all property pages at build time to avoid serverless function issues
 export async function generateStaticParams() {
   const data = ownersData as OwnersData;
   const params: { slug: string; propertySlug: string }[] = [];
 
-  // Sort owners by property count and take top 10
-  const topOwners = data.owners
-    .sort((a, b) => b.propertyCount - a.propertyCount)
-    .slice(0, 10);
-
-  topOwners.forEach((owner) => {
+  data.owners.forEach((owner) => {
     owner.properties.forEach((property, index) => {
       params.push({
         slug: owner.slug,
@@ -66,8 +61,7 @@ export async function generateStaticParams() {
   return params;
 }
 
-// Allow dynamic params for all other properties
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug, propertySlug } = await params;

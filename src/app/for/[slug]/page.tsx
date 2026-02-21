@@ -21,19 +21,15 @@ function slugifyBuilding(address: string, index: number): string {
   return `${baseSlug}-${index}`;
 }
 
-// Generate only top 10 broker pages at build time
+// Pre-generate all broker pages at build time to avoid serverless function issues
 export async function generateStaticParams() {
   const data = brokersData as BrokersData;
-  return data.brokers
-    .sort((a, b) => b.buildings.length - a.buildings.length)
-    .slice(0, 10)
-    .map((broker) => ({
-      slug: broker.slug,
-    }));
+  return data.brokers.map((broker) => ({
+    slug: broker.slug,
+  }));
 }
 
-// Allow dynamic params for the rest
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
@@ -63,7 +59,7 @@ export default async function BrokerPage({ params }: PageProps) {
 
   const portfolio = calculatePortfolio(broker.buildings);
   const referralFee = calculateReferralFee(portfolio.totalSystemSizeLow, portfolio.totalSystemSizeHigh);
-  const totalSqft = broker.buildings.reduce((acc, b) => acc + b.sqft, 0);
+  const totalSqft = broker.buildings.reduce((acc, b) => acc + (b.sqft || 0), 0);
   const totalValueUplift = portfolio.buildings.reduce((acc, b) => acc + b.valueUpliftLow, 0);
 
   return (

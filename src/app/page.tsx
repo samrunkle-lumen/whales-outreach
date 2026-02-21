@@ -1,7 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FilterableOwnerList } from "@/components/FilterableOwnerList";
-import { AddressSearch } from "@/components/AddressSearch";
 import { PasswordGate } from "@/components/PasswordGate";
 import { OwnersData } from "@/lib/types";
 import { calculatePortfolio, formatCurrency, formatNumber } from "@/lib/calculations";
@@ -13,7 +12,7 @@ export default function Home() {
   // Calculate total portfolio stats
   const allProperties = data.owners.flatMap(o => o.properties);
   const portfolioSummary = calculatePortfolio(allProperties);
-  const totalSqft = allProperties.reduce((acc, p) => acc + p.sqft, 0);
+  const totalSqft = allProperties.reduce((acc, p) => acc + (p.sqft || 0), 0);
 
   return (
     <PasswordGate>
@@ -56,24 +55,6 @@ export default function Home() {
                   {formatCurrency(portfolioSummary.totalLow)}<span className="text-[#5A5F52] text-lg">/yr</span>
                 </p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Address Search Section */}
-        <section className="px-6 md:px-12 py-12 md:py-16 bg-gradient-to-b from-[#FAFFFE] to-[#F5FFFC] border-b border-[#E7E8E3]">
-          <div className="max-w-[1200px] mx-auto">
-            <div className="text-center mb-8">
-              <p className="eyebrow text-[#5A5F52] mb-4">PROPERTY LOOKUP</p>
-              <h2 className="display text-[clamp(32px,4vw,48px)] leading-[1.0] tracking-[-0.03em] text-[#1A1A1A] mb-4">
-                Search Properties by Address
-              </h2>
-              <p className="text-lg text-[#5A5F52] max-w-2xl mx-auto">
-                Look up any property in the Whales database to view owner information and outreach details.
-              </p>
-            </div>
-            <div className="flex justify-center">
-              <AddressSearch />
             </div>
           </div>
         </section>

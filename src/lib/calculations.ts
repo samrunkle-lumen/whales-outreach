@@ -172,8 +172,12 @@ function getUsableRoofPercentage(propertyType?: string): number {
 }
 
 export function calculateBuilding(building: Building | Property): BuildingCalculation {
+  // Handle missing or invalid address
+  const address = building.address || "Unknown Address";
+  const sqft = building.sqft && building.sqft > 0 ? building.sqft : 0;
+
   // Extract state from address
-  const addressParts = building.address.split(",");
+  const addressParts = address.split(",");
   const lastPart = addressParts[addressParts.length - 1]?.trim() || "";
   const state = lastPart.split(" ")[0] || building.state || "NJ";
 
@@ -189,7 +193,7 @@ export function calculateBuilding(building: Building | Property): BuildingCalcul
 
   // Calculate usable roof area using property-type-specific heuristic
   const usableRoofPercentage = getUsableRoofPercentage(propertyType);
-  const usableRoofSqft = Math.round(building.sqft * usableRoofPercentage);
+  const usableRoofSqft = Math.round(sqft * usableRoofPercentage);
 
   // If property has CSV data, use it; otherwise calculate
   const hasCSVData = 'leaseValue' in building && building.leaseValue && building.leaseValue > 0;
@@ -227,8 +231,8 @@ export function calculateBuilding(building: Building | Property): BuildingCalcul
   const valueUpliftHigh = Math.round(annualIncomeHigh / CAP_RATE);
 
   return {
-    address: building.address,
-    sqft: building.sqft,
+    address,
+    sqft,
     utility,
     leaseRate: (lowRate + highRate) / 2, // average for display
     systemSizeLow,

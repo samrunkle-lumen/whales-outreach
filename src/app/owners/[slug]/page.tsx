@@ -20,20 +20,15 @@ function slugifyProperty(address: string, index: number): string {
   return `${baseSlug}-${index}`;
 }
 
-// Generate only top 10 most important pages at build time
+// Pre-generate all owner pages at build time to avoid serverless function issues
 export async function generateStaticParams() {
   const data = ownersData as OwnersData;
-  // Sort by property count and take top 10
-  return data.owners
-    .sort((a, b) => b.propertyCount - a.propertyCount)
-    .slice(0, 10)
-    .map((owner) => ({
-      slug: owner.slug,
-    }));
+  return data.owners.map((owner) => ({
+    slug: owner.slug,
+  }));
 }
 
-// Allow dynamic params for the rest
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
@@ -62,7 +57,7 @@ export default async function OwnerPage({ params }: PageProps) {
   }
 
   const portfolio = calculatePortfolio(owner.properties);
-  const totalSqft = owner.properties.reduce((acc, p) => acc + p.sqft, 0);
+  const totalSqft = owner.properties.reduce((acc, p) => acc + (p.sqft || 0), 0);
   const totalSystemSize = owner.properties.reduce((acc, p) => acc + (p.systemSize || 0), 0);
   const totalLeaseValue = owner.properties.reduce((acc, p) => acc + (p.leaseValue || 0), 0);
 
